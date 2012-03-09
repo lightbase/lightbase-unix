@@ -1,0 +1,8 @@
+-LNPortugues                                    ; Idiomas
+-LPSpool@dos_ms@spool                           ; impressora para arquivo de nome spool
+-LPImpressora@dos_ms@/tmp/%@lp %s               ; Descricao de impressoras. Pode ocorrer varias vezes
+#-LPEscrava@dos_ms@/dev/tty1a@@27 115@27 118          ; impressora para escrava
+#-LPSerial 1@dos_ms@/dev/tty1a                  ; Exemplo de impressora serial
+-BKlb_back                                      ; Arquivo de comandos para Backup
+-RSlb_rest                                      ; Arquivo de comandos para Restore
+-CLsort                                         ; Programa de ordenacao

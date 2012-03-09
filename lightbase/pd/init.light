@@ -1,0 +1,114 @@
+
+# Definicao de codigos de retorno
+: ${OK=0} ${FAIL=1}
+Dirbase="/usr/light"
+Ajuda=ajuda
+Aguarde="\nAguarde...\c"
+LBHOME=`pwd`
+echo ""
+echo ""
+echo "                       INSTALACAO DO LIGHT"
+echo "====================================================================="
+echo ""
+echo "Informe o diretorio onde deverao ser criadas as bases de dados."
+echo "Sugestao : $Dirbase. <Enter> para confirmar ou informe novo"
+echo "diretorio (referencia absoluta) : \c"
+read resp
+
+[ "$resp" = "" ] && resp=$Dirbase
+
+echo "-DB$resp" >> config.lb
+
+
+(
+cd light
+echo "\n================= Instalacao de descricao de terminal ==============="
+pkt=terms.pkt
+files=`tar tf $pkt`
+rm -f $files
+echo $Aguarde
+tar xf $pkt
+chmod 644 $files
+chown root *
+chgrp root *
+echo "\rOk.             "
+echo
+
+echo "================= Instalacao de descricao de impressora=============="
+pkt=prints.pkt
+files=`tar tf $pkt`
+rm -f $files
+echo $Aguarde
+tar xf $pkt
+chmod 644 $files
+chown root *
+chgrp root *
+echo "\rOk.             "
+echo
+
+echo "================= Instalacao dos arquivos de ajuda =================="
+pkt=../help.pkt
+(cd $Ajuda && {
+        echo $Aguarde
+	rm -f *
+	tar xf $pkt
+	chmod 644 *
+        chown root *
+        chgrp root *
+})
+echo "\rOk.             "
+echo
+
+
+echo "================= Removendo aquivos temporarios ====================="
+rm -f terms.pkt
+rm -f prints.pkt
+rm -f help.pkt
+sh aviso
+rm -f aviso
+)
+# Esquema de personalizacao
+
+OBJPERSON=/usr/bin/light
+PERSON=/bin/person
+RET=$FAIL
+echo "
+             ****************************************
+                  Personalizacao do Light Base
+             ****************************************
+"
+
+[ -x $PERSON ] && $PERSON $OBJPERSON && RET=$OK
+[ $RET = $FAIL ] && {
+	echo "
+
+        *********************************************
+        ATENCAO:
+        *********************************************
+
+        O Light Base nao foi corretamente personalizado.
+        Voce terah que reiniciar a instalacao!
+
+        Pressione <Enter> para continuar... \c"
+	read key
+	exit $RET
+}
+
+# instalacao manual
+[ "$manual" = "sim" ] && {
+	for i in $LBHOME/light
+	do
+		chown root $i $i/*
+		chgrp root $i $i/*
+	done
+	chown root /usr/bin/light
+	chgrp root /usr/bin/light
+	chmod 644 $LBHOME/light/*.lb $LBHOME/light/*.map $LBHOME/light/*.lbt
+	chmod 755 $LBHOME/light/lb_* $LBHOME/light/fiw.sh $LBHOME/light/shell.lb
+	chmod 777 $LBHOME/light/ajuda $LBHOME/light/persona
+	chmod 111 $LBHOME/light/convlb4 $LBHOME/light/lbconv $LBHOME/light/tools
+	chmod 400 $LBHOME/light/aviso
+	rm -rf /tmp/_lbl /tmp/perms
+}
+exit $OK
+

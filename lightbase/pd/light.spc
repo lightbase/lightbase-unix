@@ -1,0 +1,29 @@
+HEADER:Light Base:/usr/lib
+UID:root:0
+GID:root:0
+DIR:d:777:root/root:1:LIGHT:./light/ajuda
+DIR:d:777:root/root:1:LIGHT:./light/persona
+ARQ:x:711:root/root:1:LIGHT:BIN:light:/usr/bin/light
+ARQ:x:111:root/root:1:LIGHT:BIN:convlb4:./light/convlb4
+ARQ:x:111:root/root:1:LIGHT:BIN:lbconv:./light/lbconv
+ARQ:x:111:root/root:1:LIGHT:BIN:tools:./light/tools
+ARQ:f:400:root/root:1:LIGHT:BIN:aviso:./light/aviso
+ARQ:f:644:root/root:1:LIGHT:BIN:config.lb:./light/config.lb
+ARQ:f:644:root/root:1:LIGHT:BIN:portugue.lb:./light/portugue.lb
+ARQ:f:755:root/root:1:LIGHT:BIN:shell.lb:./light/shell.lb
+ARQ:f:644:root/root:1:LIGHT:BIN:stopword.lb:./light/stopword.lb
+ARQ:f:644:root/root:1:LIGHT:BIN:soundex.lb:./light/soundex.lb
+ARQ:f:755:root/root:1:LIGHT:BIN:lb_back:./light/lb_back
+ARQ:f:755:root/root:1:LIGHT:BIN:lb_rest:./light/lb_rest
+ARQ:f:644:root/root:1:LIGHT:BIN:asc_ligh.map:./light/asc_ligh.map
+ARQ:f:644:root/root:1:LIGHT:BIN:ligh_asc.map:./light/ligh_asc.map
+ARQ:f:444:root/root:1:LIGHT:BIN:terms.txt:./light/terms.txt
+ARQ:F:400:root/root:1:LIGHT:BIN:help.pkt:./light/help.pkt
+ARQ:F:400:root/root:1:LIGHT:BIN:prints.pkt:./light/prints.pkt
+ARQ:F:400:root/root:1:LIGHT:BIN:terms.pkt:./light/terms.pkt
+ARQ:x:500:root/root:1:LIGHT:BIN:init.light:/tmp/init.light
+ARQ:x:100:root/root:1:LIGHT:BIN:person:/bin/person
+ARQ:f:640:root/root:1:LIGHT:/:dev/null:./light/ajuda/leiame
+ARQ:f:640:root/root:1:LIGHT:/:dev/null:./light/persona/leiame
+ARQ:f:444:root/root:1:LIGHT:BIN:release.doc:./light/release.doc
+TAMANHO:LIGHT:Light Base

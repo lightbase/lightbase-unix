@@ -1,0 +1,16 @@
+p=B:
+	echo "Coloque Midia de 3 1/2 (alta densidade ed b:) para tap.Z e tct.Z ..."
+	echo "Quando Ok. tecle ENTER\c"; read lixo
+	doscp -r tap.Z b:   ; echo tap.Z
+	doscp -r tct.Z b:   ; echo tct.Z
+
+	echo "Coloque Midia de 3 1/2 (alta densidade ed b:) para tmt.Z, tpd.Z e outros..."
+	echo "Quando Ok. tecle ENTER\c"; read lixo
+	doscp -r tmt.Z b:                    ; echo tmt.Z
+	doscp -r tpd.Z b:                    ; echo tpd.Z
+	doscp -r faz_porte.lb b:faz_port.lb  ; echo faz_porte.lb
+	doscp -r prep_porte.lb b:prep_por.lb ; echo prep_porte.lb
+	doscp -r finaliza.lb b:finaliza.lb   ; echo finaliza.lb
+	doscp -r mac_demo.tar b:             ; echo mac_demo.tar
+
+

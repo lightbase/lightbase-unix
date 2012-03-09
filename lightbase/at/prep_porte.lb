@@ -1,0 +1,24 @@
+echo Gerando tct.Z
+cd mt
+./gera_tmt
+mv tmt.Z ..
+cd ..
+
+echo Gerando tap.Z
+cd deslight/ap
+./gera_tap
+mv tap.Z ../..
+cd ../..
+
+echo Gerando tct.Z
+cd deslight/ct
+./gera_tct
+mv tct.Z ../..
+cd ../..
+
+echo Gerando tpd.Z
+cd deslight/padrao
+./gera_tpd
+mv tpd.Z ../..
+cd ../..
+

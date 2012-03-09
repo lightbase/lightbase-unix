@@ -1,0 +1,5 @@
+cd converte
+make convlb4
+make exporta
+make importa
+

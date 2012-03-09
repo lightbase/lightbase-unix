@@ -1,0 +1,703 @@
+
+Este Arquivo de Mensagens esta divididos em Grupos numerados
+
+A palavra "GRP" no começo da linha indica uma marca de final de grupo,
+e se for seguido de um número indicará  tambem inicio deste grupo.
+
+Os grupos podem ou não estar disponiveis em memória, para habilitar estas
+mensagens deverá primeiro executar o comando "up_str( No. Grupo )", que
+carregará  o grupo mencionado para memória (Residente). Para ter acesso
+a uma mensagem específica deverá executar o comando
+"loc_str( Grupo, Mensagem )", que devolverá um endereço real de memória.
+
+Para desabilitar um grupo, liberar área em memória é necessário
+executar o comando "down_str( No. Grupo ).
+
+Um comando "loc_str" em uma mensagem cujo grupo não foi dado "up_str"
+estará  disponível da mesma forma, apenas que será  mais lento, pois
+deveremos acha-la no disco, e ficará  em uma area comum (Transiente).
+
+ATENCÃO - Nenhum Titulo ou Rodape podem ficar transiente !!!.
+
+Apos a indicação de inicio de grupo as mensagems deverão ser numeradas
+para isto basta colocar um número no começo da linha, linhas sem número
+serão consideradas comentario.
+
+As mensagens serão consideradas do primeiro "<" até o último ">", fora
+deste intervalo é  considerado comentario.
+
+Será  alocado um arranjo de ponteiros do tamanho da maior linha, portanto
+recomenda-se que não existam buracos na numeração.
+
+Todas as mensagens acima de 500 nunca serão carregadas em memória, sempre
+ficarão em disco (Transientes), recomenda-se que sejam postas em
+primeiro lugar.
+
+GRP 1 - Basico Obrigatório
+
+501 - < ERRO - Getkey corrompido ! > - WGET0.C
+502 - <Use o comando EXIT para retornar!> - WIN_SHELL()
+503 - <shell.md> - Script no UNIX - MEDIT "shell.md"
+504 - <Erro em imprime função, tamanho: [%d]> - Imprime função() WPRINT.C
+505 - <Favor informe um TERMINAL - Consulte o manual>
+506 - <ERRO: Janela não esta no STACK>
+507 - <Medit> - Prompt no MSDOS - MEDIT "Medit"
+508 - <Pressione ENTER para retornar>
+509 - <Não foi possível gravar arquivo com imagem da memória!>
+510 - <Não foi possível capturar leitura assincrona do terminal !!! (VMS)>
+511 - <Não foi possível inicializar terminal !!! (VMS)>
+1   - <Favor digite caracteres ALFABETICOS>
+2   - <Favor digite caracteres NUMERICOS>
+3   - <Pressione ENTER ou ESC>
+4   - <Escolha com as setas e pressione ENTER>
+5   - <%2AF1%1A Ajuda >
+6   - <%2AF2%1A >
+7   - <Grava >
+8   - <%2AF2%1A %4AExclui%1A >
+9   - <%2AF3%1A Util >
+10  - <%2AF4%1A Campos >
+11  - <%2AF5%1A Zoom >
+12  - <%2AF6%1A Edita >
+13  - <%2AF7%1A Doc_Ant >
+14  - <%2AF8%1A Prox_Doc >
+15  - <%2AF9%1A Vistas >
+16  - <%2AF10%1A >
+17  - <Opções >
+18  - <%2AEsc%1A Volta >
+19  - <%2AEnter%1A Confirma >
+20  - <%2AIns%1A Insere >
+21  - <%2ADel%1A Exclui >
+22  - <%2APgUp%1A Tela_Ant >
+23  - <%2APgDn%1A Tela_Post >
+24  - < - Press ESC>
+25  - <ALTERA TABELA: Edite item e confirme com ENTER>
+26  - <INSERE ITEM NA TABELA: Edite e confirme com ENTER>
+27  - < A T E N C A O >
+28  - < Pressione ESC >
+29  - < Opções >
+30  - <TEMP>  Indica Dir para Arqs Temp de BLOCO / MACRO no MSDOS
+31  - <HOME>  Indica Dir para Arqs Temp de BLOCO / MACRO no UNIX
+32  - <TEMP>  Indica Dir para Arqs Temp do UNDO  / REDO  no MSDOS
+33  - <HOME>  Indica Dir para Arqs Temp do UNDO  / REDO  no UNIX
+34  - <sane>  Parametro de saida do comando "stty" no DEC/Ultrix
+35  - <. %s%c%s> Passado para system() executar shell.lb - MEDIT ". %s%c%s"
+
+GRP 3 - Compilador do Teclado do Editor
+
+501 - <TECLADO:Sintaxe: Comando: Tecla1, Tecla2 ;Comentario!>
+502 - <TECLADO:Primeira tecla desconhecida>
+503 - <TECLADO:Segunda tecla indefinida>
+504 - <TECLADO:Segunda tecla desconhecida>
+505 - <TECLADO:Segunda tecla inválida>
+506 - <Linha >
+507 - <Quantidade máxima de Comandos ou Macros=250>
+508 - <MACRO: Primeira tecla desconhecida!>
+509 - <MACRO: Segunda tecla desconhecida!>
+510 - <MACRO: Segunda tecla invalida!>
+511 - <MACRO: Sintaxe: Arquivo: Tecla1, Tecla2  ;Comentario!>
+512 - <MACRO: Nome de arquivo nao pode conter Path!>
+513 - <MACRO: Erro na alocacao de memoria!>
+514 - <DIRETIVA: Linha com 'ponto' declara Diretiva!>
+515 - <DIRETIVA: Diretiva desconhecida!>
+516 - <DIRETIVA: Sintaxe: .HELPDIR=diretorio>
+517 - <DIRETIVA: Diretorio invalido!>
+518 - <DIRETIVA: Sintaxe: .TAB=tamanho>
+519 - <DIRETIVA: Sintaxe: .HELPKEY=nome da tecla>
+520 - <DIRETIVA: Tecla desconhecida!>
+521 - <DIRETIVA: Sintaxe: .UTILKEY=nome da tecla>
+522 - <DIRETIVA: Sintaxe: .MULTKEY=nome da tecla:Linha de Informação>
+523 - <DIRETIVA: .MULTKEY - Limite de linhas de informação atingido>
+524 - <DIRETIVA: .CONFIRMA - Nível de confirmação:0, 1, 2 ou 3>
+525 - <TECLAQUENTE: Sem lista de teclas>
+526 - <TECLAQUENTE: Tecla ou comando desconhecido>
+527 - <TECLAQUENTE: Comando nao definido>
+528 - <DIRETIVA: Sintaxe: .MOSTRAEXT=tipo>
+1   - <VOLTAESPACO>
+2   - <SOBE>
+3   - <DESCE>
+4   - <ESQUERDA>
+5   - <DIREITA>
+6   - <INILINHA>
+7   - <FIMLINHA>
+8   - <ROLACIMA>
+9   - <ROLABAIXO>
+10  - <PROPAGINA>
+11  - <ANTPAGINA>
+12  - <INIARQUIVO>
+13  - <FIMARQUIVO>
+14  - <PROPALAVRA>
+15  - <ANTPALAVRA>
+16  - <TROCATEXTO>
+17  - <DUPLINHA>
+18  - <PROCTEXTO>
+19  - <INSLIDEPO>
+20  - <INSLIANTES>
+21  - <JUNTAPROXL>
+22  - <TAMTEXTO>
+23  - <VAIPRALIN>
+24  - <APAGAFIMLIN>
+25  - <INIBLCHAR>
+26  - <INIBLCOL>
+27  - <INIBLLIN>
+28  - <BLOCOCOPIA>
+29  - <BLOCOINSERE>
+30  - <BLOCOMOVE>
+31  - <DESMARCABLO>
+32  - <APAGABLOCO>
+33  - <EXPORTE>
+34  - <IMPORTE>
+35  - <QUEBRALINHA>
+36  - <APAGALINHA>
+37  - <APAGACAR>
+38  - <APAGAPAL>
+39  - <INSCTRLE>
+40  - <ABANDONA>
+41  - <SALVARQ>
+42  - <INSEREOUNAO>
+43  - <ZOOM>
+44  - <MUDAJANELA>
+45  - <DIVIDEJANELA>
+46  - <EXPJANELA>
+47  - <EDITANOTAS>
+48  - <VERARQUIVO>
+49  - <NOVOARQUIVO>
+50  - <TERMINA>
+51  - <MENUARQS>
+52  - <COMPILA>
+53  - <NENHUMA>
+54  - <CTRLA>
+55  - <CTRLB>
+56  - <CTRLC>
+57  - <CTRLD>
+58  - <CTRLE>
+59  - <CTRLF>
+60  - <CTRLG>
+61  - <CTRLH>
+62  - <CTRLI>
+63  - <CTRLJ>
+64  - <CTRLK>
+65  - <CTRLL>
+66  - <CTRLM>
+67  - <CTRLN>
+68  - <CTRLO>
+69  - <CTRLP>
+70  - <CTRLQ>
+71  - <CTRLR>
+72  - <CTRLS>
+73  - <CTRLT>
+74  - <CTRLU>
+75  - <CTRLV>
+76  - <CTRLW>
+77  - <CTRLX>
+78  - <CTRLY>
+79  - <CTRLZ>
+80  - <ESCAPE>
+81  - <TECLAVOLTA>
+82  - <F1>
+83  - <F2>
+84  - <F3>
+85  - <F4>
+86  - <F5>
+87  - <F6>
+88  - <F7>
+89  - <F8>
+90  - <F9>
+91  - <F10>
+92  - <SETACIMA>
+93  - <SETABAIXO>
+94  - <SETAESQ>
+95  - <SETADIR>
+96  - <PAGINANT>
+97  - <PAGINAPROX>
+98  - <INICIO>
+99  - <FIM>
+100 - <INSERE>
+101 - <APAGA>
+102 - <TAB>
+103 - <ALTF1>
+104 - <ALTF2>
+105 - <ALTF3>
+106 - <ALTF4>
+107 - <ALTF5>
+108 - <ALTF6>
+109 - <ALTF7>
+110 - <ALTF8>
+111 - <ALTF9>
+112 - <ALTF10>
+113 - <BACKTAB>
+114 - <PROCPAR>
+115 - <JANERRO>
+116 - <COMSYSTEM>
+117 - <PLINTELA>
+118 - <ULINTELA>
+119 - <ROLAESQ>
+120 - <ROLADIR>
+121 - <SAISALVA>
+122 - <CTRLPGUP>
+123 - <CTRLPGDN>
+124 - <PALAPROX>
+125 - <PALAANT>
+126 - <PROXARQUIVO>
+127 - <ANTARQUIVO>
+128 - <MUDATRANS>
+129 - <JANSYSOUT>
+130 - <JANSYSERRO>
+131 - <EXECUTA>
+132 - <GRAVAMACRO>
+133 - <EXEMACRO>
+134 - <ARQMACRO>
+135 - <REPITABUSCA>
+136 - <PROXCARREGA>
+137 - <ANTCARREGA>
+138 - <IMPRIMEARQ>
+139 - <EXPRECHAR>
+140 - <EDITAVER>
+141 - <TIRALISTA>
+142 - <DESFAZ>
+143 - <REFAZ>
+144 - <ALT_A>
+145 - <ALT_B>
+146 - <ALT_C>
+147 - <ALT_D>
+148 - <ALT_E>
+149 - <ALT_F>
+150 - <ALT_G>
+151 - <ALT_H>
+152 - <ALT_I>
+153 - <ALT_J>
+154 - <ALT_K>
+155 - <ALT_L>
+156 - <ALT_M>
+157 - <ALT_N>
+158 - <ALT_O>
+159 - <ALT_P>
+160 - <ALT_Q>
+161 - <ALT_R>
+162 - <ALT_S>
+163 - <ALT_T>
+164 - <ALT_U>
+165 - <ALT_V>
+166 - <ALT_W>
+167 - <ALT_X>
+168 - <ALT_Y>
+169 - <ALT_Z>
+170 - <INDENTBLOCO>
+171 - <LINHACIMA>
+172 - <LINHABAIXO>
+173 - <LINHAMEIO>
+174 - <APPBLCOPIA>
+175 - <APPBLMOVE>
+176 - <BLOCOUPPER>
+177 - <BLOCOLOWER>
+178 - <ORDEMENU>
+179 - <TROCAARQ>
+180 - <MARCAPOS>
+181 - <BUSCAPOS>
+182 - <MARGEMPARA>
+183 - <TROCATRAS>
+184 - <PROCTRAS>
+185 - <REPITAFRENTE>
+186 - <REPITATRAS>
+187 - <SAICONTEXTO>
+188 - <TECLAQUENTE>
+As diretivas deverao estar em uma mensagem de forma que iniciem com ...
+... o caracter '|' seguidas de um numero interno, que nao devera ser mudado.
+!!! ATENCAO !!!
+As tres proximas linhas serao concatenadas sequencialmente.
+Nenhuma Linha pode ter mais de 120 caracteres.
+189 - <|0HELPDIR|1INIFIMBLOCO|2TAB|3HELPKEY|4UTILKEY|5MOSTRATAB|6BRANCOFIM|7TABBRANCO|8BRANCOTAB|9MULTKEY|10CONFIRMA> - Primeira Diretiva do Editor
+190 - <|11NOBAK|12MOSTRAEXT|13CRPROXLINHA> - Segunda Diretiva do Editor
+191 - <> - Terceira Diretiva do Editor
+192 - <ENTER>
+193 - <TAB>
+194 - <BACKTAB>
+195 - <CODCHAR>
+196 - <RECARREGRA>
+
+GRP 4 - Editor - Obrigatório
+
+501 - <Tamanho do texto corrente = %d Kb>
+502 - <Linha muito longa, não pode ser anexada !>
+503 - <Sem memória para matriz de ponteiros ... >
+504 - <Sem memória para matriz de tamanho de linhas ... >
+505 - <Arquivo "%.15s" não existe, será criado>
+506 - <Erro abrindo arquivo "%.15s">
+507 - <Erro abrindo campo texto>
+508 - <Erro lendo arquivo "%.15s">
+509 - <Erro gravando arquivo>
+510 - <Erro lendo campo texto>
+511 - <Erro abrindo arquivo "%.15s", original restaurado>
+512 - <Erro gravando arquivo "%.15s">
+513 - <Erro gravando campo texto>
+514 - <Arquivo "%.15s" não pode ser aberto>
+515 - <Erro na abertura do arquivo de exportação>
+516 - <Erro exportando arquivo>
+517 - <Linha truncada>
+518 - <Sem memoria para mais linhas. Arquivo sera' truncado !>
+519 - <Não existe bloco marcado !>
+520 - <Janela de ZOOM nao pode ser aberta !>
+521 - <ERRO FATAL [%d]: Texto nao atualizado !>
+522 - <Área de Transferência número %d vazia !>
+523 - <Erro lendo arquivo>
+524 - <Par nao encontrado>
+525 - <Arquivo de Transferência nao pode ser aberto !>
+526 - <Arquivo de Macro nao pode ser aberto !>
+527 - <Não existe Macro gravada !>
+528 - <Erro de alocação de memória em Desfaz/Refaz!>
+1   - <Lendo arquivo "%.15s" - Linha [%d] ... >
+2   - <Gravando arquivo "%.15s" ... >
+3   - <%2ASubstituição%1A       Enter Confirma, Setas Navega, Tab Opções>
+4   - <%2ABusca%1A              Enter Confirma, Setas Navega, Tab Opções>
+5   - <Espere as substituições ... >
+6   - <Procurar por ....: >
+7   - <Trocar por ......: >
+8   - <Opções BCGIKNRS .: >
+9   - <Não encontrada sequência à %4AFrente%1A>
+10  - <Troca (Sim/Não/Todos/<Esc>) ? >
+11  - <SNTl > - Sim, Não, Todos, "l" Minusculo e' CTRL-L, mesmo que NAO
+12  - <Quantidade de substituições [%d]>
+13  - < Escolha >
+14  - < Retorna  @  Salva   @ Abandona > - Opções separados por "@"
+15  - < Retorna  -> Volta a edição>
+16  - < Salva    -> Grava arquivo e sai>
+17  - < Abandona -> Descarta modificações>
+18  - <Arquivo: >
+19  - <Entre nome do arquivo a ser importado>
+20  - <Lendo arquivo de importação "%.15s" ...>
+21  - <Entre nome de arquivo para exportação>
+22  - <   Recria   @ Acrescenta > - Opções Separadas por "@"
+23  - <Arquivo "%.15s" já existe.>
+24  - <Exportando arquivo "%.15s" ...>
+25  - < Lin: %d Col: %d > - Linhas/Colunas do editor
+26  - <Linha: >
+27  - <Entre número da linha que deseja posicionar>
+28  - <Arquivo "%.15s" salvo>
+29  - <Arquivo "%.15s" importado>
+30  - <Arquivo "%.15s" exportado>
+31  - <Área de Transferência de Blocos (0 .. 9). Corrente = %d : >
+32  - <Macro gravada>
+33  - <Gravando macro ...>
+34  - <Executando macro ...>
+35  - <Entre nome do arquivo para gravar a macro>
+36  - <Sem permissao para alteração>
+37  - <Comando desconhecido>
+38  - <Bloco movido  para Área de Transferência [%d]>
+39  - <Bloco copiado  para Área de Transferência [%d]>
+40  - <Bloco retirado  do arquivo>
+41  - <Retrospectos de alteração (Desfaz/Refaz) encerrado!>
+42  - <Nada para Desfazer>
+43  - <Nada para Refazer>
+44  - <Bloco tipo Linha  - Área de Transferência [%d]>
+45  - <Bloco tipo Coluna - Área de Transferência [%d]>
+46  - <Bloco tipo Caractere - Área de Transferência [%d]>
+47  - <Bloco Desfeito>
+48  - <Movendo Bloco para Área de Transferência [%d]>
+49  - <Retirando Bloco do arquivo>
+50  - <Copiando Bloco para Área de Transferência [%d]>
+51  - <Inserindo Bloco da Área de Transferência [%d]>
+52  - <Bloco inserido  da Área de Transferência [%d]>
+53  - <Expressão de busca com erro de avaliação>
+54  - <Sequência encontrada>
+55  - <Bloco Retirado e Acrescentado na Área de Transferência [%d]>
+56  - <Bloco Copiando e Acrescentado na Área de Transferência [%d]>
+57  - <Bloco em Maiúsculas>
+58  - <Bloco em Minúsculas>
+59  - <%2AIndentação de Blocos%1A - Setas, Tab, Pgup, Pgdn>
+60  - <Não encontrada sequência %4AAtrás%1A>
+61  - <Procurando sequência ... >
+62  - <%2AMargem%1A            Enter Confirma, Setas Navega>
+63  - <Esquerda .......: >
+64  - <Primeira Linha .: >
+65  - <Direita ........: >
+65  - <Direita ........: >
+66  - <Insere Caracteres Control : Ctrl->
+67  - <~> - Prefixo de Numeros Decimais
+68  - <!> - Prefixo de Numeros HexaDecimais
+69  - <Expressão : >
+70  - <Forneça a expressão para ser avaliada>
+71  - <Caracter corrente: Decimal = %d   Hexa = %X>
+
+GRP 5 - Macros
+
+1   - <SLEEP>
+2   - <MESSAGE>
+3   - <WINDOW>
+4   - <CLOSE>
+5   - <SPEED>
+6   - <COMMENT>
+7   - <<ESC> Interrompe a macro, qualquer tecla continua execução: >
+
+GRP 6 - Utilitario - Interrupção
+
+1   - <Move      >
+2   - <Permite mudar a Janela de lugar>
+3   - <Tamanho   >
+4   - <Permite mudar o Tamanho da Janela Aparente>
+5   - <Virtual   >
+6   - <Permite mover a Janela Virtual relativo a Aparente>
+7   - <DOS       >
+8   - <sHell     >
+9   - <Abre uma sessão do Sistema Operacional>
+10  - <Reescreve >
+11  - <Refaz toda a tela do terminal>
+12  - <Imp_Tela  >
+13  - <Imprime a tela na impressora>
+14  - <aBandona  >
+15  - <Encerra incondicionalmente o programa>
+16  - <Anterior  >
+17  - <Coloca janela anterior em evidência>
+18  - <Posterior >
+19  - <Coloca janela posterior em evidência>
+20  - <Status    >
+21  - <Mostra Versão, Data, Hora>
+22  - <Edita     >
+23  - <Permite editar qualquer arquivo>
+24  - <Calcula   >
+25  - <Calculadora científica com expressões e variáveis>
+26  - <Grava     >
+27  - <Macro Liga/Desliga - grava todas as teclas>
+28  - <eXecuta   >
+29  - <Executa uma macro já gravada>
+30  - <caLendario>
+31  - <Calendario mostra ano, mes e dia da semana>
+32  - <conFigura > - XTOOLS - Notas
+33  - <Configuração do ambiente> - XTOOLS - Arquivo de Notas
+34  - <UTILITARIO>
+35  - < Esc Volta >
+36  - <Use as Setas para reposicionar a janela>
+37  - <Use as Setas para redimencionar a janela>
+38  - <Use as setas para rolar a janela>
+39  - < STATUS >
+40  - < ESC Sai ENTER Retorna >
+41  - <Versão: >
+42  - <Edição: >
+43  - <Data>
+44  - <Hora>
+45  - <Sistema>
+46  - <Release>
+47  - <Versão >
+48  - <Memória> - Sera ligada com o próximo por um "\n"
+49  - <Disponível>
+50  - <Bytes>
+51  - <Arquivo : >
+52  - <Entre nome do Arquivo a ser Editado>
+53  - <Margem direita : >
+54  - <Entre com a margem direita para justificação>
+55  - <Editor de texto do %4ALight Base%1A>
+56  - <Arquivo já existe. Sobreescreve ? (S/N) : > - Sim ou Não
+57  - <SN> - Resposta Sim ou Não
+58  - <Arquivo : >
+59  - <Entre nome do arquivo a para gravar a macro>
+60  - <Arquivo : >
+61  - <Entre nome do arquivo de macro a ser a executado>
+62  - <Use setas horizontais para mudar mes e verticais para ano>
+63  - < Calendário >
+64  - <Domingo>
+65  - <Segunda>
+66  - <Terca>
+67  - <Quarta>
+68  - <Quinta>
+69  - <Sexta>
+70  - <Sabado>
+71  - <Janeiro>
+72  - <Fevereiro>
+73  - <Marco>
+74  - <Abril>
+75  - <Maio>
+76  - <Junho>
+77  - <Julho>
+78  - <Agosto>
+79  - <Setembro>
+80  - <Outubro>
+81  - <Novembro>
+82  - <Dezembro>
+83  - <Imp_Janela>
+84  - <Imprime a janela na impressora>
+
+GRP 7 - Ajuda, Help, Auxilio
+
+1   - <Use as Setas ou PgUp/PgDn para navegar>
+2   - <Editor de Ajuda>
+3   - < Ajuda >
+4   - <Ajuda não disponível>
+5   - <helpws> - Diretório de AJUDA. Pode ser PONTO "." - MEDIT "helpws"
+6   - <Erro abrindo arquivo "%s">
+7   - <HELP_MENU> - Identificacao dos Arquivos de Menu de Help
+8   - <MENU > - Identificacao da diretiva do Menu de Help
+9   - <Retorna> - Complemento da linha de funcao para tecla F10
+
+GRP 8 - Calculadora
+
+1   - <Transfere> - Função F10
+2   - <Entre com uma expressão e tecle ENTER>
+3   - < CALCULADORA > - Título
+4   - <Parenteses Desbalanceados>
+5   - <Variável não inicializada>
+6   - <Erro de Sintaxe>
+7   - <Operando impróprio ou desconhecido>
+8   - <Uso impróprio do ponto decimal>
+9   - <Divisão por zero>
+10  - <Função ou variável desconhecida>
+11  - <Uso de função imprópria>
+12  - <Atribuição imprópria>
+13  - <Mais de 20 niveis de parenteses>
+14  - <Número binário incorreto>
+15  - <Decimal => >
+16  - <Hexa    => >
+17  - <Binário => >
+18  - <ln>
+19  - <log>
+20  - <sen>
+21  - <cos>
+22  - <tan>
+23  - <asen>
+24  - <acos>
+25  - <atan>
+26  - <Octal   => >
+27  - <Número octal incorreto>
+
+GRP 20 - MEDIT - Multiplo Editor
+
+501 - <Regras de Compilação Atualizadas.>
+502 - <Versao de "strings.md" INCOMPATIVEL.>
+503 - <Erro na Preparacao da Janela de Abertura.>
+504 - <Arquivo medit.dat contém Número de Série Incompatível.>
+505 - <Problemas criando arquivo '.bak'. Nao salvo.>
+506 - <Problemas de Alocacao de Memoria em faz_nome_bak()>
+507 - <Falha abrindo %s. Pressione uma tecla.>
+508 - <Problemas de alocacao de memoria ... >
+509 - <Problemas criando arquivo "Notas">
+510 - <Sem permissão de leitura do arquivo>
+511 - <Erro carregando "%s">
+512 - <COMPILACAO: Erro lendo parametros de %s.>
+513 - <COMPILACAO: Sintaxe: .DIRETIVA>
+514 - <COMPILACAO: Regra de compilacao nao foi fornecida.>
+515 - <COMPILACAO: Erro expressao regular: %s>
+516 - <IMPRIMIR: Arquivo %s não pode ser lido.>
+517 - <> - Livre
+518 - <> - Livre
+519 - <***** ATENCAO: Copia nao Ativada *****>
+520 - <***** ATIVACAO PROVISORIA VENCIDA>
+521 - <***** Dias para Ativar: %d ***** >
+522 - <COMPILACAO: Regra nao contém '$'.>
+523 - <COMPILACAO: Falta ':' após diretiva.>
+524 - <COMPILACAO: Diretiva Invalida.>
+
+1   - <%4AMEDIT%1A - Editor de Múltiplos Arquivos>
+2   - <Arquivo: >
+3   - <Entre nome do arquivo a ser editado>
+4   - <Compilando "%s" ...>
+5   - <Resultado da compilação. Navegue e escolha com %2AENTER%1A>
+6   - <%4AEXPANDE%1A - Pressione: %2ASETAS%1A, %2AHome%1A, %2AEnd%1A, %2APgUp%1A, %2APgDn%1A, %2AZOOM%1A>
+7   - <%4ADIVIDE%1A - Pressione: %2ASETAS%1A, %2AHome%1A, %2AEnd%1A, %2APgUp%1A, %2APgDn%1A>
+8   - <%4AMUDA%1A - Escolha %2ALetra%1A ou sentido com as %2ASETAS%1A>
+
+		   - Linhas de Funções Default -
+
+9   - <%2AF1%1A Help %2AF2%1A Salva %2AF3%1A Util %2AF4%1A Muda %2AF5%1A Zoom >
+10  - <%2AF6e%1A Novo %2AF6m%1A MenuArqs %2AF7%1A Div %2AF8%1A Exp >
+
+11  - <S> - Mantém a janela de entrada todo o tempo se contiver 'S'.
+12  - <Versão:>
+13  - <Nº de Série: >
+14  - <Cliente:>
+15  - <Janela indivisível>
+16  - <Janela única>
+17  - <Notas>      - Arquivo de notas
+18  - <macros>     - Diretório default de macros
+
+     Macros default. Se <> então nao tem macros.
+
+19  - <macros.md>  - Arquivo de configuracao de Macros
+
+20  - <Produto em demonstracao. Prazo expirado!> - Sem Acentos ou Atributos
+21  - <Sciencia Informatica e Tecnologia Ltda.> - Sem Acentos ou Atributos
+22  - <Fone: (061) 274 47 56> - Sem Acentos ou Atributos
+23  - <Nao consegui criar o arquivo de saida.>
+24  - <Comando: >
+25  - <Comando com Redirecionamento!>
+26  - <Executando ... >
+27  - <Arquivo de saida padrao nao encontrado>
+28  - <Comando: >
+29  - <Comando sem Redirecionamento!>
+30  - <Executando ... >
+31  - <Arquivo para visualizar. Nao pode ser compilado.>
+32  - <   Existem %d arquivos modificados>
+33  - <   sem estarem %4ASalvos%1A.>
+34  - < A T E N C A O >
+35  - < Volta  @ Salva  @Abandona>
+36  - <Salvando %s... >
+37  - <Arquivo %s Salvo.>
+38  - <          Arquivo modificado          >
+39  - <Arquivo %s em "lock".>
+40  - <Aguarde leitura do arquivo ... >
+41  - <Insere>
+42  - <Sobrepõe>
+43  - <Escolha arquivo com as teclas de direcao>
+44  - <Arquivos>
+45  - <Arquivo visível. Operacao negada.>
+46  - <Arquivo nao encontrado!!.>
+47  - <Sem permissao de Gravação.>
+48  - <Arquivo Modificado. Salve antes!!.>
+49  - <Diretorio inexistente ... >
+50  - <Arquivo %s inexistente!. Ignorado.>
+51  - <> - Livre (Nao pode informar diretorio!!.)
+52  - <%s sem Permissao de Leitura.>
+53  - <   Arquivo nao existe. Cria?   >
+54  - < Sim @ Nao >
+55  - <%4AMEDIT%1A - Arquivo de Notas>
+56  - <Arquivo %s em "lock", apenas visível. Tecle ENTER.>
+57  - <mdcomp> - Arquivo de regras de compilação
+58  - <CVM>    - Caracteres que definem Visibilidade, Carga e Modificacao
+59  - <Nao consegue identificar no. de Linha.>
+60  - <Numero máximo de janelas atingido.>
+61  - <Nenhum erro/advertência.>
+62  - <Entre nome do arquivo a ser VISUALIZADO>
+63  - <Arquivo já descarregado.>
+64  - <imprime.md>   - Arquivo com comando de impressão
+65  - <Arquivo %s nao encontrado.>
+66  - <Arquivo de saida de erros nao encontrado>
+67  - <teclado.md> - Arquivo de configuracao de Comandos do Teclado Pessoal
+68  - <Arquivo não foi carregado.>
+69  - <Chave de Ativação não Confere.>
+70  - <Arquivo de Ativação não encontrado.>      - Para o Medit
+71  - <Produto em demonstração, prazo expirado.> - Para o Medit
+72  - <(COPIA DEMONSTRAÇÃO)(Val.:>  - +9 tem que ser <=40
+73  - <Expressão regular Inválida!>
+74  - <%4ATROCA ARQUIVO%1A - Escolha %2ALetra%1A para troca>
+75  - <|0LIMPA|1LIBMEM|2LIBLOCK|3REGCOMP|4NOMEARQ|5LERRO|6NLERRO|7TRUNC|8SALVARQS>
+76  - <Marca nao existe!>
+77  - <L:%d C:%d %3.3s> - %3.3s Insere/Sobrepoe - %d Linha - %d Coluna
+78  - <Linha nao contém erro.>
+79  - <Nao consegue identificar arquivo.>
+
+    -Teclado default. Se <> então default de código ou MDKEY ou teclado.md
+
+80  - <teclado.ws> - Arquivo de configuracao de Comandos do Teclado Default
+
+
+81  - <%4AMARCA%1A - Pressione digito '0' a '9'.>
+82  - <%4ABUSCA%1A - Pressione digito '0' a '9'.>
+83  - < Janela de Erros > - para saida de compilacao
+84  - < Saida de Erros > - Saida de stderr ( manter os brancos )
+85  - < Saida Padrao > - Saida de stdout ( idem )
+86  - <mdtsys.err> - Filename para stderr
+87  - <mdtsys.out> - Filename para stdout
+88  - <%4AREDIMENSIONA VERTICAL%1A: Pressione %2ASobe%1A/%2ADesce%1A>
+89  - <%4AREDIMENSIONA HORIZONTAL%1A: Pressione %2ADireita%1A/%2AEsquerda%1A>
+90  - <mdcomp.err> - Arquivo de output de compilacao
+91  - <mdcomp.out> - Arquivo de output de erros de compilacao
+
+GRP 21 - MEDIT - Multiplo Editor/Modulo de inicializacao
+
+1 - <medit.ini>
+2 - <Criando arquivo .ini ... >
+3 - <Nao consegue criar arquivo .ini!>
+4 - <Nao consegue ler arquivo .ini!>
+5 - <Janelas>                --- Gravar no arquivo .ini
+6 - <Buffer, largura, altura, x, y, row, col, clin> --- Gravar no arquivo .ini
+7 - <Janela Corrente> --- Gravar no arquivo .ini
+8 - <Lista de Arquivos> --- Gravar no arquivo .ini
+9 - <BookMarks:janela, buffer, row, col, clin> --- Gravar no arquivo .ini
+10 - <2.1@19.10.94> ------------ Versão@Edicao
+

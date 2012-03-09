@@ -1,0 +1,14 @@
+cd mt
+echo "limpando mt"
+make limpa
+cd ..
+cd deslight/ap
+echo "limpando ap"
+make limpa
+cd ..
+cd ct
+echo "limpando ct"
+make limpa
+cd ..
+cd ..
+find . -newer database.lb -print > files.alt

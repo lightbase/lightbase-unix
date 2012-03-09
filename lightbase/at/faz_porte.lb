@@ -1,0 +1,86 @@
+#executa porte do LB
+echo "Sistema (sco,aix,u6000,hp,alfa) : \c"
+read sist
+
+
+for i in tap tct tmt tpd
+do
+[ -f $i.z ] && {
+	echo "Renomeando pacote$i.z para $i.Z"
+	mv $i.z $i.Z
+}
+done
+
+
+for i in tap tct tmt tpd
+do
+[ -f $i.Z ] && {
+	echo "descompactando $i Aguarde..."
+	uncompress $i
+}
+done
+
+[ ! -d mt ] && {
+	mkdir mt
+	cd mt
+	echo "Aguarde abrindo tmt..."
+	tar xf ../tmt
+	cp makes/makefile.$sist makefile
+	cd ..
+}
+
+[ ! -d deslight ] && {
+	echo "Criando diretorios..."
+	mkdir deslight
+	mkdir deslight/ap
+	mkdir deslight/ct
+	mkdir deslight/padrao
+	mkdir deslight/binarios
+}
+
+cd deslight
+
+[ ! -f ap/makefile ] && {
+	cd ap
+	echo "Aguarde abrindo tap..."
+	tar xf ../../tap
+	cp makes/makefile.$sist makefile
+	tar xf converte.tar
+	cp converte/makes/makefile.$sist converte/makefile
+	cd ..
+}
+
+
+[ ! -f ct/makefile ] && {
+	cd ct
+	echo "Aguarde abrindo tct..."
+	tar xf ../../tct
+	cp makes/makefile.$sist makefile
+	cd ..
+}
+
+
+[ ! -f padrao/aviso ] && {
+	echo "Aguarde abrindo padrao..."
+	cd padrao
+	tar xf ../../tpd
+	cd ..
+}
+
+cd ..
+
+echo "Porte do LIGHT BASE para $sist" > database.lb
+date >> database.lb
+
+echo ""
+echo ""
+echo "Pronto para compilar ( mt, deslight/ct, deslight/ap )"
+echo "make em mt ( mt )"
+echo "make em ct ( ./deslight/ct )"
+echo "make em ap ( ./deslight/ap )"
+echo "make binarios em ap ( ./deslight/ap )"
+echo ""
+echo "Ao concluir Leve os arquivos do diretorio binarios"
+echo ""
+
+

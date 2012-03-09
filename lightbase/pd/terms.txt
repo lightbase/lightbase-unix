@@ -1,0 +1,434 @@
+
+Descricao dos terminais do Light Base.
+
+A decricao de terminal e' um arquivo texto orientado a linha que
+possui, normalmemte, varios campos separados pelo caracter "|".
+
+Alem de reconhecer os caracteres ASCII e' possivel inserir
+caracteres sem representacao ASCII, com o auxilio dos seguintes
+artificios:
+
+Qualquer decimal pode ser representado com o prefixo "%d" seguido
+de ate' tres digitos, por exemplo: "%d154".
+
+Qualquer hexadecimal pode ser representado com o prefixo "%x"
+seguido de ate' dois digitos hexadecimal, por exemplo: "%xA9".
+
+Qualquer octal pode ser representado com o prefixo "%o" ou "%0"
+seguido de ate' tres digitos octal, por exemplo: "%o33" ou "%033".
+
+Qualquer caracter abaixo do decimal 32, que e' o espaco, pode ser
+representado com o prefixo "^", por exemplo "^A" onde se le
+Control-A.
+
+Alguns caracteres podem ser representados por uma qualificacao
+junto com o caracter "\", sao eles:
+
+   Escape           - \E
+   Novalinha        - \n
+   Retorno de carro - \r
+
+Como os caracteres "|" (Separador de Campos), "^" (Caracteres
+Control), "%" (Decimal, Hexa, Octal) e "\" (Caracteres Especiais)
+sao usados como separadores ou prefixos de caracteres, devemos
+representa-los da seguinte forma, caso seja necessario efetivamemte
+usa-los:
+
+   "%" - %d37
+   "\" - %d92
+   "^" - %d94
+   "|" - %d124
+
+-------------------------------------------------------------------
+
+Na primeira linha do arquivo de descricao temos informacoes basicas
+sobre o terminal e inicializacoes, com os seguintes campos:
+
+   1 - Quantidade de Colunas.
+
+   2 - Quantidade de Linhas.
+
+   3 - Se o cursor rola ao chegar no final da linha     - 1
+       Se o cursor NAO rola ao chegar no final da linha - 0
+       No caso de duvida coloque-se 1.
+
+   4 - Sequencia de Inicializacao do terminal.
+       Usado normalmente para habilitar modos e caracteres.
+
+   5 - Nome do programa de inicializacao do terminal.
+       Raramente usado.
+
+   6 - Configuracao da linha de comando do "stty" no UNIX.
+
+   7 - Sequencia de finalizacao.
+       Usado para retornar modos e caracteres.
+
+   8 - Programa de Finalizacao.
+       Raramente usado.
+
+Exemplo:
+
+VT220
+80|24|0|\E(B\E)0\E>||-brkint -ixon -isig -icanon -echo||
+
+-------------------------------------------------------------------
+
+Na segunda linha do arquivo, sao fornecidas as sequencias de
+posicionamento de cursor e a informacao se o terminal e' especial,
+acesso direto a memoria, por exemplo, temos os seguintes campos:
+
+   1 - Enderecamento absoluto do cursor. Campo obrigatorio.
+       Por default a origem e' "0" e a ordem e' coordenada "X"
+       e depois "Y". Como existem variacoes de formatos nos
+       enderecamentos, sao habilitados alguns recursos, ei-los:
+
+       %%d  - Como o formato "%d" do printf().
+       %%.  - Como o formato "%c" do printf().
+       %%+x - Adiciona a constante "x", e entao "%%.".
+       %%r  - Inverte a ordem para "Y" e depois "X".
+       %%i  - A origem passa a ser "1".
+       %%%% - Manda um caracter "%".
+
+   2 - Terminal especial, modificador de acesso ao video.
+       Neste campo o valor "0" devera ser usado para todos os
+       terminais em UNIX.
+       Para o DOS devera' ter "1" caso queira-se acesso direto a
+       memoria, como na descricao DOS_MS e devera ter "0" caso
+       queira-se usar o device ANSI.SYS como na descricao ANSY_SYS.
+
+   3 - Posicionamento relativo do cusor para cima.
+
+   4 - Posicionamento relativo do cusor para baixo.
+
+   5 - Posicionamento relativo do cusor para direita.
+
+   6 - Posicionamento relativo do cusor para esquerda.
+
+Exemplos:
+
+VT220
+\E[%%i%%d;%%dH|0|\E[%%dA|\E[%%dB|\E[%%dC|\E[%%dD
+
+ED3636
+\E=%%+ %%+ |0||||
+
+DOS_MS
+\EG%%i%%.%%.|1||||
+
+ANSI_SYS
+\E[%%i%%d;%%dH|0|\E[%%dA|\E[%%dB|\E[%%dC|\E[%%dD
+
+-------------------------------------------------------------------
+
+Na terceira linha, sao oferecidas as sequencias que otimizam o
+movimeto do cursor, com os seguintes campos:
+
+   1 - Posiciona o cursor no canto superior esquerdo.
+
+   2 - Move o cursor apenas uma posicao para cima.
+
+   3 - Move o cursor apenas uma posicao para baixo.
+
+   4 - Move o cursor apenas uma posicao para direita.
+
+   5 - Move o cursor apenas uma posicao para esquerda.
+
+   6 - Move o cursor apenas a primeia coluna da proxima linha.
+
+Exemplos:
+
+VT100
+\E[H|\E[A|\E[B|\E[C|\E[D|
+
+-------------------------------------------------------------------
+
+Na quarta linha serao fornecidas as sequencias de limpam o video do
+terminal, sao elas:
+
+   1 - Limpar ate' o final da linha.
+
+   2 - Limpar ate' o final da tela.
+
+   3 - Limpar toda tela e posicionar o cursor em home(0, 0).
+
+   4 - Retrocesso destrutivo. Back Space.
+
+Exemplos:
+
+VT100 - VT220.
+\E[0K|\E[0J|\E[2J\E[H|\b
+
+-------------------------------------------------------------------
+
+Na quinta linha deveram ser oferecidas as sequencias de rolamentos,
+estas sequencias nao sao necessarias por nenhum motivo, alem disso
+varios terminais implementam estes recursos com muitas variacoes,
+bem na duvida nao descreva estas sequencias, sao elas:
+
+   1 - Inserir uma linha na linha onde o cursor esta', empurrando
+       as outras para baixo.
+
+   2 - Retira a linha onde o cursor esta, puxando as outras para
+       cima.
+
+   3 - Rolamento para cima.
+
+   4 - Rolamento para baixo.
+
+   5 - Rolamento para esquerda.
+
+   6 - Rolamento para direita.
+
+-------------------------------------------------------------------
+
+Na sexta linha comeca varias sequencias similares que descrevem as
+sequencias que possibilitam os caracteres acentuados, especiais e
+semi-graficos serem mostrados adequadamente no video.
+
+Este conjunto possui duas partes, uma composta de cinco linhas,
+como as que mostramos a seguir, retiradas da descricao do ED3636.
+
+|||Graficos
+\E[11m|1|1|Abre Tipo 1
+\E[10m|1|0|Fecha Tipo 1
+%d14|2|1|Abre Tipo 2
+%d15|2|0|Fecha Tipo 2
+
+A primeira linha do bloco acima nao deve-se modificar.
+
+Nas quatro linhas restantes, pode-se alterar apenas o primeiro
+campo, que cadastram dois outros conjuntos de caracteres, alem do
+conjunto de caracteres normais, no exemplo acima do terminal
+ED3636, foi cadastrado o "Tipo 1" com as sequencias que habilitam
+(\E[11m) e desabilitam (\E[10m) o conjunto de caracteres semi-
+grafico, ja o "Tipo 2" foi configurado para habilitar (%d14) e
+desabilitar (%d15) o conjunto de caracteres ABICOMP.
+
+Depois destas cinco linhas, vem uma serie de linhas que configuram
+as sequencias necessarias para se mostrar cada um dos caracteres
+acentuados, semi-graficos e especiais. Ate' que a palavra "ARYEND"
+termine todo este conjunto.
+
+Cada linha configura um caracter e possui quatro campos, sao eles:
+
+   1 - Sequencia que devera' ser enviada ao terminal para ser
+       mostrado o caracter descrito no ultimo campo.
+
+       Atencao: a sequencia deste campo podera ter quantos
+       caracteres quantos sejam necessarios, porem devera' ocupar
+       um e somente um caracter no video.
+
+   2 - Numero interno, nunca deve ser modificado.
+
+   3 - Qual o tipo (conjunto) de caracter a ser utilizado.
+       Se neste campo tiver:
+
+       0 - A sequencia do campo 1 e' plena por si so'.
+       1 - A sequencia do campo 1 pertence ao Tipo 1, e existem
+           tres possibilidades:
+           a) O terminal esta com o conjunto do Tipo 0, neste caso
+              envie a sequencia que abre o Tipo 1 e depois envie a
+              sequencia do Campo 1.
+           b) O terminal esta com o conjunto Tipo 1, neste caso
+              apenas envie a sequencia do Campo 1.
+           c) O terminal esta com a sequencia do Tipo 2, neste caso
+              envie a sequencia que fecha o Tipo 2, depois envie a
+              sequencia que abre o Tipo 1, depois envie a sequencia
+              do Campo 1.
+       2 - A sequencia do campo 1 pertence ao Tipo 2, e existem
+           tres possibilidades:
+           a) O terminal esta com o conjunto do Tipo 0, neste caso
+              envie a sequencia que abre o Tipo 2 e depois envie a
+              sequencia do Campo 1.
+           b) O terminal esta com a sequencia do Tipo 1, neste caso
+              envie a sequencia que fecha o Tipo 1, depois envie a
+              sequencia que abre o Tipo 2, depois envie a sequencia
+              do Campo 1.
+           b) O terminal esta com o conjunto Tipo 2, neste caso
+              apenas envie a sequencia do Campo 1.
+
+   4 - Contem um pequeno comentario acerca do caracter que devera
+       ser mostarado no video.
+
+Exemplos:
+
+|||Graficos
+\E[11m|1|1|Abre Tipo 1
+\E[10m|1|0|Fecha Tipo 1
+%d14|2|1|Abre Tipo 2
+%d15|2|0|Fecha Tipo 2
+K|129|1|Vert 1
+%d92|130|1|Horiz 1
+s|131|1|Sup Esq 1
+W|132|1|Sup Dir 1
+r|133|1|Inf Dir 1
+%d35|194|2|A^
+%d36|195|2|A~
+%d38|199|2|C'
+%d40|201|2|E'
+
+CONS_SCO - Console do SCO Unix
+
+|1|1|Abre Tipo 1
+|1|0|Fecha Tipo 1
+|2|1|Abre Tipo 2
+|2|0|Fecha Tipo 2
+%d179|129|0|Vert 1
+%d196|130|0|Horiz 1
+%d143|192|0|A`
+%d143|193|0|A'
+%d142|194|0|A^
+%d142|195|0|A~
+%d128|199|0|C'
+%d144|201|0|E'
+%d144|202|0|E^
+
+ATENCAO: Caso o terminal descrito nao possua conjunto de caracteres
+acentuados e/ou semi-graficos, use os caracteres "|-*+" em qualquer
+combinacao para os semi-graficos, e as letras sem acento para os
+acentuados, observe que o caracter "|" deve ser colocado como
+"%d124" para nao ser confudido como separador de campo.
+
+-------------------------------------------------------------------
+
+Em seguida serao descritos todos os atributos e cores possiveis, a
+primeira linha deste bloco nao deve ser alterada, e as linhas
+subsequentes apesar de possuirem cinco campos apenas os dois
+primeiros deverao ser usados, que sao:
+
+   1 - Sequencia que liga o atributo.
+
+   2 - Sequencia que desliga o atributo.
+       Esta sequencia raramente e' usada pois a sequencia que liga
+       um atributo, normalmente, ja' desliga um outro.
+
+ATENCAO:
+Este grupo de configuracao e' posicional e devera' ser respeitado,
+termina com a palavra ARYEND.
+
+Colocaremos, a titulo de melhor esclarecer, depois do carater ">"
+um comentario sobre que atributo devera ser ligado. Mostraremos,
+como exemplo, uma configuracao adequada para o VT100 e VT220.
+
+||||Atributos
+\E[m||0|0|0     > Normal
+\E[;7m||0|0|0   > Reverso
+\E[;5m||0|0|0   > Piscante
+\E[;1m||0|0|0   > Enfatizado
+\E[m||0|0|0     > Normal
+\E[;7m||0|0|0   > Reverso
+\E[;7m||0|0|0   > Reverso
+\E[;1m||0|0|0   > Enfatizado
+\E[m||0|0|0     > Normal
+\E[;7m||0|0|0   > Reverso
+\E[;7m||0|0|0   > Reverso
+\E[;1m||0|0|0   > Enfatizado
+\E[m||0|0|0     > Normal
+\E[m||0|0|0     > Normal
+\E[;7m||0|0|0   > Reverso
+\E[;1m||0|0|0   > Enfatizado
+\E[m||0|0|0     > Normal
+\E[m||0|0|0     > Normal
+\E[;7m||0|0|0   > Reverso
+\E[;1m||0|0|0   > Enfatizado
+\E[m||0|0|0     > Normal
+\E[m||0|0|0     > Normal
+\E[;7m||0|0|0   > Reverso
+\E[;1m||0|0|0   > Enfatizado
+\E[m||0|0|0     > Normal
+\E[m||0|0|0     > Normal
+\E[;7m||0|0|0   > Reverso
+\E[;1m||0|0|0   > Enfatizado
+ARYEND
+
+-------------------------------------------------------------------
+
+O proximo conjunto de configuracao consiste em adaptar o teclado,
+no que se refere a teclas, novamente a primeira linha nao deve ser
+alterada e este grupo encerra na linha que contem a palavra ARYEND.
+
+Cada linha descreve uma tecla e possui tres campos, que sao:
+
+   1 - A sequencia que devera ser recebida para que seja mapeada a
+       tecla indicada.
+
+   2 - Numero interno, nao devera' ser modificado.
+
+   3 - Breve comentario, indica qual a tecla que esta sendo mapeda.
+
+Exemplo:
+
+CONS_SCO - Console do SCO UNIX.
+||Teclado
+%d13|%d10|Enter
+%d8|%d08|B.S.
+\E\E|%d129|Esc,Esc
+\E[A|%d131|UP KEY
+\E[B|%d132|DN KEY
+\E[C|%d133|-->
+\E[D|%d134|<--
+\E[H|%d135|Home
+\E[F|%d136|End
+
+-------------------------------------------------------------------
+
+Em seguida temos as configuracoes de cursor, este bloco e'
+posicional e deve ser respeitado.
+
+Usaremos um exemplo da descricao do terminal AGIX, colocaremos a
+seguir do caracter ">" um breve comentario.
+
+Exemplo
+
+AGIX
+Cursor
+\Ecn   > Cursor NORMAL de preferencia uma LINHA PISCANTE.
+\Eci   > Cursor INVISIVEL.
+\Ecn   > Cursor NORMAL.
+\Ecv   > Cursor MUITO VISIVEL de preferencia BLOCO PISCANTE.
+ARYEND
+
+-------------------------------------------------------------------
+
+O proximo grupo trata de impressoras, e' descreve a impressora que
+sera utilizada nos comandos impreme janela/tela
+
+
+A|B|C|D|E|F  (Descreve Impressora associada ao terminal)
+
+Parametro A ..... 0 - Arquivo/Device ( Use Esta opcao )
+                  1 - Popen
+Parametro B ..... Nome do Arquivo/Device
+Parametro C ..... Atributo (Use sempre 0)
+Parametro D ..... Forma de impressao de caracteres especiais
+                  0 - BRASCII
+                  1 - IBM-PC
+                  2 - ASCII
+                  3 - SPACE
+Parametro E ..... Sequencia END_OF_LINE (Use %d10)
+Parametro F ..... Sequencia END_OF_PAGE (Use %d12)
+
+Exemplo:
+
+0|/dev/tty07|0|1|%d10|%d12
+
+-------------------------------------------------------------------
+
+O proximo grupo trata de alarmes, sao varias linhas que terminam
+pela palavra ARYEND
+
+Propomos o seguinte exemplo.
+
+Exemplo:
+
+Alarmes
+^G
+
+^G
+^G^A^G^A^G
+^G^A^G^A^G^A^G
+^G^A^G^A^G^A^G
+ARYEND
+
+-------------------------------------------------------------------
+

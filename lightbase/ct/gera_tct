@@ -1,0 +1,4 @@
+rm -f *.bak
+tar cvf tct gera_tct *.c *.h makefile* makes
+rm -f tct.Z
+compress tct

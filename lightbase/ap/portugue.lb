@@ -1,0 +1,2268 @@
+
+
+Este Arquivo de Mensagens esta divididos em Grupos numerados
+
+A palavra "GRP" no começo da linha indica uma marca de final de grupo,
+e se for seguido de um número indicará  tambem inicio deste grupo.
+
+Os grupos podem ou não estar disponiveis em memória, para habilitar estas
+mensagens deverá primeiro executar o comando "up_str( No. Grupo )", que
+carregará  o grupo mencionado para memória (Residente). Para ter acesso
+a uma mensagem específica deverá executar o comando
+"loc_str( Grupo, Mensagem )", que devolverá um endereço real de memória.
+
+Para desabilitar um grupo, liberar área em memória é necessário
+executar o comando "down_str( No. Grupo ).
+
+Um comando "loc_str" em uma mensagem cujo grupo não foi dado "up_str"
+estará  disponível da mesma forma, apenas que será  mais lento, pois
+deveremos acha-la no disco, e ficará  em uma area comum (Transiente).
+
+ATENCÃO - Nenhum Titulo ou Rodape podem ficar transiente !!!.
+
+Apos a indicação de inicio de grupo as mensagems deverão ser numeradas
+para isto basta colocar um número no começo da linha, linhas sem número
+serão consideradas comentario.
+
+As mensagens serão consideradas do primeiro "<" até o último ">", fora
+deste intervalo é  considerado comentario.
+
+Será  alocado um arranjo de ponteiros do tamanho da maior linha, portanto
+recomenda-se que não existam buracos na numeração.
+
+Todas as mensagens acima de 500 nunca serão carregadas em memória, sempre
+ficarão em disco (Transientes), recomenda-se que sejam postas em
+primeiro lugar.
+
+GRP 1 - Basico Obrigatório
+
+501 - < ERRO - Getkey corrompido ! > - WGET0.C
+502 - <Use o comando EXIT para retornar!> - WIN_SHELL()
+503 - <shell.lb> - Script no UNIX - MEDIT "shell.md"
+504 - <Erro em imprime função, tamanho: [%d]> - Imprime função() WPRINT.C
+505 - <Favor informe um TERMINAL - Consulte o manual>
+506 - <ERRO: Janela não esta no STACK>
+507 - <Light> - Prompt no MSDOS - MEDIT "Medit"
+508 - <Pressione ENTER para retornar>
+509 - <Não foi possível gravar arquivo com imagem da memória!>
+510 - <Não foi possível capturar leitura assincrona do terminal !!! (VMS)>
+511 - <Não foi possível inicializar terminal !!! (VMS)>
+1   - <Favor digite caracteres ALFABETICOS>
+2   - <Favor digite caracteres NUMERICOS>
+3   - <Pressione ENTER ou ESC>
+4   - <Escolha com as setas e pressione ENTER>
+5   - <%2AF1%1A Ajuda >
+6   - <%2AF2%1A >
+7   - <Grava >
+8   - <%2AF2%1A %4AExclui%1A >
+9   - <%2AF3%1A Util >
+10  - <%2AF4%1A Campos >
+11  - <%2AF5%1A Zoom >
+12  - <%2AF6%1A Edita >
+13  - <%2AF7%1A Doc_Ant >
+14  - <%2AF8%1A Prox_Doc >
+15  - <%2AF9%1A Vistas >
+16  - <%2AF10%1A >
+17  - <Opções >
+18  - <%2AEsc%1A Volta >
+19  - <%2AEnter%1A Confirma >
+20  - <%2AIns%1A Insere >
+21  - <%2ADel%1A Exclui >
+22  - <%2APgUp%1A Tela_Ant >
+23  - <%2APgDn%1A Tela_Post >
+24  - < - Press ESC>
+25  - <ALTERA TABELA: Edite item e confirme com ENTER>
+26  - <INSERE ITEM NA TABELA: Edite e confirme com ENTER>
+27  - < A T E N C A O >
+28  - < Pressione ESC >
+29  - < Opções >
+30  - <TEMP>  Indica Dir para Arqs Temp de BLOCO / MACRO no MSDOS
+31  - <HOME>  Indica Dir para Arqs Temp de BLOCO / MACRO no UNIX
+32  - <TEMP>  Indica Dir para Arqs Temp do UNDO  / REDO  no MSDOS
+33  - <HOME>  Indica Dir para Arqs Temp do UNDO  / REDO  no UNIX
+34  - <sane>  Parametro de saida do comando "stty" no DEC/Ultrix
+35  - <sh %s%c%s> Passado para system() executar shell.lb - MEDIT ". %s%c%s"
+
+GRP 3 - Compilador do Teclado do Editor
+
+501 - <TECLADO:Sintaxe: Comando: Tecla1, Tecla2 ;Comentario!>
+502 - <TECLADO:Primeira tecla desconhecida>
+503 - <TECLADO:Segunda tecla indefinida>
+504 - <TECLADO:Segunda tecla desconhecida>
+505 - <TECLADO:Segunda tecla inválida>
+506 - <Linha >
+507 - <Quantidade máxima de Comandos ou Macros=250>
+508 - <MACRO: Primeira tecla desconhecida!>
+509 - <MACRO: Segunda tecla desconhecida!>
+510 - <MACRO: Segunda tecla invalida!>
+511 - <MACRO: Sintaxe: Arquivo: Tecla1, Tecla2  ;Comentario!>
+512 - <MACRO: Nome de arquivo não pode conter Path!>
+513 - <MACRO: Erro na alocação de memoria!>
+514 - <DIRETIVA: Linha com 'ponto' declara Diretiva!>
+515 - <DIRETIVA: Diretiva desconhecida!>
+516 - <DIRETIVA: Sintaxe: .HELPDIR=diretorio>
+517 - <DIRETIVA: Diretorio invalido!>
+518 - <DIRETIVA: Sintaxe: .TAB=tamanho>
+519 - <DIRETIVA: Sintaxe: .HELPKEY=nome da tecla>
+520 - <DIRETIVA: Tecla desconhecida!>
+521 - <DIRETIVA: Sintaxe: .UTILKEY=nome da tecla>
+522 - <DIRETIVA: Sintaxe: .MULTKEY=nome da tecla:Linha de Informação>
+523 - <DIRETIVA: .MULTKEY - Limite de linhas de informação atingido>
+524 - <DIRETIVA: .CONFIRMA - Nível de confirmação:0, 1, 2 ou 3>
+525 - <TECLAQUENTE: Sem lista de teclas>
+526 - <TECLAQUENTE: Tecla ou comando desconhecido>
+527 - <TECLAQUENTE: Comando não definido>
+528 - <DIRETIVA: Sintaxe: .MOSTRAEXT=tipo>
+1   - <VOLTAESPACO>
+2   - <SOBE>
+3   - <DESCE>
+4   - <ESQUERDA>
+5   - <DIREITA>
+6   - <INILINHA>
+7   - <FIMLINHA>
+8   - <ROLACIMA>
+9   - <ROLABAIXO>
+10  - <PROPAGINA>
+11  - <ANTPAGINA>
+12  - <INIARQUIVO>
+13  - <FIMARQUIVO>
+14  - <PROPALAVRA>
+15  - <ANTPALAVRA>
+16  - <TROCATEXTO>
+17  - <DUPLINHA>
+18  - <PROCTEXTO>
+19  - <INSLIDEPO>
+20  - <INSLIANTES>
+21  - <JUNTAPROXL>
+22  - <TAMTEXTO>
+23  - <VAIPRALIN>
+24  - <APAGAFIMLIN>
+25  - <INIBLCHAR>
+26  - <INIBLCOL>
+27  - <INIBLLIN>
+28  - <BLOCOCOPIA>
+29  - <BLOCOINSERE>
+30  - <BLOCOMOVE>
+31  - <DESMARCABLO>
+32  - <APAGABLOCO>
+33  - <EXPORTE>
+34  - <IMPORTE>
+35  - <QUEBRALINHA>
+36  - <APAGALINHA>
+37  - <APAGACAR>
+38  - <APAGAPAL>
+39  - <INSCTRLE>
+40  - <ABANDONA>
+41  - <SALVARQ>
+42  - <INSEREOUNAO>
+43  - <ZOOM>
+44  - <MUDAJANELA>
+45  - <DIVIDEJANELA>
+46  - <EXPJANELA>
+47  - <EDITANOTAS>
+48  - <VERARQUIVO>
+49  - <NOVOARQUIVO>
+50  - <TERMINA>
+51  - <MENUARQS>
+52  - <COMPILA>
+53  - <NENHUMA>
+54  - <CTRLA>
+55  - <CTRLB>
+56  - <CTRLC>
+57  - <CTRLD>
+58  - <CTRLE>
+59  - <CTRLF>
+60  - <CTRLG>
+61  - <CTRLH>
+62  - <CTRLI>
+63  - <CTRLJ>
+64  - <CTRLK>
+65  - <CTRLL>
+66  - <CTRLM>
+67  - <CTRLN>
+68  - <CTRLO>
+69  - <CTRLP>
+70  - <CTRLQ>
+71  - <CTRLR>
+72  - <CTRLS>
+73  - <CTRLT>
+74  - <CTRLU>
+75  - <CTRLV>
+76  - <CTRLW>
+77  - <CTRLX>
+78  - <CTRLY>
+79  - <CTRLZ>
+80  - <ESCAPE>
+81  - <TECLAVOLTA>
+82  - <F1>
+83  - <F2>
+84  - <F3>
+85  - <F4>
+86  - <F5>
+87  - <F6>
+88  - <F7>
+89  - <F8>
+90  - <F9>
+91  - <F10>
+92  - <SETACIMA>
+93  - <SETABAIXO>
+94  - <SETAESQ>
+95  - <SETADIR>
+96  - <PAGINANT>
+97  - <PAGINAPROX>
+98  - <INICIO>
+99  - <FIM>
+100 - <INSERE>
+101 - <APAGA>
+102 - <TAB>
+103 - <ALTF1>
+104 - <ALTF2>
+105 - <ALTF3>
+106 - <ALTF4>
+107 - <ALTF5>
+108 - <ALTF6>
+109 - <ALTF7>
+110 - <ALTF8>
+111 - <ALTF9>
+112 - <ALTF10>
+113 - <BACKTAB>
+114 - <PROCPAR>
+115 - <JANERRO>
+116 - <COMSYSTEM>
+117 - <PLINTELA>
+118 - <ULINTELA>
+119 - <ROLAESQ>
+120 - <ROLADIR>
+121 - <SAISALVA>
+122 - <CTRLPGUP>
+123 - <CTRLPGDN>
+124 - <PALAPROX>
+125 - <PALAANT>
+126 - <PROXARQUIVO>
+127 - <ANTARQUIVO>
+128 - <MUDATRANS>
+129 - <JANSYSOUT>
+130 - <JANSYSERRO>
+131 - <EXECUTA>
+132 - <GRAVAMACRO>
+133 - <EXEMACRO>
+134 - <ARQMACRO>
+135 - <REPITABUSCA>
+136 - <PROXCARREGA>
+137 - <ANTCARREGA>
+138 - <IMPRIMEARQ>
+139 - <EXPRECHAR>
+140 - <EDITAVER>
+141 - <TIRALISTA>
+142 - <DESFAZ>
+143 - <REFAZ>
+144 - <ALT_A>
+145 - <ALT_B>
+146 - <ALT_C>
+147 - <ALT_D>
+148 - <ALT_E>
+149 - <ALT_F>
+150 - <ALT_G>
+151 - <ALT_H>
+152 - <ALT_I>
+153 - <ALT_J>
+154 - <ALT_K>
+155 - <ALT_L>
+156 - <ALT_M>
+157 - <ALT_N>
+158 - <ALT_O>
+159 - <ALT_P>
+160 - <ALT_Q>
+161 - <ALT_R>
+162 - <ALT_S>
+163 - <ALT_T>
+164 - <ALT_U>
+165 - <ALT_V>
+166 - <ALT_W>
+167 - <ALT_X>
+168 - <ALT_Y>
+169 - <ALT_Z>
+170 - <INDENTBLOCO>
+171 - <LINHACIMA>
+172 - <LINHABAIXO>
+173 - <LINHAMEIO>
+174 - <APPBLCOPIA>
+175 - <APPBLMOVE>
+176 - <BLOCOUPPER>
+177 - <BLOCOLOWER>
+178 - <ORDEMENU>
+179 - <TROCAARQ>
+180 - <MARCAPOS>
+181 - <BUSCAPOS>
+182 - <MARGEMPARA>
+183 - <TROCATRAS>
+184 - <PROCTRAS>
+185 - <REPITAFRENTE>
+186 - <REPITATRAS>
+187 - <SAICONTEXTO>
+188 - <TECLAQUENTE>
+As diretivas deverão estar em uma mensagem de forma que iniciem com ...
+... o caracter '|' seguidas de um numero interno, que não devera ser mudado.
+!!! ATENCAO !!!
+As tres proximas linhas serão concatenadas sequencialmente.
+Nenhuma Linha pode ter mais de 120 caracteres.
+189 - <|0HELPDIR|1INIFIMBLOCO|2TAB|3HELPKEY|4UTILKEY|5MOSTRATAB|6BRANCOFIM|7TABBRANCO|8BRANCOTAB|9MULTKEY|10CONFIRMA> - Primeira Diretiva do Editor
+190 - <|11NOBAK|12MOSTRAEXT|13CRPROXLINHA> - Segunda Diretiva do Editor
+191 - <> - Terceira Diretiva do Editor
+192 - <ENTER>
+193 - <TAB>
+194 - <BACKTAB>
+195 - <CODCHAR>
+196 - <RECARREGRA>
+
+GRP 4 - Editor - Obrigatório
+
+501 - <Tamanho do texto corrente = %d Kb>
+502 - <Linha muito longa, não pode ser anexada !>
+503 - <Sem memória para matriz de ponteiros ... >
+504 - <Sem memória para matriz de tamanho de linhas ... >
+505 - <Arquivo "%.15s" não existe, será criado>
+506 - <Erro abrindo arquivo "%.15s">
+507 - <Erro abrindo campo texto>
+508 - <Erro lendo arquivo "%.15s">
+509 - <Erro gravando arquivo>
+510 - <Erro lendo campo texto>
+511 - <Erro abrindo arquivo "%.15s", original restaurado>
+512 - <Erro gravando arquivo "%.15s">
+513 - <Erro gravando campo texto>
+514 - <Arquivo "%.15s" não pode ser aberto>
+515 - <Erro na abertura do arquivo de exportação>
+516 - <Erro exportando arquivo>
+517 - <Linha truncada>
+518 - <Sem memoria para mais linhas. Arquivo será truncado !>
+519 - <Não existe bloco marcado !>
+520 - <Janela de ZOOM não pode ser aberta !>
+521 - <ERRO FATAL [%d]: Texto não atualizado !>
+522 - <Área de Transferência número %d vazia !>
+523 - <Erro lendo arquivo>
+524 - <Par não encontrado>
+525 - <Arquivo de Transferência não pode ser aberto !>
+526 - <Arquivo de Macro não pode ser aberto !>
+527 - <Não existe Macro gravada !>
+528 - <Erro de alocação de memória em Desfaz/Refaz!>
+1   - <Lendo arquivo "%.15s" - Linha [%d] ... >
+2   - <Gravando arquivo "%.15s" ... >
+3   - <%2ASubstituição%1A       Enter Confirma, Setas Navega, Tab Opções>
+4   - <%2ABusca%1A              Enter Confirma, Setas Navega, Tab Opções>
+5   - <Espere as substituições ... >
+6   - <Procurar por ....: >
+7   - <Trocar por ......: >
+8   - <Opções BCGIKNRS .: >
+9   - <Não encontrada sequência à %4AFrente%1A>
+10  - <Troca (Sim/Não/Todos/<Esc>) ? >
+11  - <SNTl > - Sim, Não, Todos, "l" Minusculo e' CTRL-L, mesmo que NAO
+12  - <Quantidade de substituições [%d]>
+13  - < Escolha >
+14  - < Retorna  @  Salva   @ Abandona > - Opções separados por "@"
+15  - < Retorna  -> Volta a edição>
+16  - < Salva    -> Grava arquivo e sai>
+17  - < Abandona -> Descarta modificações>
+18  - <Arquivo: >
+19  - <Entre nome do arquivo a ser importado>
+20  - <Lendo arquivo de importação "%.15s" ...>
+21  - <Entre nome de arquivo para exportação>
+22  - <   Recria   @ Acrescenta > - Opções Separadas por "@"
+23  - <Arquivo "%.15s" já existe.>
+24  - <Exportando arquivo "%.15s" ...>
+25  - < Lin: %d Col: %d > - Linhas/Colunas do editor
+26  - <Linha: >
+27  - <Entre número da linha que deseja posicionar>
+28  - <Arquivo "%.15s" salvo>
+29  - <Arquivo "%.15s" importado>
+30  - <Arquivo "%.15s" exportado>
+31  - <Área de Transferência de Blocos (0 .. 9). Corrente = %d : >
+32  - <Macro gravada>
+33  - <Gravando macro ...>
+34  - <Executando macro ...>
+35  - <Entre nome do arquivo para gravar a macro>
+36  - <Sem permissão para alteração>
+37  - <Comando desconhecido>
+38  - <Bloco movido  para Área de Transferência [%d]>
+39  - <Bloco copiado  para Área de Transferência [%d]>
+40  - <Bloco retirado  do arquivo>
+41  - <Retrospectos de alteração (Desfaz/Refaz) encerrado!>
+42  - <Nada para Desfazer>
+43  - <Nada para Refazer>
+44  - <Bloco tipo Linha  - Área de Transferência [%d]>
+45  - <Bloco tipo Coluna - Área de Transferência [%d]>
+46  - <Bloco tipo Caractere - Área de Transferência [%d]>
+47  - <Bloco Desfeito>
+48  - <Movendo Bloco para Área de Transferência [%d]>
+49  - <Retirando Bloco do arquivo>
+50  - <Copiando Bloco para Área de Transferência [%d]>
+51  - <Inserindo Bloco da Área de Transferência [%d]>
+52  - <Bloco inserido  da Área de Transferência [%d]>
+53  - <Expressão de busca com erro de avaliação>
+54  - <Sequência encontrada>
+55  - <Bloco Retirado e Acrescentado na Área de Transferência [%d]>
+56  - <Bloco Copiando e Acrescentado na Área de Transferência [%d]>
+57  - <Bloco em Maiúsculas>
+58  - <Bloco em Minúsculas>
+59  - <%2AIndentação de Blocos%1A - Setas, Tab, Pgup, Pgdn>
+60  - <Não encontrada sequência %4AAtrás%1A>
+61  - <Procurando sequência ... >
+62  - <%2AMargem%1A            Enter Confirma, Setas Navega>
+63  - <Esquerda .......: >
+64  - <Primeira Linha .: >
+65  - <Direita ........: >
+65  - <Direita ........: >
+66  - <Insere Caracteres Control : Ctrl->
+67  - <~> - Prefixo de Numeros Decimais
+68  - <!> - Prefixo de Numeros HexaDecimais
+69  - <Expressão : >
+70  - <Forneça a expressão para ser avaliada>
+71  - <Caracter corrente: Decimal = %d   Hexa = %X>
+
+GRP 5 - Macros
+
+1   - <SLEEP>
+2   - <MESSAGE>
+3   - <WINDOW>
+4   - <CLOSE>
+5   - <SPEED>
+6   - <COMMENT>
+7   - <<ESC> Interrompe a macro, qualquer tecla continua execução: >
+
+GRP 6 - Utilitario - Interrupção
+
+1   - <Move      >
+2   - <Permite mudar a Janela de lugar>
+3   - <Tamanho   >
+4   - <Permite mudar o Tamanho da Janela Aparente>
+5   - <Virtual   >
+6   - <Permite mover a Janela Virtual relativo a Aparente>
+7   - <DOS       >
+8   - <sHell     >
+9   - <Abre uma sessão do Sistema Operacional>
+10  - <Reescreve >
+11  - <Refaz toda a tela do terminal>
+12  - <Imp_Tela  >
+13  - <Imprime a tela na impressora>
+14  - <aBandona  >
+15  - <Encerra incondicionalmente o programa>
+16  - <Anterior  >
+17  - <Coloca janela anterior em evidência>
+18  - <Posterior >
+19  - <Coloca janela posterior em evidência>
+20  - <Status    >
+21  - <Mostra Versão, Data, Hora>
+22  - <Edita     >
+23  - <Permite editar qualquer arquivo>
+24  - <Calcula   >
+25  - <Calculadora científica com expressões e variáveis>
+26  - <Grava     >
+27  - <Macro Liga/Desliga - grava todas as teclas>
+28  - <eXecuta   >
+29  - <Executa uma macro já gravada>
+30  - <caLendario>
+31  - <Calendario mostra ano, mes e dia da semana>
+32  - <conFigura > - XTOOLS - Notas
+33  - <Configuração do ambiente> - XTOOLS - Arquivo de Notas
+34  - <UTILITARIO>
+35  - < Esc Volta >
+36  - <Use as Setas para reposicionar a janela>
+37  - <Use as Setas para redimencionar a janela>
+38  - <Use as setas para rolar a janela>
+39  - < STATUS >
+40  - < ESC Sai ENTER Retorna >
+41  - <>
+42  - <>
+43  - <Data>
+44  - <Hora>
+45  - <Sistema>
+46  - <Release>
+47  - <Versão >
+48  - <Memória> - Sera ligada com o próximo por um "\n"
+49  - <Disponível>
+50  - <Bytes>
+51  - <Arquivo : >
+52  - <Entre nome do Arquivo a ser Editado>
+53  - <Margem direita : >
+54  - <Entre com a margem direita para justificação>
+55  - <Editor de texto do %4ALight Base%1A>
+56  - <Arquivo já existe. Sobreescreve ? (S/N) : > - Sim ou Não
+57  - <SN> - Resposta Sim ou Não
+58  - <Arquivo : >
+59  - <Entre nome do arquivo a para gravar a macro>
+60  - <Arquivo : >
+61  - <Entre nome do arquivo de macro a ser a executado>
+62  - <Use setas horizontais para mudar mes e verticais para ano>
+63  - < Calendário >
+64  - <Domingo>
+65  - <Segunda>
+66  - <Terca>
+67  - <Quarta>
+68  - <Quinta>
+69  - <Sexta>
+70  - <Sabado>
+71  - <Janeiro>
+72  - <Fevereiro>
+73  - <Marco>
+74  - <Abril>
+75  - <Maio>
+76  - <Junho>
+77  - <Julho>
+78  - <Agosto>
+79  - <Setembro>
+80  - <Outubro>
+81  - <Novembro>
+82  - <Dezembro>
+83  - <Imp_Janela>
+84  - <Imprime a janela na impressora>
+
+GRP 7 - Ajuda, Help, Auxilio
+
+1   - <Use as Setas ou PgUp/PgDn para navegar>
+2   - <Editor de Ajuda>
+3   - < Ajuda >
+4   - <Ajuda não disponível>
+5   - <ajuda> - Diretório de AJUDA. Pode ser PONTO "." - MEDIT "helpws"
+6   - <Erro abrindo arquivo "%s">
+7   - <HELP_MENU> - Identificação dos Arquivos de Menu de Help
+8   - <MENU > - Identificação da diretiva do Menu de Help
+9   - <Retorna> - Complemento da linha de função para tecla F10
+
+GRP 8 - Calculadora
+
+1   - <Transfere> - Função F10
+2   - <Entre com uma expressão e tecle ENTER>
+3   - < CALCULADORA > - Título
+4   - <Parenteses Desbalanceados>
+5   - <Variável não inicializada>
+6   - <Erro de Sintaxe>
+7   - <Operando impróprio ou desconhecido>
+8   - <Uso impróprio do ponto decimal>
+9   - <Divisão por zero>
+10  - <Função ou variável desconhecida>
+11  - <Uso de função imprópria>
+12  - <Atribuição imprópria>
+13  - <Mais de 20 niveis de parenteses>
+14  - <Número binário incorreto>
+15  - <Decimal => >
+16  - <Hexa    => >
+17  - <Binário => >
+18  - <ln>
+19  - <log>
+20  - <sen>
+21  - <cos>
+22  - <tan>
+23  - <asen>
+24  - <acos>
+25  - <atan>
+26  - <Octal   => >
+27  - <Número octal incorreto>
+
+
+#------------------------------------------------- GRP 10 -----------#
+GRP 10 - GENERICAS DO LIGHT BASE
+
+1  - OP_SIM_NAO - < Sim @ Não >
+2  - C_TT_VISTA - < %s - Tela %d / %d >
+3  - C_TT_REL   - < %s - Página %d / %d >
+4  - T_MN_CAMPO - < Campos >
+5  - R_MN_CAMPO - <Escolha um dos campos com as setas e tecle [ENTER]>
+
+6  - FILE_SOUD  - <soundex.lb>
+
+7 - VERSAO     - <2.4>
+8 - EDICAO     - <2.0>
+
+11   - SEM_MEMO - <Sem memória disponivel.>
+12   - E_OPE_SO - <Erro [%d] na abertura do arquivo : %s>
+13   - E_NOFILE - <Arquivo [%s] não existe.>
+14   - E_NOACES - <Arquivo [%s] sem permissão de acesso.>
+15   - M_INVERTE - <Utilize ESPAÇO para inverter SIM/NÃO>
+16   - M_ATENCAO - < A T E N Ç Ã O >
+17   - M_AGUARDE - <Aguarde... >
+
+20  - C_PSQ_EM - < em >   /* utilizada na pesquisa tabelada */
+21  - E_NOMEIN - <Utilize apenas letras, digitos e '_'. Inicie com letra>
+
+22 -  M_OUT_FILE    <Arquivo>
+
+25  - TW_GGV0 - < A T E N Ç Ã O >
+26  - TW_GGV9 - < Grava @ Ignora >
+27  - TW_GGV1 - <Modificações efetuadas não foram gravadas.>
+28  - TW_GGV2 - <    Deseja efetivar as modificações ?>
+
+29  - TW_RDA0 - < A T E N Ç Ã O >
+30  - TW_RDA9 - < Retenta @ Desiste @ Aborta >
+
+31 - C_DEL_TFUN  - <1 2Exclui 3 5 9 E>
+32 - C_DEL_NFUN  - <1 2Exclui 3 9 E>
+33 - M_PSQ_NAV   - <Utilize [Tab] para mudar o campo ativo>
+
+34  - E_IN_LOG   - <Nome de arquivo inválido para Log>
+
+35  - TW_LG_D00  < A T E N Ç Ã O >
+36  - TW_LG_D99  < Cancela @ Sobrepõe >
+37  - TW_LG_D01  <      Arquivo de log já existe.>
+38  - TW_LG_D02  < Informações atuais serão sobrepostas.>
+
+39  - TW_IN_T00  < A T E N Ç Ã O >
+40  - TW_IN_T99  < Finaliza @ Continua >
+41  - TW_IN_T01  < Erro na gravação do log da importação.>
+42  - TW_IN_T02  < Deseja continuar importação sem gravar log ?>
+
+43  - M_SELBASE  <Selecione uma das bases acima.>
+44  - W_ATUALIZA < Base fechada p/ atualização >
+
+
+45  - M_NAVEGA    <Utilize [Tab] para mudar o Campo Ativo>
+46  - M_REGSEL    <Informe número do registro na seleção>
+47  - T_POSREG    < Posição do registro >
+48  - C_REGLD     < Reg.: %ld >
+49  - M_WAITCRIT  <Criticando, %2Aaguarde%1A ...>
+50  - M_WAITATU   <Atualizando arquivo, %3Aaguarde%1A ...>
+
+51  - E_INFOBRIG  <Informação obrigatória.>
+52  - E_VLIT1     <Data inválida>
+53  - E_VLIT2     <Hora inválida>
+55  - E_VLIT4     <Valor fora do intervalo : %s < > %s>
+56  - E_DVINV     <Digito verificador inválido>
+57  - E_CPFINV    <CPF Inválido>
+58  - E_CGCINV    <CGC Inválido>
+59  - E_EXUNICA   <Campo [%s] : Chave única já existe>
+60  - E_WRUNICA   <Chave no campo : %s não é única>
+61  - M_SAIEDIT   < Deseja abandonar edição ? >
+62  - M_USCANCELA <Execução cancelada pelo Usuário.>
+
+63  - W_NOREGLOCK  < Registro Nº %ld em utilização >
+64  - W_USULOCKING < pelo usuário %s >
+65  - W_WAITREAD   <Aguarde Leitura do registro.>
+
+66  - W_WBASEEXC   <Aguardando liberação para atualização da base. Aguarde...>
+67  - W_FAZEROQUE  < Retenta @ Aborta >
+
+501 - E_LINCFG  - <Erro na linha : %d do arquivo config.lb>
+502 - E_NOREG   - <Arquivo [%s] não é um arquivo regular>
+503 - E_CLS_SO  - <Erro [%d] no fechamento do arquivo : %s>
+504 - E_RD_SO   - <Erro [%d] na leitura do arquivo : %s>
+505 - E_WR_SO   - <Erro [%d] na gravação do arquivo : %s>
+506 - E_DLF_SO  - <Erro na eliminação do arquivo : %s>
+507 - E_CRF_SO  - <Erro na criação do arquivo : %s>
+508 - E_CRF_MA  - <Erro : [%d] na criação do arquivo [%s].>
+509 - E_CLS_MA  - <Erro : [%d] no fechamento do arquivo.>
+510 - E_CLSANO  - <Arquivo não foi fechado na última atualização. Reprocesse.>
+511 - E_PERMAC  - <usuário não tem acesso ao arquivo %s>
+512 - E_CONFAC  - <Arquivo com identificação conflitante com acessos.>
+513 - E_LOCKED  - <Arquivo bloqueado para utilização por outro usuário.>
+514 - E_NOLOCK  - <Base em utilização por outros usuários. Operação Cancelada.>
+
+515 - E_LB4BAD  - <Arquivo LB4 danificado. Erro : %d. Reprocesse a base.>
+516 - E_LBNBAD  - <Base de dados danificada. Erro : %d. Reprocesse a base.>
+
+517 - C_LOGDOS - <>
+518 - C_LOGUNIX - </tmp>
+519 - C_TMPLOG  - <log>
+
+520 - M_VENCIDA  - <***** ATIVACAO PROVISORIA VENCIDA>
+521 - M_SERIEIN  - <Arquivo light.dat contém Número de Série Incompatível.>
+522 - M_PROTEC   - <Erro de proteção>
+523 - M_NOFILE   - <Arquivo de Ativação não encontrado.>
+524 - M_CHAVEIN  - <Chave de Ativação não Confere.>
+525 - M_PRAZO    - <Produto em demonstração, prazo expirado.>
+
+531 - C_VERSAO  - <Versão: >
+532 - C_RELEASE - <     Rel: >
+533 - C_SERIE   - <Série : >
+534 - C_USUARIOS- <  Usuários: >
+
+
+540 - E_MASTAR   <Erro na inicialização do método de acesso>
+
+542 - E_MT1STAR  <Não foi possível inicializar gerente de telas>
+543 - E_MT2STAR  <Verifique variáveis ambientais LBHOME e LBTERM>
+544 - E_NO_ID    <Não foi possível alterar idioma>
+545 - E_CH_ID    <Erro na carga de arquivo de mensagens>
+546 - M_FANORMAL <Término Anormal do LIGHT BASE>
+547 - M_MOTIVO   <Motivo>
+548 - M_NDEBUG   <Erro Interno Número : %d\nReporte ao seu fornecedor>
+549 - E_ADDKEY   <Atenção. %d inconsistencias na indexação. Reindexe a base.>
+
+550 - E_CGER1 - <Erro [%d] na exclusão de registro>
+551 - E_CGER2 - <Erro [%d] na exclusão de índice>
+552 - E_CGER9 - <Erro de acesso número %d  [%s]\nTecle ESC para continuar.>
+
+553 - E_BADAC  - <Arquivo de acessos danificado ou sem acesso.>
+554 - E_OPTAB  - <Erro na abertura da tabela : %s>
+
+555 - E_LDDOC  - <Erro na carga de campo tipo texto>
+556 - E_ED_001 - <Erro na criação de novo registro>
+557 - E_ED_002 - <Registro %ld inexistente, ou não pode ser alterado>
+
+
+558 - E_NOVIS  - <Vista ativa não possui campos de entrada.>
+559 - E_REGINE - <Não existe registro informado.>
+
+
+560 - E_POS0AC    <Posição de registro inválida>
+561 - E_ATUBASE   <Base desatualizada em relação a descrição da mesma>
+562 - E_TBFREAD   <Arquivo de dados da base não pode ser lido.>
+563 - E_EXRE01    <Base com campos excluidos não reindexada. REINDEXE>
+564 - E_EXRE02    <Base com campos diminuidos e não reindexada. REINDEXE>
+565 - E_REGBAD    <           Falha na leitura>
+566 - E_REGLOCK   <Registro em utilização por outro usuário.>
+567 - M_SOLIC     <Solicitação do usuário>
+
+
+568 - E_TBFWRIT   <Arquivo de dados da base não pode ser gravado.>
+569 - E_TBPWRIT   <Erro de gravação no arquivo de controle da base.>
+
+570 - E_WRTEXTO   <Erro durante gravação de campo texto>
+571 - E_EDTX01    <Erro durante leitura/edição de campo Texto.>
+
+572 - E_EDMTEX    <Campo texto limitado a 65000 caracteres. Atual : %ld>
+573 - E_ITEMTAB   <Itens de tabela não podem ser acessados>
+574 - E_ESTATIC   <Base de dados estática. Alteração não permitida.>
+
+575 - E_NOIMP     <Usuário não tem acesso a impressão.>
+576 - E_REGIND    <Erro na indexação do registro.>
+
+577 - E_CNTLOCK  <Arquivo de controle de locks violado.>
+578 - E_NOSHARE  <Share inativo. Favor ativar.>
+
+579 - E_NOITEMTAB  <Item não consta da tabela>
+
+580 - TW_NOUPD0   < Prossegue @ Abandona >
+581 - TW_NOUPD1   <Arquivo indica término anormal em operações anteriores.>
+582 - TW_NOUPD2   < Possivel inconsistencia nas informações apresentadas>
+
+583 - E_NOSPACE   <Erro na gravação. Provavelmente falta espaço em disco.>
+
+584 - E_SEMBASE   <Nenhuma base ativa. Operação não pode ser efetivada.>
+585 - E_ARQMENU   <Erro na abertura do arquivo : [%s]>
+586 - E_SEMPERMI  <Usuário sem permissão de inclusão>
+587 - E_SEMPERME  <Usuário sem permissão de exclusão>
+
+590 - E_NOSOUND  - <Arquivo soundex.lb não pode ser lido>
+591 - E_CFFINGER - <Conflito na identificação dos arquivos da base>
+
+592 - E_FTLIBERA - <Falta arquivo de autorização de uso da base>
+593 - E_NOLIBERA - <Abertura da base de dados não foi liberada>
+
+594 - E_ED_NOV   - <Registro %ld em processo de inclusao.>
+
+595 - M_PRDTXT   - <Atenção. Registro %ld - Perda de texto no campo : %s>
+596 - M_PRDPAR   - <Atenção. Perda parcial do registro %ld>
+597 - M_OVFFOR   - <Overflow. Reg. %ld Campo %s Valor %s>
+598 - M_LOGWAR   - <ATENCAO. Leia atentamente o arquivo de log. %d advertencias importantes.>
+599 - E_NOVAZIO  - <Não pode gravar registro vazio.>
+
+#------------------------------------------------- GRP 11 -----------#
+GRP 11 - LOGOTIPO
+
+1   - T1_LOGO   - <       ŽŽŽŽ          ŽŽŽŽ  ŽŽŽŽŽŽŽŽŽŽŽŽ  ŽŽŽŽ    ŽŽŽŽ  ŽŽŽŽŽŽŽŽŽŽŽŽ>
+2   - T2_LOGO   - <      ŽŽŽŽ          ŽŽŽŽ  ŽŽŽŽŽŽŽŽŽŽŽŽ  ŽŽŽŽ    ŽŽŽŽ  ŽŽŽŽŽŽŽŽŽŽŽŽ >
+3   - T3_LOGO   - <     ŽŽŽŽ          ŽŽŽŽ  ŽŽŽŽ          ŽŽŽŽ    ŽŽŽŽ      ŽŽŽŽ      >
+4   - T4_LOGO   - <    ŽŽŽŽ          ŽŽŽŽ  ŽŽŽŽ   ŽŽŽŽŽ  ŽŽŽŽŽŽŽŽŽŽŽŽ      ŽŽŽŽ       >
+5   - T5_LOGO   - <   ŽŽŽŽ          ŽŽŽŽ  ŽŽŽŽ   ŽŽŽŽŽ  ŽŽŽŽŽŽŽŽŽŽŽŽ      ŽŽŽŽ        >
+6   - T6_LOGO   - <  ŽŽŽŽ          ŽŽŽŽ  ŽŽŽŽ     ŽŽŽ  ŽŽŽŽ    ŽŽŽŽ      ŽŽŽŽ         >
+7   - T7_LOGO   - < ŽŽŽŽŽŽŽŽŽŽŽŽ  ŽŽŽŽ  ŽŽŽŽŽŽŽŽŽŽŽŽ  ŽŽŽŽ    ŽŽŽŽ      ŽŽŽŽ          >
+8   - T8_LOGO   - <ŽŽŽŽŽŽŽŽŽŽŽŽ  ŽŽŽŽ  ŽŽŽŽŽŽŽŽŽŽŽŽ  ŽŽŽŽ    ŽŽŽŽ      ŽŽŽŽ           >
+9   - T9_LOGO   - <>
+10  - T10_LOGO  - <%4AB  a  n  c  o      d  e      D  a  d  o  s      T  e  x  t  u  a  l%1A>
+
+14  - TOP0    - <>
+15  - TOP1    - <%4ALIGHT BASE%1A>
+16  - TOP2    - <Banco de Dados Textual>
+17  - TOP3    - <>
+
+
+18  - BOT1    - <Light-Infocon S/A>
+19  - BOT2    - <Tel: (061) 347 1949>
+
+20  - TOP1L   - <%4ALIGHT BASE - LITE%1A>
+21  - TOP1L   - <%4ALIGHT BASE - RUNTIME%1A>
+
+
+30  - PRZ_CONCEDIDO - <%3AData limite da demonstração atingida%1A>
+31  - PRZ_DEFAULT   - <%3AData limite da demonstração atingida%1A>
+32  - LIM_REGS      - <%3ACópia limitada por número de registros%1A>
+
+33  - DATA_LIMITE   - <Data limite para utilização : >
+34  - DIAS_REST     - <Atenção. Dias restantes : >
+
+
+35  - DEMO1         - <>
+36  - DEMO2         - <Cópia Demonstração>
+37  - DEMO3         - <>
+38  - DEMO4         - <>
+39  - DEMOX         - <>
+
+40  - DEF1          - <>
+41  - DEF2          - <Usuário :>
+42  - DEF3          - <>
+43  - DEF4          - <>
+44  - DEFX          - <>
+
+45  - DEMO2L         - <Cópia Não Personalizada - Personalize>
+46  - PRZL_DEFAULT   - <%3AData fora do limite de utilização%1A>
+
+#------------------------------------------------- GRP 12 -----------#
+GRP 12 - IDENTIFICACAO DO USUARIO
+
+1    - R_IDUSU   - <Entre com a sua identificação>
+2    - R_SEUSU   - <Entre com a sua senha>
+3    - T_IDUSU   - < Usuário :>
+4    - T_SEUSU   - < Senha   :>
+5    - E_USDES   - <Usuário temporariamente desabilitado>
+6    - E_NOUSU   - <Usuário não habilitado a utilizar o Light Base.>
+
+
+#------------------------------------------------- GRP 13 -----------#
+GRP 13 - CADASTRO USUARIOS/GRUPOS
+
+1  - TW_US00 -    < A T E N Ç Ã O >
+2  - TW_US99 -    <Erro : >
+3  - TW_US01 -    <Arquivo de acessos não foi localizado.>
+4  - TW_US02 -    <Arquivo de acessos com problemas.>
+5  - TW_US03 -    <Chame novamente o LIGHT utilizando o >
+6  - TW_US04 -    <parâmetro abaixo.>
+7  - TW_US05 -    <   -Ai : executa processo de inicialização>
+8  - TW_US06 -    <** Restaure backup de acessos.dat e idx>
+
+9  - R_NUMSE -    <Informe Número de série do LIGHT BASE>
+10 - R_CHATV -    <Informe chave de ativação do LIGHT BASE>
+11 - T_NUMSE -    < Série    :>
+12 - T_CHATV -    < Ativação :>
+
+13 - TW_US20 -    < A T E N Ç Ã O >
+14 - TW_US21 -    <Esta operação irá eliminar o cadastro de>
+15 - TW_US22 -    <acessos do LIGHT. Isto significa que todos>
+16 - TW_US23 -    <os usuários serão eliminados e todas as>
+17 - TW_US24 -    <bases de dados descadastradas.>
+18 - TW_US29 -    < Cancela @ Elimina >
+
+20 - R_CDUS1 -    <Entre com a identificação do usuário>
+21 - R_CDUS2 -    <Entre com o grupo do usuário>
+22 - R_CDUS3 -    <Entre com a senha do usuário>
+23 - R_CDUS4 -    <Entre com o nome completo do usuário>
+24 - R_CDUS5 -    <Entre com o local de trabalho do usuário>
+25 - R_CDUS6 -    <Entre com telefones de contato do usuário>
+26 - R_CDUS7 -    <Utilize <ESPACO> para selecionar. <?> para opções>
+27 - R_CDUS8 -    <Utilize <ESPACO> para selecionar. <?> para opções>
+
+
+28 - T_CDUS0 -    < Dados do usuário >
+29 - T_CDUS1 -    <Identificação do usuário : >
+30 - T_CDUS2 -    <Grupo .................. : >
+31 - T_CDUS3 -    <Senha .................. : >
+32 - T_CDUS4 -    <Nome completo .......... : >
+33 - T_CDUS5 -    <Local de Trabalho ...... : >
+34 - T_CDUS6 -    <Telefone ............... : >
+35 - T_CDUS7 -    <Idioma preferido ....... : >
+36 - T_CDUS8 -    <Status de Utilização ... : >
+
+37 - E_PRIUS -    <Primeiro usuário cadastrado deve ser Administrador.>
+38 - E_JAGRP -    <Identificação já cadastrada como grupo>
+39 - E_USJAC -    <Identificação já cadastrada>
+40 - E_USNOC -    <Identificação ainda não cadastrada>
+
+41 - TW_US31 -    <  Grupo ainda não foi cadastrado. >
+42 - TW_US32 -    <     Deseja fazê-lo agora ?       >
+43 - TW_US39 -    < SIM @ NÃO >
+
+44 - E_REDIG -    <Redigite senha para validação.>
+
+45 - M_WIUSU -    <Incluindo usuário. Aguarde... >
+46 - M_WAUSU -    <Alterando usuário. Aguarde... >
+47 - M_WEUSU -    <Excluindo usuário. Aguarde... >
+
+48 - TW_US41 -    <  Usuário não mais acessará o sistema >
+49 - TW_US42 -    <         Confirma exclusão ?          >
+50 - TW_US49 -    < SIM @ NÃO >
+51 - M_EACBA -    < Excluindo acesso da base : >
+52 - T_MOSTRA -   < Identificação          Nome do usuário                        Grupo >
+53 - E_SEMUS  -   < Sem usuários cadastrados >
+54 - M_USNAV  -   <Use as setas para ver os usuários.>
+
+
+56 - OP_STATUS -  <Administrador@gerente Base@Comum@desativado>
+
+
+60 - R_CDGR1   -  <Entre com a identificação do grupo.>
+61 - R_CDGR2   -  <Entre com o nome do responsável pelo grupo.>
+62 - R_CDGR3   -  <Entre com o local de trabalho do responsável.>
+63 - R_CDGR4   -  <Entre telefones de contato do responsável.>
+
+64 - T_CDGR0   -  < Dados do grupo >
+65 - T_CDGR1   -  <Identificação do grupo . : >
+66 - T_CDGR2   -  <Responsável ............ : >
+67 - T_CDGR3   -  <Local de Trabalho ...... : >
+68 - T_CDGR4   -  <Telefone ............... : >
+
+69 - E_JAUSU   -  <Identificação já cadastrada como usuário.>
+70 - E_GRJAC   -  <Atenção. Grupo já cadastrado.>
+71 - E_GRNOC   -  <Grupo não cadastrado>
+
+72 - M_WIGRP -    <Incluindo grupo. Aguarde... >
+73 - M_WAGRP -    <Alterando grupo. Aguarde... >
+74 - E_SEMGR  -   < Sem grupos cadastrados >
+75 - T_GRMOS  -   < Grupos de usuários >
+76 - M_GRNAV   -  <Use as setas para ver os grupos>
+
+
+77 - M_MUS00   -  <>
+78 - M_MUS99   -  <>
+79 - M_MUS01   -  <Inclui usuário>
+80 - M_MUS02   -  <Altera usuário>
+81 - M_MUS03   -  <Exclui usuário>
+82 - M_MUS04   -  <-->
+83 - M_MUS05   -  <inclui Grupo>
+84 - M_MUS06   -  <aLtera grupo>
+85 - M_MUS07   -  <-->
+86 - M_MUS08   -  <mostra Usuários>
+87 - M_MUS09   -  <Mostra Grupos>
+
+88 - R_MUS01   -  <Inclui novo usuário no cadastro de usuários>
+89 - R_MUS02   -  <Alterar dados de um usuário já cadastrado>
+90 - R_MUS03   -  <Exclui um usuário do cadastro>
+91 - R_MUS04   -  <>
+92 - R_MUS05   -  <Inclui novo grupo no cadastro de usuários>
+93 - R_MUS06   -  <Alterar dados de um grupo já cadastrado>
+94 - R_MUS07   -  <>
+95 - R_MUS08   -  <Mostrar no vídeo lista de usuários cadastrados>
+96 - R_MUS09   -  <Mostrar no vídeo lista de grupos cadastrados>
+
+
+97 - R_CDUS9 -    <Se for usar menu especial informe o nome.>
+98 - T_CDUS9 -    <Menu de Utilização ..... : >
+
+
+501 - E_NOTD1 -   <Não localizado equivalente acesso para D1>
+502 - E_NOPCA -   <Não conseguiu abrir cadastro de usuários para atualização.>
+503 - E_NOPRD -   <Não conseguiu reabrir cadastro de usuários.>
+504 - E_NOSERIE - <Numero de serie do cadastro de acessos é incompativel.>
+505 - E_BADSERIE - <Numero de serie informado incompativel>
+
+#------------------------------------------------- GRP 14 -----------#
+GRP 14 - CONFIGURACAO/PERSONALIZACAO
+
+1  - C_INDEX   -  <Indexação automática>
+2  - C_SAVE    -  <Gravação automática >
+3  - C_SINO    -  <Uso futuro>
+4  - C_FONE    -  <Uso futuro>
+5  - C_GRAVA   -  <Salva configuração>
+
+6  - R_GRAVA   -  <Grava configuração e posições das janelas>
+
+501  - E_NOCFG   -  <Sem identificação de usuário para configurar.>
+502  - E_DIRPSN  -  <Diretório PERSONA não existe. Favor Criar>
+
+
+
+
+#------------------------------------------------- GRP 15 -----------#
+GRP 15 - SELECAO DE BASES (GRP_SBASE)
+
+1  - TW_SB00 -    < A T E N Ç Ã O >
+2  - TW_SB01 -    < Usuário não tem acesso cadastrado para >
+3  - TW_SB02 -    < utilização de nenhuma base de dados. >
+
+4  - TW_SB10 -    <Escolha, com as setas, uma das bases>
+5  - TW_SB11 -    <da tabela ao lado,  e  tecle  ENTER.>
+6  - TW_SB12 -    <Veja  descrição da  base no  rodape.>
+
+7  - E_INEXB   - <Base de dados não existe.>
+8  - E_ACEUS   - <Usuário não tem acesso a base informada.>
+9  - E_TOOBA   - <Excesso de bases relacionadas ao usuário.>
+10 - R_NODES   - <Base sem descrição.>
+11 - T_MBASES  - <Bases>
+12 - R_MBASES  - <Selecione uma base.>
+13 - O_BNOVA   - <Nova base>
+14 - R_BNOVA   - <Definição de nova base de dados.>
+15 - O_NENHU   - <Nenhuma>
+16 - R_NENHU   - <Nenhuma das bases.>
+
+17 - T_BASEESP - <Base : >
+18 - R_BASEESP - <Informe o nome de uma base.>
+
+19 - R_RTBNOVA - <Importação de base de dados.>
+
+#------------------------------------------------- GRP 16 -----------#
+GRP 16 - DEFINICAO DE BASES (GRP_DEFBASE)
+
+1  - M_DB00   -  <Definição>
+2  - M_DB01   -  <Campos   >
+3  - M_DB02   -  <Vistas   >
+4  - M_DB03   -  <Relatórios>
+5  - M_DB04   -  <Acessos  >
+6  - M_DB05   -  <Stop-words>
+7  - M_DB06   -  <Descrição>
+
+8  - R_DB01   -  <Incluir/Alterar/Excluir definições de campos>
+9  - R_DB02   -  <Definir/Alterar/Excluir Vistas de bases de dados>
+10 - R_DB03   -  <Incluir/Alterar/Excluir relatórios>
+11 - R_DB04   -  <Incluir/Alterar/Excluir permissões de acesso às funções>
+12 - R_DB05   -  <Incluir/Alterar/Excluir stop words>
+13 - R_DB06   -  <Alterar descrição da base.>
+
+
+14 - T_DBTIT  -  < Identificação da Base >
+15 - T_DBROD  -  <>
+
+16 - T_DBNOM  -  <Nome da Base de dados :>
+17 - T_DBPAT  -  <Diretório :>
+18 - T_DBDES  -  <Descrição do conteúdo :>
+
+19 - R_DBNOM  -  <Entre com a Nome da Base>
+20 - R_DBPAT  -  <Informe o diretório em que deverá ser criada a Base>
+21 - R_DBDES  -  <Definição do conteúdo da Base>
+
+22 - E_BSEXI  -  <Base de dados já está cadastrada.>
+
+
+23 - TW_BSI1 -    < Arquivo de descrição da base foi localizado. >
+24 - TW_BSI2 -    <   Deseja executar processo de importação ?   >
+25 - TW_BSI9 -    < SIM @ NÃO >
+
+26 - TW_BSE1 -    < Arquivos que descrevem a base de dados no >
+27 - TW_BSE2 -    <   diretório informado serão sobrepostos.  >
+28 - TW_BSE9 -    < Prossegue @ Cancela >
+
+
+29  - TW_BSC0 - < Cria Base de dados >
+30  - TW_BSC9 - < Sim @ Não >
+31  - TW_BSC1 - < Base de dados não existe.  >
+32  - TW_BSC2 - < Confirma criação da base ? >
+
+33  - M_CRBA1 - <Criando diretório. Aguarde...>
+34  - M_CRBA2 - <Criando Arquivos da base. Aguarde...>
+
+35  - M_MODACE - <Atualizando cadastro de acessos. Aguarde...>
+
+36  - OP_CAMPOS - <Alfanumérico@Texto@Numérico@Fórmula@Data automática@Hora automática@data@hora>
+37  - OP_CRITICAS - <Nenhuma@Intervalo@Tabela@Mod 11@Cpf@cGc@AutoNum>
+
+39  - T_STOPW - < Definição de Stop-Words >
+40  - I_STOPW - <Def. Stop-Word.>
+41  - M_STOPW - <Digite as palavras que não deverão ser indexadas.>
+
+42  - E_NOSTP - <Arquivo padrão de stop-word inexistente>
+43  - E_LDSTP - <Erro na carga de stop-words para edição>
+44  - E_EDSTP - <Erro na edição de stop word>
+45  - E_WRSTP - <Erro na gravação de stop word>
+
+46  - STPFILE  - <stopword.lb>
+47  - T_DBNDES - <Nova Descrição :>
+
+50  - R_IBPERM   <Informe a chave de permissão>
+51  - R_IBNUMSE  <Informe o número de série do Light Base>
+52  - R_IBCHATV  <Informe a chave de ativação do Light Base>
+
+53  - T_IBPERM   <Permissão:>
+54  - T_IBNUMSE  <Série    :>
+55  - T_IBCHATV  <Ativação :>
+
+56  - M_INCACE   <Incluindo nome da base no cadastro de acessos>
+
+57  - E_IBPRINV  <Permissão inválida.>
+58  - E_IBCHINV  <Chave de ativação incompatível>
+
+60  - TW_CODD0 - < Tipo de proteção desejada para a base >
+61  - TW_CODD9 - < Pública @ Restrita >
+62  - TW_CODD1 - < Pública  - Sem proteção contra cópias.>
+63  - TW_CODD2 - < Restrita - Protegida por código de permissão.>
+
+65  - T_CODPERM  < Código de acesso >
+66  - R_DBCOD    <Informe o código para segurança da base.>
+67  - E_CODMAX   <Código para segurança deve ser maior 100 e menor que 65000>
+
+70  - T_TFINGER  < Personalização de base comercial >
+71  - T_1FINGER  <   Identificação : >
+72  - T_2FINGER  <   Edição        : >
+73  - R_1FINGER  <Informe número para particularizar a base>
+74  - R_2FINGER  <Informe edição da base (release)>
+
+75 - TW_BSA1 -    <  Base em utilizacão por outros usuários.  >
+76 - TW_BSA2 -    <  Somente a opção de Acessos será liberada >
+77 - TW_BSA9 -    < Cancela @ Prossegue >
+
+501 - E_JAARQ  -  <Diretório proposto já existe como arquivo.>
+502 - E_SODEF  -  <Usuários COMUNS não podem acessar esta função.>
+503 - E_IMPIN  -  <Impossível importar base. Arquivo de descrição danificado.>
+504 - E_N4INE  -  <Arquivo de descrição da base não existe ou inacessivel.>
+
+510 - E_CRBA1  -  <Erro na criação do diretório : %s>
+511 - E_CRBA2  -  <Erro na inicialização da base : stop-words>
+512 - E_CRBA3  -  <Erro na atualização de acessos : %d>
+513 - E_NOPCA -   <Não conseguiu abrir cadastro de acessos para atualização.>
+514 - E_NOPRD  -  <Não conseguiu reabrir cadastro de acessos.>
+
+520 - E_IBNSINV  <Base não foi gerada pelo número de série informado.>
+521 - E_IBUPD4   <Erro na atualização da descrição da base.>
+522 - E_IBATHDR  <Erro na atualização da personalização da Base>
+523 - E_RANGE1   <Informe números entre 1001 e 1999>
+524 - E_RANGE2   <Informe números entre 1 e 1000>
+525 - E_DEFREST  - <Definição da base restrita ao fornecedor>
+
+526 - E_MXITEM   <Não foi possível %d itens.>
+
+527 - E_SOIMP  - <Base não localizada para importação>
+#------------------------------------------------- GRP 17 -----------#
+GRP 17 - MENUS
+
+ 1 - M_PR00 - < Menu Principal >
+ 2 - M_PR99 - <>
+ 3 - M_PR01 - <   Definição   >
+ 4 - M_PR02 - <  Utilização   >
+ 5 - M_PR03 - <  Manutenção   >
+ 6 - R_PR01 - <Funções de definição de bases e usuários>
+ 7 - R_PR02 - <Funções de utilização da base ativa>
+ 8 - R_PR03 - <Funções de manutenção da base de dados>
+
+
+ 9 - M_DF00 - < Definição >
+10 - M_DF99 - <>
+11 - M_DF01 - <Base>
+12 - M_DF02 - <Cad. Usuários>
+13 - M_DF03 - <-->
+14 - M_DF04 - <Seleciona base>
+15 - R_DF01 - <Define nova base de dados ou altera definição de existente>
+16 - R_DF02 - <Define/altera cadastro de usuário>
+17 - R_DF03 - <>
+18 - R_DF04 - <Seleciona outra base como ativa>
+
+
+19 - M_UT00 - <Utilização>
+20 - M_UT99 - <>
+21 - M_UT01 - <Inclui>
+22 - M_UT02 - <Altera>
+23 - M_UT03 - <eXclui>
+24 - M_UT04 - <Pesquisa>
+25 - M_UT05 - <emiTe>
+26 - M_UT06 - <Exporta>
+27 - M_UT07 - <impOrta>
+28 - M_UT08 - <-->
+29 - M_UT09 - <Seleciona base>
+
+30 - R_UT01 - <Inclusão de novos registros na base>
+31 - R_UT02 - <Alteração de dados de registros existentes>
+32 - R_UT03 - <Exclusão de registros>
+33 - R_UT04 - <Pesquisa através de conectores>
+34 - R_UT05 - <Emissão de relatórios>
+35 - R_UT06 - <Exportação de dados para arquivos externos ao LIGHT>
+36 - R_UT07 - <Importação de dados para a base ativa>
+37 - R_UT08 - <>
+38 - R_UT09 - <Seleciona outra base como ativa>
+
+
+39 - M_MT00 - <Manutenção>
+40 - M_MT99 - <>
+41 - M_MT01 - <Ferramentas>
+42 - M_MT02 - <-->
+43 - M_MT03 - <index. Parcial>
+44 - M_MT04 - <index. Total>
+45 - M_MT05 - <-->
+46 - M_MT06 - <Backup>
+47 - M_MT07 - <Restore>
+48 - M_MT08 - <-->
+49 - M_MT09 - <Seleciona base>
+
+
+50 - R_MT01 - <Utilitários de manutenção de bases>
+51 - R_MT02 - <>
+52 - R_MT03 - <Indexação de registros ainda não indexados>
+53 - R_MT04 - <Reindexação de toda a base>
+54 - R_MT05 - <>
+55 - R_MT06 - <Copia base de dados para segurança>
+56 - R_MT07 - <Restaura cópia de segurança>
+57 - R_MT08 - <>
+58 - R_MT09 - <Seleciona outra base como ativa>
+
+60 - M_PR00 - < Menu Principal >
+61 - M_PR99 - <>
+
+62 - M_RTPSQ - <    Pesquisa    >
+63 - M_RTSEL - < Seleciona base >
+64 - M_RTMAN - <   Manutenção   >
+
+65 - R_RTPSQ - <Pesquisa através de conectores>
+66 - R_RTSEL - <Seleciona outra base como ativa>
+67 - R_RTMAN - <Inclusao/Exclusão de bases/usuários>
+
+**** 68 - M_RTMUS  - <Usuários >
+69 - M_RTIBAS - <Importar Bases>
+70 - M_RTEBAS - <Excluir Base>
+
+**** 71 - R_RTMUS  - <Define/altera cadastro de usuário>
+72 - R_RTIBA  - <Cadastrar novas bases / Definir acessos>
+73 - R_RTEBA  - <Exclui base do cadastro>
+
+74 - T_RTMAN  - <Manutenção>
+
+
+#------------------------------------------------- GRP 18 -----------#
+GRP 18 - OPEN E CLOSE DE BASES
+
+1   - M_OPBA1 - <Carregando base. %3AAguarde%1A...>
+2   - M_CLBA1 - <Fechando arquivos da base. %3AAguarde%1A...>
+
+3   - E_NOMOR  - <Não existe mais espaço de controle para base>
+4   - E_NOSUP  - <Base gerada em versão mais recente. Atualize sua copia.>
+5   - E_FTARQ  - <Falta arquivo %s>
+6   - E_OPBA3  - <Base gerada em outra versão. Reprocesse a base.>
+
+7   - TW_HD10  < Base de dados precisa ser verificada em >
+8   - TW_HD11  < virtude das últimas operações efetuadas.>
+9   - TW_HD12  < Reprocesse a base de dados.>
+
+
+10 - E_NOVIS  - <Não existem Vistas definidas na base>
+11 - E_NOACV  - <Usuário sem acesso à Vista>
+12 - E_LDVIS  - <Erro na carga da Vista. Reprocesse>
+13 - E_LDITV  - <Erro na carga dos itens da Vista especificada.>
+14 - M_SELVI  - <Selecione uma Vista com as setas e confirme com ENTER>
+15 - M_MESMA  - <Permanecer na VISTA CORRENTE>
+
+16 - T_MUDVI  - <Vistas>
+
+
+17 - T_MUDRE - < Relatórios disponíveis >
+18 - M_CANRE - <Cancela solicitação de impressão>
+19 - M_SELRE - <Selecione um relatório com as setas e confirme com ENTER>
+20 - E_NOREL - <Não há relatórios definidos para a base.>
+
+
+
+
+501 - E_OPBA7  - <Atenção. Não existe possibilidade de abrir arq. adicionais.>
+502 - E_CLSBAS - <Erro no fechamento da base.>
+503 - E_FCPVI  - <Vista contém campos deletados. Reprocesse a base>
+504 - E_BRCLS  - <Base relacionada não foi aberta. Comunique seu distribuidor.>
+
+505 - E_LDSTP - <Erro na carga de stop words.>
+506 - E_MUDDEC - <Mudança de separador de decimais/inteiros. Reprocesse a base.>
+
+512 - E_OPR02 - <Campo especificado não esta definido na base>
+513 - E_LDREL - <Erro na carga do relatório. Reprocesse>
+514 - E_LDITR - <Erro na carga dos itens do relatório. Reprocesse>
+
+515 - E_LEARQ - <Arquivo da base não pode ser lido/gravado>
+
+516 - E_AUTONUM1 - <Arquivo gerenciador de Numeração automática não pode ser aberto.
+517 - E_AUTONUM2 - <Opção de Numeração Automática será DESATIVADA.>
+518 - E_AUTONUM3 - <Não conseguiu LOCK em arquivo de Numeração Automática>
+519 - E_AUTONUM4 - <Erro na leitura de arquivo de Numeração Automática>
+520 - E_AUTONUM5 - <Numeração automática sem mascara. IGNORADA.>
+
+
+#------------------------------------------------- GRP 19 -----------#
+GRP 19 - UTILIZACAO DE TABELAS
+
+1  - M_SELTB  - <Selecione com as setas um elemento da tabela e tecle ENTER>
+2  - M_INSTB  - <Digite um novo elemento da tabela e tecle [Enter]>
+3  - M_ALTTB  - <Altere este elemento da tabela e tecle [Enter]>
+4  - M_DEFTB  - <Defina elementos. Grave com [F2]. Finalize com [ESC]>
+5  - M_GRVTB  - <Aguarde. Gravando tabela : %s>
+
+#------------------------------------------------- GRP 20 -----------#
+GRP 20 - Definição de Campos
+
+1  - E_TPCIN  - <Tipo de campo inválido.>
+2  - E_VLTM1  - <Tamanho do campo não pode ser menor que 1>
+3  - E_VLTM2  - <Tamanho da linha de campo TEXTO está limitado a 132>
+4  - E_VLTM3  - <Tamanho de campo ALFANUMÉRICO está limitado a 80>
+5  - E_VLTM4  - <Tamanho de campo NUMÉRICO ou FÓRMULA está limitado a 15>
+6  - E_VLTM5  - <Número de casas decimais limitado a 4>
+7  - E_LMDAT  - <Campo Data deve ser 8>
+8  - E_LMHOR  - <Campo Hora deve ser 5>
+9  - E_CRTIN  - <Tipo de crítica incompativel com tipo de campo>
+10 - E_NAOBR  - <Não utilize brancos em definição de matrizes>
+11 - E_USOCOL - <Utilize obrigatóriamente um '[' e um ']'>
+12 - E_NOUNI  - <Tipo de campo não pode ser chave Única>
+13 - E_TAMUN  - <Tamanho de campo chave Única está limitado a 23.>
+14 - E_VLIT1  - <Data inválida>
+15 - E_VLIT2  - <Hora inválida>
+16 - E_VLIT3  - <Máximo não pode ser menor que mínimo>
+17 - E_VLIT4  - <Valor fora do intervalo : %s < > %s>
+
+18 - M_TAMTXT  - <Informe o número máximo de colunas>
+19 - M_FORMULA - <Informe a fórmula de cálculo do campo>
+20 - M_INTEIRO - <Informe o número de inteiros do campo>
+
+
+
+21 - T_CPCAR       < Características do campo >
+22 - T_CPREL       < Campos >
+23 - T_CPROD       <Def. Campos>
+
+24 - D_CPDF1       <Descrição   : >
+25 - D_CPDF2       <Instrução   : >
+26 - D_CPDF3       <Tipo        : >
+27 - D_CPDF4       <Tamanho     : >
+28 - D_CPDF5       <Decimais : >
+29 - D_CPDF6       <Máscara     : >
+30 - D_CPDF7       <Crítica     : >
+
+31 - R_CPDF1       <Informe a descrição do campo>
+32 - R_CPDF2       <Informe a instrução de preenchimento para o campo>
+33 - R_CPDF3       <Utilize <ESPACO> para selecionar. <?> para opções>
+34 - R_CPDF4       <Informe o tamanho do campo>
+35 - R_CPDF5       <Informe o número de casas decimais>
+36 - R_CPDF6       <Informe a máscara de edição>
+
+37 - M_CPSEL       <Selecione um campo. ENTER para alterar caracteristicas>
+38 - M_CPINS       <Informe nome do campo a ser incluido na base>
+39 - M_CPALT       <Informe novo nome do campo>
+
+40 - M_CPATU       <Atualizando descrição dos campos. %3AAguarde%1A...>
+
+41 - TW_CPEX9      < Não @ Sim >
+42 - TW_CPEX1      < Confirma exclusão do campo ? >
+
+43 - R_CPCR1R      <Informe o nome da tabela a ser consultada>
+44 - R_CPCR2R      <Informe o valor %4Amínimo%1A para validade do campo>
+45 - R_CPCR3R      <Informe o valor %4Amáximo%1A para validade do campo>
+
+46 - T_CPCRT       < Tabela >
+47 - T_CPCRI       < Intervalo >
+48 - D_CPCRT1      <Nome : >
+49 - D_CPCRI1      <Mínimo : >
+50 - D_CPCRI2      <Máximo : >
+
+51 - T_CPIDX       < Caracteristicas Especiais >
+52 - D_CPIDX1      <Campo deverá ser indexado ................ >
+53 - D_CPIDX2      <Deverá ser chave Única no arquivo ........ >
+54 - D_CPIDX3      <Indexa para pesquisa de campo em branco .. >
+
+55 - E_MAXCMP      <Quantidade máxima de campos atingida>
+56 - E_TFUNICA     <Campo TEXTO/FÓRMULA não pode ser chave única>
+57 - E_23UNICA     <Tamanho de campo chave Única está limitado a 23>
+58 - E_DUPCP       <Nome de campo já existe.>
+
+59 - D_CPIDX4      <Indexa para pesquisa fonética............. >
+
+60 - D_CPIDX5     <Help do campo ............. >
+61 - D_CPIDX6     <Mascara de autonumeração... >
+
+62 - M_HELPCP      <Informe nome do arquivo de help para o campo.>
+63 - M_AUTONUM     <Informe mascara de numeração>
+64 - E_SOALFA      <Campo autonumerado so e permitido para campo alfanumerico>
+
+
+501 - E_SEMMASC    <Campo sem mascara>
+
+#------------------------------------------------- GRP 21 -----------#
+GRP 21 - Definição de Vista
+
+1  - T_VSREL  - < Vistas disponiveis >
+2  - T_VSROD  - < Def. Vistas>
+
+3  - M_VSSEL  - <Selecione uma Vista. ENTER para editar Vista>
+4  - M_VSINS  - <Informe o nome da nova Vista a ser definida>
+5  - M_VSALT  - <Informe um novo nome para a Vista>
+
+6  - M_ATUVIS - <Gravando Vistas. %3AAguarde%1A...>
+7  - M_ATUITV - <Gravando itens da Vista. %3AAguarde%1A...>
+
+8  - TW_VSPROP- <Nova Vista. Deseja proposta padrão ?>
+
+9  - TW_VSEX9 - < Sim @ Não >
+10 - TW_VSEX1 - < Confirma exclusão da Vista ? >
+
+
+11 - E_NOCMP  - <Não é possivel criar Vista sem campos definidos>
+12 - E_NOMEBR - <Não é possível definir Vistas com nome em branco>
+13 - E_SVITV  - <Erro na gravação de itens de Vista.>
+14 - E_SVVIS  - <Erro na gravação das Vistas.>
+
+
+
+15 -  MN_T_BORDAS    <Bordas       >
+16 -  MN_T_CAMPOS    <Campos       >
+17 -  MN_T_LINHAS    <Linhas       >
+18 -  MN_T_APAG2     <Apaga        >
+19 -  MN_T_TIPOS     <Tipos        >
+20 -  MN_T_VISIV     <Visibilidade >
+21 -  MN_T_INS_LIN   <Insere Linha >
+22 -  MN_T_RET_LIN   <Retira Linha >
+
+
+23 -  RD_T_BOR    <Faz BORDAS em torno de algum item>
+24 -  RD_T_CAM    <Define CAMPO na Vista>
+25 -  RD_T_LIN    <Coloca LINHA separadora (Vertical / Horizontal)>
+26 -  RD_T_APA    <Desfaz bordas, campos ou linhas>
+27 -  RD_T_TIP    <Define caracteristicas especiais para os campos>
+28 -  RD_T_VIS    <Permite aumentar/diminuir a parte visivel de um CAMPO>
+29 -  RD_T_INS    <Insere linha em branco na posição do cursor - CTRL-N>
+30 -  RD_T_RET    <Retira linha na posição do cursor - CTRL-Y>
+
+31 - I_ACESSO - <Trocando ACESSO>
+32 - I_BORDA  - <Fazendo BORDA>
+33 - I_LINHA  - <Fazendo LINHA>
+34 - I_APAGA  - <Apagando>
+35 - I_CAMPO  - <Inserindo CAMPOS>
+36 - I_EDITL  - <Editando LINHA>
+37 - I_EDITT  - <Editando TELA>
+
+
+38 - C_TR_OBR     - <Obrigatório          -    > /* Deixar espaco para M_SIM */
+39 - C_TR_ENT     - <Editável             -    > /* Deixar espaco para M_SIM */
+40 - C_TR_SAI     - <Acréscimo            -    > /* Deixar espaco para M_SIM */
+41 - C_TR_ACL     - <Limpa na Entrada     -    > /* Deixar espaco para M_SIM */
+42 - C_TR_CAMPO   - < CAMPO >
+
+
+43 - M_TR_VISIB     - <Use as Setas para mudar Visibilidade. ESC para finalizar>
+44 - M_TR_DBORDA    - <Use SETAS e ENTER para marcar o outro canto da BORDA>
+45 - M_TR_TITBORDA  - <Entre com TITULO da BORDA e confirme com ENTER>
+46 - M_TR_DLINHA    - <Use SETAS e ENTER para marcar o outro extremo da LINHA>
+47 - M_TR_DELBOX    - <APAGA Borda>
+48 - M_TR_DELVER    - <APAGA Linha Vertical>
+49 - M_TR_DELHOR    - <APAGA Linha Horizontal>
+50 - M_TR_DELCAM    - <APAGA Campo>
+
+
+51 - M_TR_NAVVISTA  - <Entre com TEXTO ou tecle ENTER para opções>
+52 - M_TR_FUNED     - <1 2 3 0Opções E>
+
+53 - C_VSLICOL   < Lin: %d Col: %d >
+54 - C_VSSOLIN   < Lin: %d >
+
+55 - M_VISLC     <Informe visibilidade linhas/colunas>
+56 - M_VISCOL    <Informe visibilidade em colunas>
+57 - M_VISTIT    < Visibilidade >
+
+
+#------------------------------------------------- GRP 22 -----------#
+GRP 22 - Definição de relatórios
+
+1  - T_RLREL  - < Relatórios disponiveis >
+2  - T_RLROD  - < Def. Relatórios>
+
+3  - M_RLSEL  - <Selecione um relatório. ENTER para editar relatório>
+4  - M_RLINS  - <Informe o nome do novo relatório a ser definido>
+5  - M_RLALT  - <Informe um novo nome de relatório>
+
+6  - M_ATUREL - <Gravando relatórios. %3AAguarde%1A...>
+7  - M_ATUITR - <Gravando itens do relatórios. %3AAguarde%1A...>
+
+8  - TW_RLPROP- <Novo Relatório. Deseja proposta padrão ?>
+
+9  - TW_RLEX9 - < Sim @ Não >
+10 - TW_RLEX1 - < Confirma exclusão do Relatório ? >
+
+
+11 - E_NOCMP  - <Não é permitido criar relatório sem campos definidos>
+12 - E_NOMEBR - <Não é possivel definir relatório com o nome em branco>
+13 - E_SVITR  - <Erro na gravação de itens de relatório.>
+14 - E_SVREL  - <Erro na gravação dos relatórios.>
+
+
+
+15 -  MN_R_BORDAS    <Bordas       >
+16 -  MN_R_CAMPOS    <Campos       >
+17 -  MN_R_LINHAS    <Linhas       >
+18 -  MN_R_APAG2     <Apaga        >
+19 -  MN_R_VISIB     <Visibilidade >
+20 -  MN_R_INS_LIN   <Insere Linha >
+21 -  MN_R_RET_LIN   <Retira Linha >
+22 -  MN_R_CARAC     <Carac. Rel.  >
+
+
+23 -  RD_R_BOR    <Faz BORDAS em torno de algum item>
+24 -  RD_R_CAM    <Define CAMPO no relatório>
+25 -  RD_R_LIN    <Coloca LINHA separadora (Vertical / Horizontal)>
+26 -  RD_R_APA    <Desfaz bordas, campos ou linhas>
+27 -  RD_R_REL    <Permite aumentar/diminuir a parte visivel de um CAMPO>
+28 -  RD_R_INS    <Insere linha em branco na posição do cursor - CTRL-N>
+29 -  RD_R_RET    <Retira linha na posição do cursor - CTRL-Y>
+30 -  RD_R_CAR    <Altera caracteristicas do relatório>
+
+
+
+31 - I_BORDA  - <Fazendo BORDA>
+32 - I_LINHA  - <Fazendo LINHA>
+33 - I_APAGA  - <Apagando>
+34 - I_CAMPO  - <Inserindo CAMPOS>
+35 - I_EDITL  - <Editando LINHA>
+36 - I_EDITT  - <Editando TELA>
+
+
+37 - M_TR_VISIB     - <Use as Setas para mudar Visibilidade. ESC para finalizar>
+38 - M_TR_DBORDA    - <Use SETAS e ENTER para marcar o outro canto da BORDA>
+39 - M_TR_TITBORDA  - <Entre com TITULO da BORDA e confirme com ENTER>
+40 - M_TR_DLINHA    - <Use SETAS e ENTER para marcar o outro extremo da LINHA>
+41 - M_TR_DELBOX    - <APAGA Borda>
+42 - M_TR_DELVER    - <APAGA Linha Vertical>
+43 - M_TR_DELHOR    - <APAGA Linha Horizontal>
+44 - M_TR_DELCAM    - <APAGA Campo>
+
+
+45 - M_TR_NAVRELTA  - <Entre com TEXTO ou tecle ENTER para opções>
+46 - M_TR_FUNED     - <1 2 3 0Opções E>
+
+47 - M_TR00 - <Tipos>
+
+48 - M_TR01 - <Formatado>
+49 - M_TR02 - <Colunado>
+50 - M_TR03 - <Etiqueta>
+
+51 - R_TR01 - <Define relatório como formulário pré-impresso>
+52 - R_TR02 - <Define relatório em colunas>
+53 - R_TR03 - <Define etiquetas de enderecamento>
+54 - TW_RLPEQ1  < Não foi possível incluir todos os campos >
+55 - TW_RLPEQ2  < no relatório informado. >
+
+56 - C_RLLICOL   < Lin: %d Col: %d >
+57 - C_RLSOLIN   < Lin: %d >
+
+
+
+
+
+
+#------------------------------------------------- GRP 23 -----------#
+GRP 23 - Caracteristicas do relatório
+
+1  - C_CAB_DB5    <Imprime Cabeçalho e rodapé ? ....:>
+2  - C_TIT_DB5    <Qual o titulo do relatório ? ....:>
+3  - C_ROD_DB5    <Qual o rodapé do relatório ? ....:>
+4  - C_VERT_DB5   <Tamanho vertical do formulário ..:           (em linhas)>
+5  - C_HOR_DB5    <Tamanho horizontal do formulário :           (em caracteres)>
+6  - C_CARAC_DB5  <Tipo do caracter ................:>
+7  - C_QUAL_DB5   <Qualidade de impressão ..........:>
+8  - C_FOLHA_DB5  <Impressão em folha solta ? ......:>
+9  - C_EDIT_DB5   <Edita instruções especiais ? ....:>
+10 - C_ORD1_DB5   <Ordenação:>
+11 - C_ORD2_DB5   <       Campo              Ordem             Linhas a pular      Totais>
+
+12- C_DB5_LST     <Utilize <ESPACO> para selecionar. <?> para opções.>
+13- R_TIT_DB5     <Informe o titulo desejado para o relatório>
+14- R_RODAPE_DB5  <Informe o rodapé desejado para o relatório>
+15- R_LINHAS_DB5  <Informe o tamanho do formulário em linhas>
+16- R_CAMPOC_DB5  <Informe o nome do campo para classificação do relatório>
+17- R_LINHASC_DB5 <Informe o número de linhas a pular na quebra>
+
+18- C_ETQ_TLIN   <Tamanho da etiqueta em linhas......  ?>
+19- C_ETQ_TCOL   <                    em colunas...... ?>
+20- C_ETQ_XLIN   <Intervalo entre etiquetas em linhas  ?>
+21- C_ETQ_XCOL   <                          em colunas ?>
+22- C_ETQ_NUM    <Número de etiquetas na linha........ ?>
+23- C_ETQ_1ORD   <Ordenação:>
+24- C_ETQ_2ORD   <Campo              Ordem>
+
+25- R_ETQ_LIN    <Informe o número de linhas da etiqueta>
+26- R_ETQ_COL    <Informe o número de colunas da etiqueta>
+27- R_ETQ_ELIN   <Informe o número de linhas entre as etiquetas>
+28- R_ETQ_ECOL   <Informe o número de colunas entre as etiquetas>
+29- R_ETQ_NUM    <Informe o número de etiquetas por linha>
+
+30- C_CARAC_REL  < Caracteristicas do Relatório >
+
+31- E_LINHAS   - <Número de linhas inválido, deve ser de 2 a 99>
+32- E_RELTCR   - <Página sem linhas uteis suficientes>
+33- E_NODIM    - <Número de linhas/colunas não pode ser diminuido>
+
+34- E_TAMREL   - <Tamanho de relatório está fora do intervalo 20 a 250>
+35- E_ORDTXT   - <Campo Texto não pode ser usado para ordenar>
+
+
+36- OP_CARACTER  <NORMAL@COMPRIMIDO>
+37- OP_QUALIDADE <NORMAL@CARTA>
+38- OP_ORDEM     <ASCENDENTE@DESCENDENTE>
+39- OP_TIPOREL   <FORMATADO@COLUNADO@ETIQUETA>
+
+40 - T_EDITINST  < Instruções especiais do relatório >
+41 - M_EDITINST  <Informe <Sim> para utilizar comandos avançados>
+42 - M_FIMEDIT   <Utilize <TAB> para concluir Instruções especiais.>
+
+43 - C_ETQ_ESP    <Edita instruções especiais ......... ?>
+
+44 - R_COLUNAS_DB5  <Informe o tamanho do formulário em colunas>
+
+
+#------------------------------------------------- GRP 24 -----------#
+GRP 24 - Relatório Colunado
+
+
+1  - C_COL_CAB  - <Caracteristicas do item do relatório>
+2  - C_COL_ICOL - <Rel. Colunado>
+
+3  - C_COL_INS  - <Informe nome do campo a ser incluido no relatorio>
+4  - C_COL_ALT  - <Altere o nome do campo do relatorio e confirme com ENTER>
+5  - C_COL_SEL  - <Escolha com as setas um nome de campo. Confirme com ENTER>
+
+6  - C_COL_1T   - <Titulo        : >
+7  - C_COL_2T   - <Visibilidade  : >
+8  - C_COL_3T   - <Totaliza      : >
+9  - C_COL_4T   - <Quantidade    : >
+10 - C_COL_5T   - <Média         : >
+11 - C_COL_6T   - <Desvio Padrão : >
+
+12 - C_COL_1R   - <Informe Título da coluna>
+13 - C_COL_2R   - <Informe Tamanho a ser impresso em colunas>
+14 - C_COL_3R   - <Imprime total do campo quando houver quebra>
+15 - C_COL_4R   - <Imprime quantidade quando houver quebra>
+16 - C_COL_5R   - <Imprime média do campo quando houver quebra>
+17 - C_COL_6R   - <Imprime desvio padrão do campo quando houver quebra>
+
+18 - TW_COL1  - <  Confirma exclusão do campo  >
+
+19 - E_COL_NE   - <Campo inexistente>
+20 - E_COL_MAX  - <Só existe disponibilidade de mais %d colunas>
+21 - E_COL_VIS  - <Visibilidade limitada de 1 a %d>
+22 - E_COL_VTX  - <Visibilidade mimina para texto e 15>
+
+
+
+#------------------------------------------------- GRP 25 -----------#
+GRP 25 - Entrada de dados
+
+1  -  M_GETNUM   - <Informe o número do registro.>
+2  -  M_GETREG   - <Informe um dos dois campos acima.>
+
+3  -  T_ALTERA   - < Alteração de registros >
+4  -  T_EXCLUI   - < Exclusão de registros >
+
+5  -  S_REG_ALT  - <Registro a ser alterado>
+6  -  S_REG_EXC  - <Registro a ser excluido>
+
+7  -  IC_INCLUI  - <Inclusão>
+8  -  IC_ALTERA  - <Alteração>
+9  -  IC_EXCLUI  - <Exclusão>
+
+10 -  R_INCLUI   - <Incluindo registro>
+11 -  R_ALTERA   - <Alterando registro>
+12 -  R_EXCLUI   - <Excluindo registro>
+
+13 -  R_PROTOC   - <Protocola>
+
+
+
+#------------------------------------------------- GRP 26 -----------#
+GRP 26 - Pesquisa
+
+1  - TW_PQ_T00  < A T E N Ç Ã O >
+2  - TW_PQ_T99  < Abandona @ Continua >
+3  - TW_PQ_T01  <Limite máximo de palavras  a  serem  brilhadas>
+4  - TW_PQ_T02  <foi atingido. As próximas palavras localizadas>
+5  - TW_PQ_T03  <não serão mostradas em destaque  quando  forem>
+6  - TW_PQ_T04  <exibidos os registros selecionados.>
+
+7  - TW_PQ_T30  < A T E N Ç Ã O >
+8  - TW_PQ_T39  < Continua @ Interrompe >
+9  - TW_PQ_T31  < registros ainda não foram indexados>
+10 - TW_PQ_T32  <poderão existir registros na base e não >
+11 - TW_PQ_T33  <           serem selecionados.>
+12 - TW_PQ_T34  < registro ainda não foi indexado>
+
+..13 - C_PSQ_NRD  - <13690 E >
+..14 - C_PSQ_TRD  - <135690 E >
+..15 - C_DEL_TFUN  - <1 2Exclui 3 5 9 E>
+..16 - C_DEL_NFUN  - <1 2Exclui 3 9 E>
+..17 - M_PSQ_NAV  - <Utilize [Tab] para mudar o campo ativo>
+18 - M_PSQ_WNAV  - <Use as setas para andar na janela de palavras >
+
+19  - M_PSQ_NOT    - <Nenhum registro recuperado>
+20  - M_PSQ_SEE    - <Tecle [Enter] para ver os registros>
+21  - M_PSQ_1RA  - <Informe o primeiro argumento de pesquisa>
+22  - M_PSQ_2RA  - <Informe o campo no qual deseja o argumento>
+23  - M_PSQ_3RA  - <Informe um conector logico entre os argumentos>
+24  - M_PSQ_4RA  - <Informe o segundo argumento de pesquisa>
+25  - M_PSQ_5RA  - <Informe o campo no qual deseja o argumento>
+
+26  - M_PSQ_TB1  - <Seleciona a pesquisa desejada. Tecle F6 para editar pesquisa.>
+27  - M_PSQ_TB2  - <Edite a pesquisa. Enter para atualizar.>
+
+
+28 - C_PSQ_1WIN - < Argumentos de pesquisa >
+29 - C_PSQ_OCOR - < Ocorrências >
+30 - C_PSQ_DOCS - <Registros >
+
+31 - C_PSQ_RES  - <RESULTADO>
+32 - C_PSQ_2WIN - < #  Docs. rec.    Data       Pesquisa a ser executada                      >
+34 - C_PSQ_1ROD - <1 2Pesquisa 3 0 TBE>
+35 - C_PSQ_RDUP - <Alteração Duplicado>
+36 - C_PSQ_ICOL - <Pesquisa>
+37 - C_PSQ_NREG - < Reg # %ld ( %ld / %ld ) >
+38 - C_PSQ_ALT  - <Alteração>
+39 - C_PSQ_WROD - < argumento: %s >
+40 - C_PSQ_WTIT - < Palavras recuperadas   ocorrências >
+41 - C_PSQ_WAIT - <Aguarde execução da pesquisa...>
+44 - C_PSQ_1ALIN- <Argumentos             Campos        >
+45 - C_PSQ_1BLIN - < Na base   No campo >
+46 - C_PSQ_1CLIN - <recuperados>
+
+47 - E_PSQ_1EDT  - <usuário sem permissão de alterar registro>
+48 - E_PSQ_3EDT  - <Base Estática. Não é possível editar registro>
+49 - E_PSQ_1BR   - <Pesquisa por brancos requer nome de campo>
+50 - E_PSQ_2BR   - <Campo não permite pesquisa por brancos>
+51 - E_PSQ_INT   - <INTERROGAÇÃO (?) somente válida se não começar com ASTERISCO (*)>
+52 - E_PSQ_AST   - <Não use asterisco no meio da palavra>
+53 - E_PSQ_LST   - <Erro de acesso à lista em disco : %d>
+54 - E_PSQ_F10   - <Usuário não habilitado a nenhuma das opções>
+
+55 - E_PSQ_1TD   - <Pesquisa base toda não deve especificar campo>
+56 - E_PSQ_DUP   - <Erro na duplicação de registro>
+
+57 - E_AE_01  -  <Erro: ')' Deslocado>
+58 - E_AE_02  -  <Erro: Informe um argumento entre dois conectores>
+59 - E_AE_03  -  <Erro: Sentença deve terminar com argumento>
+60 - E_AE_04  -  <Erro: '(' Deslocado>
+61 - E_AE_05  -  <Erro: ')' Excessivo>
+62 - E_AE_06  -  <Sintaxe : Utilize um conector entre dois argumentos>
+63 - E_AE_07  -  <Erro: Esperava conector>
+64 - E_AE_08  -  <Erro: Argumento inválido [%s]>
+
+
+65 - E_DATAPSQ - <Informe data no formato DD/MM/AA>
+66 - E_DATAINV - <Data inválida>
+67 - E_HORAPSQ - <Informe hora no formato HH:MM>
+68 - E_HORAINV - <Hora inválida>
+69 - E_DECPSQ  - <Use somente dígitos e um separador decimal em númericos.>
+70 - E_BRANPSQ - <Argumento não pode conter brancos>
+71 - E_STOPPSQ - <Argumento não pode ser STOP WORD>
+
+
+72 - MN_PSQ_T00   < Opções >
+73 - MN_PSQ_T99   <>
+74 - MN_PSQ_T01   <   Imprimir   >
+75 - MN_PSQ_T02   <   Exportar   >
+76 - MN_PSQ_T03   <   eXcluir    >
+77 - MN_PSQ_T04   <   Duplicar   >
+
+78 - RD_PSQ_R01  <Imprimir registros selecionados>
+79 - RD_PSQ_R02  <Exportar registros selecionados>
+80 - RD_PSQ_R03  <Excluir os registros selecionados da base de dados>
+81 - RD_PSQ_R04  <Duplicar registro corrente>
+
+82 - MN_PSQ_T21   <  Todos  >
+83 - MN_PSQ_T22   <  Este   >
+
+84 - RD_PSQ_R21  <Todos os registros selecionados na pesquisa>
+85 - RD_PSQ_R22  <Somente o registro que está aparecendo na tela>
+
+86 - MN_PSQ_T05   <   Alterar    >
+87 - RD_PSQ_R05   <Alterar um campo para valor comum>
+
+
+88  -  MN_CN_T00 -  < Conectores >
+89  -  MN_CN_T01 -  <E         >
+90  -  MN_CN_T02 -  <Ou        >
+91  -  MN_CN_T03 -  <Xou       >
+92  -  MN_CN_T04 -  <Não       >
+93  -  MN_CN_T05 -  <Adj       >
+94  -  MN_CN_T06 -  <Prox      >
+95  -  MN_CN_T07 -  <noCampo   >
+96  -  MN_CN_T08 -  <noParag   >
+97  -  MN_CN_T09 -  <naFrase   >
+
+
+98  -  MN_CN_R01 -  <Ambos os argumentos presentes>
+99  -  MN_CN_R02 -  <Um argumento e/ou o outro>
+100 -  MN_CN_R03 -  <Somente um dos dois argumentos>
+101 -  MN_CN_R04 -  <Contenha o primeiro mas não o segundo argumento>
+102 -  MN_CN_R05 -  <Adjacentes e seguidos até n palavras (ADJ1 a ADJ9)>
+103 -  MN_CN_R06 -  <Próximos até n palavras (PROX1 a PROX9)>
+104 -  MN_CN_R07 -  <Ambos no mesmo campo>
+105 -  MN_CN_R08 -  <Ambos no mesmo parágrafo>
+106 -  MN_CN_R09 -  <Ambos na mesma frase>
+
+107 - TW_PSQ_D00  < A T E N Ç Ã O >
+108 - TW_PSQ_D99  < Abandona  @  Elimina >
+109 - TW_PSQ_D01  < Número de registros que serão eliminados >
+
+110 - C_RF_01R - < Refinamento >
+111 - C_RF_01N - < Nova Pesquisa >
+112 - C_RF_02  - < Argumento   : >
+113 - C_RF_03  - < Ocorrências : >
+114 - C_RF_04  - < Registros   : >
+115 - C_RF_05  - < Resultado   : >
+
+116 - E_LOGFAULT - <Falha na abertura do arquivo de Log de pesquisa (desabilitada).>
+
+117 - E_PSQEDIT01 < Alterando Reg.: %ld >
+118 - E_CPINTER  <Tipo de campo não permite pesquisa por intervalo>
+
+119 - M_TEMMAIS  < Demais palavras não brilharão.     >
+
+501 - E_PSQ_2EDT  - <Não foi possível editar registro>
+502 - E_FONEPSQ   - <Argumento de pesquisa fonetica não pode conter '*' ou '?'>
+
+#------------------------------------------------- GRP 27 -----------#
+GRP 27 - Ferramentas
+
+1  - MN_TL_TIT  - <>
+2  - MN_TL_ROD  - <>
+3  - MN_TL_T01  - <inFormações>
+4  - MN_TL_T02  - <Reprocessa base>
+5  - MN_TL_T03  - <Limpa base>
+6  - MN_TL_T04  - <Exclui base>
+
+7  - MN_TL_R01  - <Lista informações sobre uma base de dados>
+8  - MN_TL_R02  - <Reprocessa base de dados>
+9  - MN_TL_R03  - <Apaga todos os registros da base>
+10 - MN_TL_R04  - <Remove base de dados>
+
+
+11 - C_MN_INFORM <Informações>
+12 - C_MN_REPROC <Reprocessa base>
+13 - C_MN_ZAP    <Limpa Base>
+14 - C_MN_EXCLUI <Exclui Base>
+
+15 - C_IB_TIT     < Informações da base >
+16 - C_IB_NOME    <Base      :>
+17 - C_IB_MAGI    <Cod. Permissão : >
+18 - C_IB_DESC    <Descrição :>
+19 - C_IB_PATH    <Diretório :>
+20 - C_IB_DONO    <Dono      :>
+21 - C_IB_GRUP    <Grupo :>
+22 - C_IB_NCAM    <Campos definidos....>
+23 - C_IB_NVIS    <Vistas definidas....>
+24 - C_IB_NREL    <Relatórios definidos>
+25 - C_IB_CRIA    <Data de criação.......>
+26 - C_IB_ALTE    <Data de alteração.....>
+27 - C_IB_BACK    <Data do último backup.>
+28 - C_IB_AREG    <Registros ativos....>
+29 - C_IB_DREG    <Registros inativos..>
+30 - C_IB_IREG    <Registros indexados...>
+31 - C_IB_NREG    <Registros a indexar...>                     /****** fora de ordem */
+32 - C_MN_NOBACK  <Inexiste>
+
+
+33 - C_IB_GO    - <Aperte qualquer tecla para continuar.>
+
+
+34 - TW_LB_D00  < Elimina registros da base >
+35 - TW_LB_D99  < Cancela @ Limpa >
+36 - TW_LB_D01  <   Esta operação irá eliminar os>
+37 - TW_LB_D02  < registros existentes na base >
+
+38 - T_JANLOG   <Arquivo de Log>
+
+
+40  - TW_LB_D02  -   < A T E N Ç Ã O >
+41  - TW_LB_D02  -   < Cancela @ Elimina >
+42  - TW_LB_D02  -   <Esta operação exclui os arquivos da base>
+43  - TW_LB_D02  -   <juntamente com seus registros e descrições.>
+44  - TW_LB_D02  -   <Também serão excluidos as referências de>
+45  - TW_LB_D02  -   <acesso à base excluida.>
+
+46  - M_DLARQB   -   <Eliminando arquivos da base. %3AAguarde%1A>
+47  - M_DLACEB   -   <Excluindo acessos da base. %3AAguarde%1A>
+
+48  - E_MEMREB   -   <Sem memória mínima para reprocessar base>
+49  - C_RP_RLOG  -   <Informe nome do arquivo de log>
+
+50  - C_RB_TIT   - < Reprocessamento da Base >
+
+51 - C_RB_F1    - <Fase 1 - Recuperação da descrição da base>
+52 - C_RB_F2    - <Fase 2 - Recuperação dos dados>
+53 - C_RB_F3    - <Fase 3 - Reindexação dos dados>
+
+54 - C_RB_F1D   - <%3AFase 1 - Recuperação da descrição da base%1A>
+55 - C_RB_F2D   - <%3AFase 2 - Recuperação dos dados%1A>
+56 - C_RB_F3D   - <%3AFase 3 - Reindexação dos dados%1A>
+
+
+
+
+57  - TW_IP_D00  < A T E N Ç Ã O >
+58  - TW_IP_D99  < Continua @ Abrevia >
+59  - TW_IP_D01  <Não é possível cancelar Reprocessamento.>
+60  - TW_IP_D02  <Para abreviar o processo será necessario>
+61  - TW_IP_D03  <marcar registros para serem indexados>
+62  - TW_IP_D04  <posteriormente (Indexação parcial).>
+
+
+
+
+63  - ML_REPRO   <Reprocessamento da base : %s>
+64  - ML_F1BEG   <Fase 1 - Reconstrução da descrição da base.>
+65  - ML_F1END   <Fase 1 concluida OK.>
+66  - ML_F2BEG   <Fase 2 - Recuperação dos dados da base.>
+67  - ML_F2END   <Fase 2 concluida OK.>
+68  - ML_ERRDAD  <Erro na recuperação dos dados. Reprocessamento abortado.>
+69  - ML_F3BEG   <Fase 3 - Reindexação dos dados da base.>
+70  - ML_F3END   <Fase 3 concluida OK.>
+
+71  - M_FRB_NAV  <Tecle ENTER ou ESC. Utilize as setas para navegar em log.>
+72  - M_FRB_DIR  <Reprocessamento concluido. Pressione qualquer Tecla.>
+
+73  - E_REBCLS   <Erro na fechamento da base : [%s]>
+74  - E_RBREN    <Erro ao renomear arquivos da base>
+75  - E_RBAPG    <Eliminação de arquivo durante processamento [%s]>
+76  - E_RBRXY    <Erro de renomear [%s] para [%s]>
+
+77  - E_RDOPN    <Problema na abertura da descrição da base. Erro : %d>
+
+78  - ML_COR4    <Arquivo de descrição corrompido ou outra versao. Iniciando reconstrução.>
+79  - ML_NOREB   <Reconstrução da descrição não foi possível. Reprocessamento abortado.>
+80  - ML_RDFIN   <Reconstrução da descrição da base concluida.>
+
+81  - ML_BEGCONS <Iniciando processo de consistência da descrição da base.>
+82  - ML_EROP4   <Erro na abertura da descrição da base. Reprocessamento abortado.>
+83  - ML_ERCONS  <Erro na consistência da base. Reprocessamento abortado.>
+
+84  - ML_LDCPS   <Erro na carga do vetor de campos.>
+85  - ML_NOCPS   <Nenhum campo identificado. Término de reprocessamento.>
+86  - ML_RCCPS   <Erro na recomposição dos campos da base.>
+
+87  - ML_LDVIS   <Erro na carga do vetor de Vistas.>
+88  - ML_NOVIS   <Nenhuma Vista identificada.>
+89  - ML_AVVIS   <Analisando consistência da Vista %s>
+90  - ML_DSVIS   <Itens de Vistas inexistentes ou inacessíveis. Vista desprezada>
+91  - ML_RCVIS   <Erro na recomposição das Vistas da base.>
+
+92  - ML_LDEVIS  <Erro na carga do vetor de elementos da Vista.>
+93  - ML_DSITV   <Campo não existe mais. Item de Vista desprezado.>
+94  - ML_NOEVIS  <Nenhum item na Vista.>
+
+95  - ML_LDREL   <Erro na carga do vetor de relatórios.>
+96  - ML_NOREL   <Nenhum relatório identificado.>
+97  - ML_AVREL   <Analisando consistência do relatório %s>
+98  - ML_DSREL   <Itens de relatório inexistentes ou inacessiveis. Relatório desprezado>
+99  - ML_RCREL   <Erro na recomposição do relatório da base.>
+
+100 - ML_LDEREL  <Erro na carga do vetor de elementos do relatório.>
+101 - ML_DSITR   <Campo não existe mais. Item de relatório desprezado.>
+102 - ML_NOEREL  <Nenhum item no relatório.>
+
+103 - ML_AVLB4   <Avaliando conteúdo do arquivo de descrição da base.>
+
+104 - C_IN_JLOG  <Histórico do reprocessamento (gravado no arquivo de log).>
+
+105 - ML_EAVREC  <Erro na análise de Registro. Erro : -2>
+106 - ML_LSTTXT  <Perda de campo texto no registro>
+107 - ML_KEYDES  <Chave Única duplicada. Registro : %ld  Campo : %s   Valor : %s>
+108 - ML_WRREG   <Erro na gravação de registro da base>
+109 - ML_RECREG  <Registros recuperados : %ld>
+110 - ML_ERNEW   <Erro na criação de novo registro da base>
+111 - ML_LSTCTR  <Perda de registros de controle>
+112 - ML_BIGREG  <Registro maior que tamanho de registro máximo. Desprezado.>
+113 - ML_CPTRUNC <Reg. : %ld Campo %s truncado  : %s>
+114 - ML_BIGTXT  <Reg. : %ld   Texto maior que : %ld>
+115 - ML_CANIDX  <usuário decidiu interromper indexação.>
+
+116 - E_READLOG   <ATENÇÃO. Erros durante reprocessamento. Leia arquivo de log.>
+117 - E_RBIND     <Erro na reindexação da base após reprocessamento>
+
+118 - C_FER3_AT     <Ativos    :>
+119 - C_FER3_IN     <Inativos  :>
+120 - C_FER3_RE     <Recuperados......:>
+121 - C_FER3_PR     <Parc. recuperados:>
+122 - C_FER3_NR     <Não recuperados..:>
+
+123 - TW_ZPRB1   < Arquivos de dados da base inexistem ou não podem >
+124 - TW_ZPRB2   < ser lidos. Serão criados novos arquivos de dados >
+125 - TW_ZPRB3   < para a base. Deseja cancelar operação.>
+
+126 - M_WAITMRK <Aguarde. Marcando registros a serem indexados>
+127 - M_WAITIND <Aguarde. Reindexando registro No: >
+128 - T_DELBAS  < Base a ser excluida >
+
+129 - ML_REGRUIM <Reg. : %ld   Danificado.>
+
+------------- Opcoes de otimização na reindexação / janela : 2 x 30
+130 - TW_OT_D00  <>
+131 - TW_OT_D99  < Espaço @ Tempo >
+132 - TW_OT_D01  <   Escolha uma das formas de Otimização   >
+
+133 - ML_CTLINV  <Registro de controle com informacões indevidas. Reg.: %ld>
+
+501 - E_USECONV <Base necessita de conversão. Use antes o utilitário conv58>
+
+#------------------------------------------------- GRP 28 -----------#
+GRP 28 - Importação
+
+
+
+2  - C_IN_FOOT   <Importação>
+3  - C_IN_CAB    < Importação >
+4  - C_IN_TNAME  <Nome do Arquivo ............... :>
+5  - C_IN_TLOG   <Arquivo de ocorrências ........ :>
+6  - C_IN_TPROC  <Tratamento a campos inválidos.. :>
+7  - C_IN_TINDEX <Indexa a cada registro importado :>
+8  - C_IN_TVAL   < Aceitos >
+9  - C_IN_TINVAL < Rejeitados >
+10 - C_IN_OPPROC  <Rejeita registros@Limpa campos>
+11 - C_IN_RNAME  <Informe nome do arquivo para importação>
+12 - C_IN_RLOG   <Informe nome do arquivo de log>
+13 - C_IN_RPROC  <Use <ESPACO> para alternar opções>
+14 - C_IN_RINDEX <Use <ESPACO> para inverter SIM/NÃO>
+15 - C_IN_FINAL  <Importação concluida. Aperte qualquer tecla para continuar>
+16 - C_IN_FLOG   <Importação concluida.>
+17 - C_IN_JLOG   < Log da Importação >
+18 - C_IN_LINH   <Linha %ld : %s>
+19 - C_IN_LICA   <Linha %ld  Campo %d : %s>
+20 - C_IN_WAIT   <Importando registro %2A%ld%1A>
+21 - C_IN_ESC    - <Importação interrompida pelo usuário.>
+
+
+
+22 - E_IN_NAME  - <Nome de arquivo inválido para importação>
+23 -            - < >
+24 - E_IN_READ  - <Erro na leitura do arquivo de importação.>
+25 - E_IN_ABT   - <Importação interrompida.>
+26 - E_IN_HD0   - <Cabeçalho do arquivo de importação inexistente.>
+27 - E_IN_HD1   - <Campo [%s] inexistente na base.>
+28 - E_IN_HD2   - <Nenhum campo a importar>
+29 - E_IN_001   - <Número de aspas inválido>
+30 - E_IN_002   - <Campo truncado>
+31 - E_IN_003   - < >
+32 - E_IN_004   - <Registro rejeitado>
+33 - E_IN_005   - <Informação do campo desprezada>
+34 - E_IN_006   - <Nome de arquivo deve ser precedido do caracter '@'>
+35 - E_IN_007   - <Erro na abertura do arquivo>
+
+36 - E_IN_008   - <Linha inválida na importação : %s>
+37 - E_IN_009   - <%s - Texto duplicado, desprezado.>
+38 - E_IN_010   - <%s - Erro na criação do campo texto.>
+39 - E_IN_011   - <%s - Erro na inclusão de linha em Texto.>
+40 - E_IN_012   - <%s - Erro na inclusão de linha em Texto.>
+41 - E_IN_013   - <%s - Erro. Registro rejeitado>
+
+
+
+42  - TW_IN_D20  <>
+43  - TW_IN_D29  < Continua @ Interrompe >
+44  - TW_IN_D21  < Processo de importação de dados >
+45  - TW_IN_D22  <     deve ser interrompido ? >
+
+46  -  M_KEYDES   - <Chave Única duplicada. Registro : %ld  Campo : %s   Valor : %s>
+
+#------------------------------------------------- GRP 29 -----------#
+GRP 29 - MENSAGENS RELATORIOS
+
+; Usadas em lb2rel0
+;   em nivel_quebra e total_geral */
+1  -  M_RE0_TOTAL    <Total.......>
+2  -  M_RE0_QUANT    <Quantidade..>
+3  -  M_RE0_MEDIA    <Média.......>
+4  -  M_RE0_DESVIO   <Desv. padrão>
+5  -  M_RE0_TOTGER   <Total Geral.>
+
+; Usadas em lb2rel1
+
+6  -  M_EMI_ORDENA   <Aguarde. Classificando registros>
+7  -  M_EMI_IMPREL   <Aguarde impressão do relatório>
+8  -  M_EMI_MENS     <Imprimindo registro # :>
+
+ 9  - TW_RL_D00  <>
+10  - TW_RL_D99  < Continua @ Interrompe >
+11  - TW_RL_D01  < Impressão de relatório deve  >
+12  - TW_RL_D02  <      ser interrompida ? >
+
+
+13 -  M_EMI_LPAG     <Aguarde. Formatando página :>
+14 -  M_EMI_DATA     <Data : %s>
+15 -  M_EMI_PAGE     <Pag. :    %5d>
+16 -  M_EMI_SALPAG   <Informe <S> para imprimir página <N> para parar.>
+
+; usadas em lb2rel2
+
+17 -  M_ETI_RDISP   <Informe o local de impressão das etiquetas>
+18 -  M_ETI_RSALT   <Informe a quantidade de etiquetas a saltar>
+19 -  M_ETI_CARAC   <Características de impressão>
+20 -  M_ETI_TDISP   <Imprimir em ...........:>
+21 -  M_ETI_TSALT   <Etiquetas a saltar ....:>
+
+
+; usadas em lb2rel4
+
+23   -  M_CF_DESTINO      <Informe o local de impressão do relatório>
+24   -  M_CF_PAGINI       <Informe numeração de páginas a imprimir>
+25   -  M_CF_PULPAG       <Informe Sim ou Não>
+26   -  M_CF_MUDCARAC     <Informe Sim ou Não>
+27   -  M_CF_PALNEGR      <Informe Sim ou Não>
+
+28   -  M_CF_CARAC        <Caracteristicas de Impressão>
+29   -  M_CF_NUPAG        <Imprimir a partir da página ........... :>
+30   -  M_CF_DISP         <Imprimir em ........................... :>
+31   -  M_CF_PULAR_LINHA  <Pular linha a cada registro ........... :>
+32   -  M_CF_PULAR        <Pular página a cada registro .......... :>
+33   -  M_CF_MUDAR        <Mudar caracteristicas do Relatório..... :>
+34   -  M_CF_PALPESQ      <Imprime palavras pesquisadas em negrito :>
+
+35   -  M_CF_PULLIN       <Informe Sim ou Não>
+
+
+; usadas em lb2rel5
+
+41 -  M_DEV_NAME     <Nome :>
+42 -  M_DEV_DRIV     <Tipo :>
+43 -  M_DEV_NOARQ    <Informe o nome do arquivo a gravar>
+44 -  M_DEV_NODRIV   <Informe o tipo de impressora a simular>
+45 -  E_DEV_DESBR    <Nome destino em branco>
+46 -  E_DEV_DRIVBR   <Nome driver em branco>
+47 -  E_DEV_ACESSS   <Driver [%s] não pode ser acessado.>
+
+
+; Erros gerais
+
+48 -  E_OPDRV        <Descritor da impressora não disponivel: %s>
+
+501 - E_EMI_IMPREL        <Erro [%d] : Erro na impressão do relatório>
+502 - E_NAO_SORT          <Não foi possível ordenar arquivo>
+
+
+#------------------------------------------------- GRP 30 -----------#
+GRP 30 - REINDEXACÃO
+
+
+1 - C_IX_INDEX       <Indexação>
+2 - C_IX_REINDEX     < Reindexação da Base >
+3 - C_IX_FRT1        <Reindexação TOTAL da base>
+4 - C_IX_FRP1        <Reindexação PARCIAL da base>
+5 - C_IX_TOIND       <Registros a indexar :>
+6 - C_IX_1WORK       <Aguarde. Reindexando registro :>
+7 - C_IX_2WORK       <Aguarde. Marcando registro :>
+8 - C_IX_FINAL       <Veja arquivo de log>
+
+------------- Tela de indexação parcial. Tamanho da janela : 2 x 30
+10 - TW_IP_D00  <>
+11 - TW_IP_D99  < Continua @ Interrompe >
+12 - TW_IP_D01  < Processo de indexação parcial>
+13 - TW_IP_D02  <    deve ser interrompido ? >
+
+------------- Tela de rebuild index. Tamanho da janela : 2 x 42
+14  - TW_IC_D00  < A T E N Ç Ã O >
+15  - TW_IC_D99  < Continua @ Abrevia >
+16  - TW_IC_D01  <Não é possível cancelar Indexação completa.>
+17  - TW_IC_D02  <Para  abreviar o processo  será  necessário>
+18  - TW_IC_D03  <marcar  registros  para   serem   indexados>
+19  - TW_IC_D04  <posteriormente (Indexação parcial).>
+
+------------- Opcoes de otimização na reindexação / janela : 2 x 30
+20 - TW_OT_D00  <>
+21 - TW_OT_D99  < Espaço @ Tempo >
+22 - TW_OT_D01  <   Escolha uma das formas de Otimização   >
+
+#------------------------------------------------- GRP 31 -----------#
+GRP 31 - BACKUP/RESTORE
+
+
+501 - E_BKENV  - <Não foi possível executar backup/restore>
+502 - E_BKFAL  - <ATENÇÃO. Falha na execução da rotina de backup/restore>
+503 - E_BKHDR  - <Falha na atualização do header da base>
+504 - E_BKEXC  - <Outros usuários na base. Backup/restore não é possível.>
+
+
+---------- Rotina de BACKUP. Tamanho da janela : 1 x 34
+1  - TW_BK_D1  < Sim @ Não >
+2  - TW_BK_D2  <    Confirma operação de BACKUP >
+
+---------- Rotina de RESTORE. Tamanho da janela : 1 x 34
+3  - TW_RS_D1  < Sim @ Não >
+4  - TW_RS_D2  <    Confirma operação de RESTORE >
+
+5  - M_SELREST <Selecione base a ser restaurada.>
+
+
+#------------------------------------------------- GRP 32 -----------#
+GRP 32 - EXPORTACAO DE DADOS
+1  - E_EX_WRT   - <Erro na gravação do arquivo de exportação>
+2  - E_EX_ARQ   - <Nome do arquivo de exportação inválido>
+3  - E_EX_001   - <Erro na carga de campo texto de registro>
+4  - E_EX_002   - <Erro na abertura de arquivo para campo texto : [%s]>
+5  - E_EX_003   - <Erro na gravação do texto no arquivo : [%s]>
+6  - E_EX_004   - <Tamanho máximo do buffer de exportação foi atingido>
+7  - E_EX_1DIR  - <Diretório inválido ou inexistente.>
+
+8  - C_EX_FOOT  - <Exportação>
+9  - C_EX_CAB   - < Exportação de dados >
+10  - C_EX_CMP   - <Nomes dos campos :>
+11 - C_EX_ARQ   - <Nome do arquivo  :>
+12 - C_EX_TVAL  - <Exportados>
+13 - C_EX_FINAL - <Exportação concluida. Aperte qualquer tecla para continuar>
+14 - C_EX_RCMP  - <Informe os campos a serem exportados separados por ','>
+15 - C_EX_RARQ  - <Informe o nome do arquivo a ser gerado na exportação>
+16 - C_EX_DIR   - <Diretório        :>
+17- C_EX_RARQ  - <Informe o nome do diretório para exportação>
+
+18 - C_EX_FMT    - <Formato : >
+19 - C_EX_PADRAO - <Informe padrão de exportação.>
+20 - C_EX_OPCPAD - <Linear@Delimitado>
+
+21  - TW_EX_T00  < A T E N Ç Ã O >
+22  - TW_EX_T99  < Cancela @ Sobrepõe >
+23  - TW_EX_D01  <   Arquivo de exportação já existe.>
+24  - TW_EX_D02  < Informações atuais serão sobrepostas.>
+
+25  - TW_EX_D20  <>
+26  - TW_EX_D29  < Continua @ Interrompe >
+27  - TW_EX_D21  < Processo de exportação de dados >
+28  - TW_EX_D22  <     deve ser interrompido ? >
+29  - C_EX_ESC   <Exportação interrompida pelo usuário.>
+
+30 - E_CP_HD1   - <Campo [%s] não está cadastrado>
+31 - E_CP_HD2   - <Informe no mínimo um campo>
+
+
+
+32  - TW_EX_D30  < A T E N Ç Ã O >
+33  - TW_EX_D39  < Mantem @ Altera >
+34  - TW_EX_D31  < Processo de exportação DELIMITADO pode gerar >
+35  - TW_EX_D32  <   grande numero de arquivos. Tem certeza ? >
+
+
+#------------------------------------------------- GRP 33 -----------#
+GRP 33 - DEFINICAO DE ACESSOS
+
+1   - C_DB3_ICOL   - <Def. Acessos.>
+
+2   - M_AC_INCLUI  - <Informe 'X' para permitir %4AIncluir%1A dados>
+3   - M_AC_ALTERA  - <Informe 'X' para permitir %4AAlterar%1A dados>
+4   - M_AC_EXCLUI  - <Informe 'X' para permitir %4AExcluir%1A dados>
+5   - M_AC_PESQ    - <Informe 'X' para permitir %4APesquisar%1A>
+6   - M_AC_EMITIR  - <Informe 'X' para permitir %4AEmitir Relatório%1A>
+7   - M_AC_EXPORT  - <Informe 'X' para permitir %4AExportar%1A dados>
+8   - M_AC_IMPORT  - <Informe 'X' para permitir %4AImportar%1A dados>
+
+9   - M_AC_PARCIAL - <Informe 'X' para permitir %4AIndexar%1A parcialmente a Base>
+10  - M_AC_TOTAL   - <Informe 'X' para permitir %4AIndexar%1A toda a base>
+11  - M_AC_BACKUP  - <Informe 'X' para permitir %4ABackup%1A da base>
+12  - M_AC_RESTORE - <Informe 'X' para permitir %4ARestaurar%1A backup>
+
+13  - M_AC_RVISTA  - <Informe <Sim> para modificar acessos às Vistas>
+14  - M_AC_RREL    - <Informe <Sim> para modificar acessos aos relatórios>
+
+15  - M_INS_PRT    - <Informe nome do usuário ou grupo>
+16  - M_EXC_PRT    - <Confirma exclusão da proteção (S/N) ? >
+17  - M_SEL_PRT    - <Selecione usuário/grupo com as setas e tecle ENTER>
+
+18  - M_DB3_INVERTE - <Use <ESPACO> para inverter SIM/NÃO>
+19  - M_DB3_WAIT    - <Atualizando proteções. %3AAguarde%1A...>
+
+
+20 - C_DB3_DEF   - < %4ADefinição%1A >
+21 - C_DB3_UTI   - < %4AUtilização%1A >
+22 - C_DB3_MAN   - < %4AManutenção%1A >
+23 - C_DB3_VR    - < %4AAcesso às Vistas/Relatórios%1A >
+
+
+24 - C_DB3_PINC  - <[ ] Inclui>
+25 - C_DB3_PALT  - <[ ] Altera>
+26 - C_DB3_PEXC  - <[ ] Exclui>
+27 - C_DB3_PPSQ  - <[ ] Pesquisa>
+28 - C_DB3_PEMI  - <[ ] Emite>
+29 - C_DB3_PEXP  - <[ ] Exporta>
+30 - C_DB3_PIMP  - <[ ] Importa>
+
+31 - C_DB3_PPAR  - <[ ] Ind. Parc.>
+32 - C_DB3_PTOT  - <[ ] Ind. Total>
+33 - C_DB3_PBAK  - <[ ] Backup>
+34 - C_DB3_PRES  - <[ ] Restore>
+
+35 - C_DB3_MVIS  - <Deseja modificar acesso às Vistas .... : >
+36 - C_DB3_MREL  - <Deseja modificar acesso aos relatórios : >
+37 - C_DB3_IDENT - < Identificação >
+
+
+50 - E_DB3_CMP  - <Crie campos antes de entrar nesta função>
+51 - E_DB3_ADM  - <usuário Administrador tem acesso ilimitado>
+52 - E_DB3_DUP  - <Identificação já relacionada a esta base>
+53 - E_DB3_NO   - <Identificação não é um usuário nem um grupo>
+54 - E_DB3_INC  - <Erro na inclusão de proteção de acesso>
+55 - E_DB3_EXC  - <Erro na exclusão de proteção de acesso>
+
+
+501 - E_EXC_EXC  - <Excesso de exclusões. Salve, [F2] e tente novamente.>

@@ -1,0 +1,9 @@
+p=A:
+	echo "Coloque Midia de 5 1/4 (alta densidade ed $p) para tap.Z e tct.Z ..."
+	echo "Quando Ok. tecle ENTER\c"; read lixo
+	tar cv2 tap.Z tct.Z
+
+
+	echo "Coloque Midia de 5 1/4 (alta densidade ed $p) para tmt.Z, tpd.Z e outros..."
+	echo "Quando Ok. tecle ENTER\c"; read lixo
+	tar cv2 tmt.Z tpd.Z faz_porte.lb prep_porte.lb finaliza.lb mac_demo.tar

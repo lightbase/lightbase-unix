@@ -1,0 +1,4 @@
+rm -f tpd *.bak
+tar cvf tpd gera_tpd *
+rm -f tpd.Z
+compress tpd

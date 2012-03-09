@@ -1,0 +1,6 @@
+rm -f *.bak
+tar cvf converte.tar ./converte/*.[ch] ./converte/makefile* ./converte/makes
+tar cvf tap gera_tap *.c *.h *.lbp *.lbt *.lb *.doc *.inc makefile* geraconv converte.tar makes
+rm converte.tar
+rm -f tap.Z
+compress tap

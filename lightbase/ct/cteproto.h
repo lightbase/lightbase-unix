@@ -1,0 +1,118 @@
+extern COUNT uerr_cod;
+
+#ifdef MSDOS
+   COUNT ADDKEY(COUNT, TEXT *, POINTER, COUNT, COUNT);
+#else
+   COUNT ADDKEY( );
+#endif
+
+
+/*#################################################### ctinit.c #####*/
+#ifdef MSDOS
+   COUNT STPUSR( VOID );
+   COUNT TRANSACTION( COUNT );
+   COUNT INTREE(COUNT, COUNT, COUNT);
+   COUNT OPNFIL(COUNT, TEXT *, COUNT, LONG, UCOUNT);
+   COUNT CLSFIL(COUNT, COUNT);
+   COUNT FLUSHFIL(COUNT);
+   COUNT RECALFIL(COUNT);
+   COUNT DELFILE(TEXT *);
+   COUNT RENFILE(TEXT *, TEXT *);
+   COUNT ATUFILE(COUNT, LONG, UCOUNT);
+   LONG PEGA_SERIE(COUNT);
+#else
+   COUNT STPUSR( );
+   COUNT TRANSACTION( );
+   COUNT INTREE( );
+   COUNT OPNFIL( );
+   COUNT CLSFIL( );
+   COUNT FLUSHFIL( );
+   COUNT RECALFIL( );
+   COUNT DELFILE( );
+   COUNT RENFILE( );
+   COUNT ATUFILE( );
+   LONG PEGA_SERIE( );
+#endif
+
+/*#################################################### ctdatf.c #####*/
+#ifdef MSDOS
+   POINTER NEWREC(COUNT);
+   POINTER LSTREC(COUNT);
+   COUNT REDREC(COUNT, POINTER, TEXT *);
+   COUNT WRTREC(COUNT, POINTER, TEXT *);
+   COUNT LOKREC(COUNT, COUNT, POINTER);
+#else
+   POINTER NEWREC( );
+   POINTER LSTREC( );
+   COUNT REDREC( );
+   COUNT WRTREC( );
+   COUNT LOKREC( );
+#endif
+
+/*#################################################### ctdelk.c #####*/
+#ifdef MSDOS
+   COUNT DELKEY(COUNT, TEXT *, COUNT );
+#else
+   COUNT DELKEY( );
+#endif
+
+/*#################################################### ctkeyf.c #####*/
+#ifdef MSDOS
+   COUNT CREDAT(COUNT, TEXT *, UCOUNT, UCOUNT, COUNT, LONG, UCOUNT);
+   COUNT CREIDX(COUNT, TEXT *, COUNT, COUNT, COUNT, UCOUNT, COUNT, LONG, UCOUNT);
+   COUNT CREMEM(COUNT, COUNT, COUNT, COUNT, LONG, UCOUNT);
+   COUNT RETVREC(COUNT, POINTER);
+   COUNT WRTVREC(COUNT, POINTER, TEXT *, UCOUNT);
+   COUNT RDVREC(COUNT, POINTER, TEXT *, UCOUNT);
+   UCOUNT GTVLEN(COUNT, POINTER);
+#else
+   COUNT CREDAT( );
+   COUNT CREIDX( );
+   COUNT CREMEM( );
+   COUNT RETVREC( );
+   COUNT WRTVREC( );
+   COUNT RDVREC( );
+   UCOUNT GTVLEN( );
+#endif
+
+
+
+/*#################################################### ctsrch.c #####*/
+#ifdef MSDOS
+   POINTER EQLKEY(COUNT, TEXT *, COUNT);
+   POINTER GTEKEY(COUNT, TEXT *, TEXT *, UCOUNT);
+   POINTER NXTKEY(COUNT, TEXT *);
+   POINTER PRVKEY(COUNT, TEXT *);
+   POINTER FRSKEY(COUNT, TEXT *);
+   POINTER LSTKEY(COUNT, TEXT *);
+   POINTER GTKEY(COUNT, TEXT *, TEXT *, UCOUNT);
+   POINTER LTKEY(COUNT, TEXT *, TEXT *, UCOUNT);
+   POINTER LTEKEY(COUNT, TEXT *, TEXT *, UCOUNT);
+   POINTER NEWVREC(COUNT, UCOUNT);
+#else
+   POINTER EQLKEY( );
+   POINTER GTEKEY( );
+   POINTER NXTKEY( );
+   POINTER PRVKEY( );
+   POINTER FRSKEY( );
+   POINTER LSTKEY( );
+   POINTER GTKEY( );
+   POINTER LTKEY( );
+   POINTER LTEKEY( );
+   POINTER NEWVREC( );
+#endif
+
+
+/*#################################################### cttrace.c #####*/
+#ifdef MSDOS
+   COUNT CTFNUM(COUNT);
+   COUNT MANUT_OPEN( COUNT, TEXT *, COUNT, LONG *, UCOUNT *);
+   COUNT REG_INFO(COUNT, POINTER, UCOUNT *, UCOUNT *, POINTER *, COUNT *);
+   COUNT REG_READ(COUNT, POINTER, UCOUNT, TEXT *);
+#else
+   COUNT CTFNUM( );
+   COUNT MANUT_OPEN( );
+   COUNT REG_INFO( );
+   COUNT REG_READ( );
+#endif
+

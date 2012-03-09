@@ -1,0 +1,75 @@
+||\n|%d12
+|||
+|||Habilita graficos tipo 1
+|||Desabilita graficos tipo 1
+|||Habilita graficos tipo 2
+|||Desabilita graficos tipo 2
+\||129|0|Linha vertical
+-|130|0|Linha horizontal
+*|131|0|Canto superior esquerdo
+*|132|0|Canto superior direito
+*|133|0|Canto inferior direito
+*|134|0|Canto inferior esquerdo
+*|135|0|T para cima
+*|136|0|T para a direita \|-
+*|137|0|T para baixo
+*|138|0|T para a esquerda -\|
+*|139|0|Junção de linhas -\|-
+#|140|0|Caracter hachurado
+\|\||141|0|Linha vertical dupla
+=|142|0|Linha horizontal dupla
+*|143|0|Canto superior esquerdo duplo
+*|144|0|Canto superior direito duplo
+*|145|0|Canto inferior direito duplo
+*|146|0|Canto inferior esquerdo duplo
+*|147|0|Duplo T para cima
+*|148|0|Duplo T para a direita \|\|-
+*|149|0|Duplo T para baixo
+*|150|0|Duplo T para a esquerda -\|\|
+*|151|0|Junção de linhas duplas
+#%d8#|152|0|Caracter hachurado enfatizado
+->|153|0|Seta para direita
+<-|154|0|Seta para esquerda
+^%d8\||155|0|Seta para cima
+v%d8\||156|0|Seta para baixo
+%d32|160|0|Falso branco
+|161|0|Exclamação invertida
+|167|0|Parágrafo
+a%d8_|170|0|ordinal feminino
+o%d8_|186|0|Ordinal masculino
+|191|0|Interrogação invertida
+A%d8`|192|0|A maiúsculo grave
+A%d8'|193|0|A maiúsculo agudo
+A%d8^|194|0|A maiúsculo circunflexo
+A%d8~|195|0|A maiúsculo til
+c%d8,|199|0|Cedilha maiúsculo
+E%d8'|201|0|E maiúsculo agudo
+E%d8^|202|0|E maiúsculo circunflexo
+I%d8'|205|0|I maiúsculo agudo
+N%d8~|209|0|N maiúsculo til
+O%d8'|211|0|O maiúsculo agudo
+O%d8^|212|0|O maiúsculo circunflexo
+O%d8~|213|0|O maiúsculo til
+U%d8'|218|0|U maiúsculo agudo
+U%d8"|220|0|U maiúsculo trema
+a%d8`|224|0|A minúsculo grave
+a%d8'|225|0|A minúsculo agudo
+a%d8^|226|0|A minúsculo circunflexo
+a%d8~|227|0|a minúsculo til
+c%d8,|231|0|cedilha minúsculo
+e%d8'|233|0|e minúsculo agudo
+e%d8^|234|0|E minúsculo circunflexo
+i%d8'|237|0|I minúsculo agudo
+n%d8~|241|0|N minúsculo til
+o%d8'|243|0|O minúsculo agudo
+o%d8^|244|0|O minúsculo circunflexo
+o%d8~|245|0|O minúsculo til
+u%d8'|250|0|U minúsculo agudo
+u%d8"|252|0|U minúsculo trema
+ARYEND
+|
+%d27G|%d27H
+%d15|%d18
+%d27E|%d27F
+%d27%d4|%d27%d5
+ARYEND

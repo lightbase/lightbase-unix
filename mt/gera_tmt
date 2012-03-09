@@ -1,0 +1,4 @@
+rm -f *.bak
+tar cvf tmt gera_tmt *.c *.h strings makefile* makes
+rm -f tmt.Z
+compress tmt

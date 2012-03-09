@@ -1,0 +1,253 @@
+80|25|1|||-brkint -ixon -isig -icanon -echo eof "^a" eol "^b" -inlcr -icrnl||
+\E[%%i%%d;%%dH|0|\E[%%dA|\E[%%dB|\E[%%dC|\E[%%dD
+\E[H|\E[A|\E[B|\E[C|\E[D|
+\E[0K|\E[0J|\E[2J\E[H|\b
+|||||
+|||Video
+|1|1|Abre Tipo 1
+|1|0|Fecha Tipo 1
+|2|1|Abre Tipo 2
+|2|0|Fecha Tipo 2
+%d179|129|0|Vert 1
+%d196|130|0|Horiz 1
+%d218|131|0|Sup Esq 1
+%d191|132|0|Sup Dir 1
+%d217|133|0|Inf Dir 1
+%d192|134|0|Inf Esq 1
+%d193|135|0|T Cima 1
+%d195|136|0|T Dir 1
+%d194|137|0|T Normal 1
+%d180|138|0|T Esq 1
+%d197|139|0|Cruza 1
+%d176|140|0|Hachura 1
+%d186|141|0|Vert 2
+%d205|142|0|Horiz 2
+%d201|143|0|Sup Esq 2
+%d187|144|0|Sup Dir 2
+%d188|145|0|Inf Dir 2
+%d200|146|0|Inf Esq 2
+%d202|147|0|T Cima 2
+%d204|148|0|T Dir 2
+%d203|149|0|T Normal 2
+%d185|150|0|T Esq 2
+%d206|151|0|Cruza 2
+%d177|152|0|Hachura 2
+>|153|0|Seta Dir
+<|154|0|Seta Esq
+\^|155|0|Seta Cima
+v|156|0|Seta Baixo
+%d32|160|0|Falso Branco
+%d173|161|0|Excl Inv
+$|167|0|Paragrafo
+%d166|170|0|Ord Fem
+%d167|186|0|Ord Masc
+%d168|191|0|Inter Inv
+%d143|192|0|A`
+%d143|193|0|A'
+%d142|194|0|A^
+%d142|195|0|A~
+%d128|199|0|C'
+%d144|201|0|E'
+%d144|202|0|E^
+%d141|205|0|I'
+%d165|209|0|N~
+%d162|211|0|O'
+%d153|212|0|O^
+%d153|213|0|O~
+%d163|218|0|U'
+%d154|220|0|U"
+%d133|224|0|a`
+%d160|225|0|a'
+%d131|226|0|a^
+%d132|227|0|a~
+%d135|231|0|c'
+%d130|233|0|e'
+%d136|234|0|e^
+%d161|237|0|i'
+%d164|241|0|n~
+%d162|243|0|o'
+%d147|244|0|o^
+%d148|245|0|o~
+%d163|250|0|u'
+%d129|252|0|u"
+%d254|253|0|Macro
+%d250|254|0|Fim de Paragr
+ARYEND
+||||Atributos
+\E[m||0|0|0
+\E[;7m||0|0|0
+\E[;5m||0|0|0
+\E[;1m||0|0|0
+\E[m||0|0|0
+\E[;7m||0|0|0
+\E[;7m||0|0|0
+\E[;1m||0|0|0
+\E[m||0|0|0
+\E[;7m||0|0|0
+\E[;7m||0|0|0
+\E[;1m||0|0|0
+\E[m||0|0|0
+\E[m||0|0|0
+\E[;7m||0|0|0
+\E[;1m||0|0|0
+\E[m||0|0|0
+\E[m||0|0|0
+\E[;7m||0|0|0
+\E[;1m||0|0|0
+\E[m||0|0|0
+\E[m||0|0|0
+\E[;7m||0|0|0
+\E[;1m||0|0|0
+\E[m||0|0|0
+\E[m||0|0|0
+\E[;7m||0|0|0
+\E[;1m||0|0|0
+ARYEND
+||Teclado
+\E[W|%d129|F11 - Esc
+\E[X|^KL|F12 - ^KL
+%d8|%d08|B.S.
+%d13|%d10|Enter
+''|%d39|Agudo
+%d94%d94|%d94|Circum
+``|%d96|Grave
+%d124%d124|%d124|Barra Trema
+~~|%d126|Til
+|%d128|
+\E\E|%d129|Esc,Esc
+|%d130|
+\E[A|%d131|UP KEY
+\E[B|%d132|DN KEY
+\E[C|%d133|-->
+\E[D|%d134|<--
+\E[H|%d135|Home
+\E[F|%d136|End
+\E[I|%d137|PgUp
+\E[G|%d138|PgDn
+\E[L|%d139|Ins
+%d127|%d140|Del
+\E[V|%d141|F10
+\E[M|%d142|F1
+\E[N|%d143|F2
+\E[O|%d144|F3
+\E[P|%d145|F4
+\E[Q|%d146|F5
+\E[R|%d147|F6
+\E[S|%d148|F7
+\E[T|%d149|F8
+\E[U|%d150|F9
+\E[t|%d151|CTRL-F10
+\E[k|%d152|CTRL-F1
+\E[l|%d153|CTRL-F2
+\E[m|%d154|CTRL-F3
+\E[n|%d155|CTRL-F4
+\E[o|%d156|CTRL-F5
+\E[p|%d157|CTRL-F6
+\E[q|%d158|CTRL-F7
+\E[r|%d159|CTRL-F8
+|%d160|Falso Branco
+%d124!|%d161|Excl Inv
+|%d162|Alt A
+|%d163|Alt B
+|%d164|Palavra <--
+|%d165|Palavra -->
+\E[s|%d166|CTRL-F9
+%d124p|%d167|Pargrfo
+|%d168|Trema
+|%d169|Alt C
+%d124a|%d170|Ord_a
+|%d171|Alt D
+\Ec|%d172|^PgDn
+\Er|%d173|^PgUp
+|%d174|Alt E
+\E^I|%d175|BTab
+|%d176|Alt F
+%d124+|%d177|Mais Menos
+|%d178|Alt G
+|%d179|Alt H
+|%d180|Alt I
+|%d181|Alt J
+|%d182|Alt K
+|%d183|Alt L
+|%d184|Alt M
+|%d185|Alt N
+%d124o|%d186|Ord_o
+|%d187|Alt O
+|%d188|Alt P
+|%d189|Alt Q
+|%d190|Alt R
+%d124?|%d191|Interr Inv
+`A|%d192|A`
+'A|%d193|A'
+%d94A|%d194|A^
+~A|%d195|A~
+%d124A|%d196|A"
+|%d197|A Bola
+|%d198|Alt S
+'C|%d199|C'
+`E|%d200|E`
+'E|%d201|E'
+%d94E|%d202|E^
+%d124E|%d203|E"
+`I|%d204|I`
+'I|%d205|I'
+%d94I|%d206|I^
+%d124I|%d207|I"
+|%d208|Alt T
+~N|%d209|N~
+`O|%d210|O`
+'O|%d211|O'
+%d94O|%d212|O^
+~O|%d213|O~
+%d124O|%d214|O"
+|%d215|Alt U
+|%d216|O Bola
+`U|%d217|U`
+'U|%d218|U'
+%d94U|%d219|U^
+%d124U|%d220|U"
+|%d221|Alt V
+|%d222|Alt W
+%d124B|%d223|Beta
+`a|%d224|a`
+'a|%d225|a'
+%d94a|%d226|a^
+~a|%d227|a~
+%d124a|%d228|a"
+|%d229|a Bola
+|%d230|Alt X
+'c|%d231|c'
+`e|%d232|e`
+'e|%d233|e'
+%d94e|%d234|e^
+%d124e|%d235|e"
+`i|%d236|i`
+'i|%d237|i'
+%d94i|%d238|i^
+%d124i|%d239|i"
+|%d240|Alt Y
+~n|%d241|n~
+`o|%d242|o`
+'o|%d243|o'
+%d94o|%d244|o^
+~o|%d245|o~
+%d124o|%d246|o"
+|%d247|Alt Z
+|%d248|o Bola
+`u|%d249|u`
+'u|%d250|u'
+%d94u|%d251|u^
+%d124u|%d252|u"
+%d124m|%d253|Com_Mac
+ARYEND
+Cursor
+ARYEND
+|||||
+Alarmes
+^G
+
+^G
+^G^A^G^A^G
+^G^A^G^A^G^A^G
+^G^A^G^A^G^A^G
+ARYEND

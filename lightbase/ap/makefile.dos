@@ -1,0 +1,271 @@
+#     Makefile for Turbo C Compatible libraries
+#     (c)1989 Sciencia Informatica
+#     Todos Direitos Reservados
+
+MODEL=l
+
+LB=c:\lb2
+MA=$(LB)\ct
+MT=$(LB)\mt
+AP=$(LB)\ap
+
+COMPILER=bcc -m$(MODEL) -c -Y -DBRASIL -DPROT_INFOCON -DPORTUGUES
+
+#### C SOURCES ####
+CS =   \
+   lb2auto.obj   \
+   lb2base0.obj   \
+   lb2base1.obj   \
+   lb2bkrs.obj    \
+   lb2but1.obj    \
+   lb2but1a.obj   \
+   lb2cad1.obj    \
+   lb2cad2.obj    \
+   lb2cad3.obj    \
+   lb2cadge.obj   \
+   lb2carel.obj   \
+   lb2crit.obj    \
+   lb2db00.obj    \
+   lb2db01.obj    \
+   lb2dbac.obj    \
+   lb2dbcb.obj    \
+   lb2dbib.obj    \
+   lb2dbcp0.obj   \
+   lb2dbcp1.obj   \
+   lb2dbrl0.obj   \
+   lb2dbrl1.obj   \
+   lb2dbrl2.obj   \
+   lb2dbvs0.obj   \
+   lb2dbvs1.obj   \
+   lb2dbsw.obj    \
+   lb2div1.obj    \
+   lb2dummy.obj   \
+   lb2edind.obj   \
+   lb2ent1.obj    \
+   lb2ent2.obj    \
+   lb2ent3.obj    \
+   lb2ent4.obj    \
+   lb2ent4a.obj   \
+   lb2ent4b.obj   \
+   lb2ent5.obj    \
+   lb2expo.obj    \
+   lb2fergn.obj   \
+   lb2ferrd.obj   \
+   lb2ferri.obj   \
+   lb2ferrm.obj   \
+   lb2ger4.obj    \
+   lb2gntxt.obj   \
+   lb2gntx2.obj   \
+   lb2grp.obj     \
+   lb2hmenu.obj   \
+   lb2ind.obj     \
+   lb2ind2.obj    \
+   lb2main.obj    \
+   lb2main2.obj   \
+   lb2menu.obj    \
+   lb2musgr.obj   \
+   lb2perso.obj   \
+   lb2pesq0.obj   \
+   lb2pesqa.obj   \
+   lb2pesq1.obj   \
+   lb2pesq2.obj   \
+   lb2pesq3.obj   \
+   lb2pesq4.obj   \
+   lb2pesq5.obj   \
+   lb2pesq6.obj   \
+   lb2prot1.obj   \
+   lb2rdisp.obj   \
+   lb2reind.obj   \
+   lb2rel0.obj    \
+   lb2rel1.obj    \
+   lb2rel2.obj    \
+   lb2rel3.obj    \
+   lb2rel4.obj    \
+   lb2rel5.obj    \
+   lb2sbase.obj   \
+   lb2sound.obj   \
+   lb2tab.obj     \
+   lb2table.obj   \
+   lb2tela.obj    \
+   lb2tr0.obj     \
+   lb2tr1.obj     \
+   lb2usu0.obj    \
+   lb2usu1.obj    \
+   lb2usu2.obj    \
+   lb2vetdf.obj   \
+   lb2vetut.obj
+
+
+#### Header Files ####
+
+HMA   = $(MA)\ctdefs.h     $(MA)\cteproto.h  $(MA)\cterrc.h
+
+MTGLB  = $(MT)\window.h     $(MT)\winport.h
+MTENT  = $(MT)\entrada.h
+MTMENU = $(MT)\menu.h
+MTTAB  = $(MT)\tabela.h
+
+GER   = $(MTGLB)           $(AP)\lb2stru.h   $(AP)\lb2vars.h   $(AP)\lb2text.h
+ENTRA = $(AP)\lb2entra.h   $(MTENT)
+FILES = $(AP)\lb2files.h
+HEAD  = $(AP)\lb2head.h
+LOCS  = $(AP)\lb2locs.h
+MACES = $(AP)\lb2maces.h
+PERSO = $(AP)\lb2perso.h
+TRANS = $(AP)\lb2trans.h
+VET   = $(AP)\lb2vet.h
+DEFBAS= $(AP)\lb2db.h
+VISTA = $(AP)\lb2vista.h
+ATIVA = $(AP)\restart.h
+SERIAL= $(AP)\serial.h
+RUNTIME= $(AP)\lb2rtime.h
+LITE= $(AP)\lb2lite.h
+PROTEC= $(AP)\lb2prot.h
+
+
+#### Generic Rules ####
+
+.c.obj :
+   echo $< > con
+	$(COMPILER) $<
+
+#### Dependencies ####
+
+lb: $(CS)
+   tlink @lb2.lnk
+   ischeck lb.exe
+
+rt: $(CS)
+   tlink @rt.lnk
+   ischeck rt.exe
+
+restart: restart.obj restart1.obj restart2.obj
+   tlink @restart.lnk
+
+gerachav: gerachav.obj restart1.obj restart2.obj
+   tlink @gerachav.lnk
+
+serializ: serializ.obj
+   tlink @serializ.lnk
+
+ix_ativ: ix_ativ.obj
+   tcc ix_ativ.c
+
+tools: tools_0.obj tools_1.obj tools_2.obj tools_3.obj tools_4.obj tools_5.obj tools_6.obj tools_7.obj tools_9.obj tools_a.obj tools_b.obj
+   tlink @tools.lnk
+
+ischeck: ischeck.obj
+	tlink @ischeck.lnk
+
+person: person.obj
+	tlink @person.lnk
+
+serie: serie.obj
+	tlink @serie.lnk
+
+lbconv: lbconv.obj
+	tlink @lbconv.lnk
+
+espanha:
+	touch `grep -l ESPANHA *.[ch]`
+	sed s/BRASIL$$/ESPANHA/ < makefile > makefile.tmp; cp makefile.tmp makefile
+	make
+	make restart
+	make gerachav
+	make serializ
+	serializa
+
+brasil:
+	touch `grep -l ESPANHA *.[ch]`
+	sed s/ESPANHA$$/BRASIL/ < makefile > makefile.tmp; cp makefile.tmp makefile
+	make
+	make restart
+	make gerachav
+	make serializ
+	serializa
+
+ischeck.obj    : ischeck.c ..\mt\wprotec.h
+person.obj     : person.c  ..\mt\wprotec.h
+
+lb2auto.obj    :  lb2auto.c   $(GER)
+lb2base0.obj   :  lb2base0.c  $(GER)   $(LOCS)     $(MTMENU)
+lb2base1.obj   :  lb2base1.c  $(GER)
+lb2bkrs.obj    :  lb2bkrs.c   $(GER)   $(BASES)    $(FILES)    $(LOCS)  $(MACES)    $(MTMENU)
+lb2but1.obj    :  lb2but1.c   $(GER)   $(FILES)    $(VET)
+lb2but1a.obj   :  lb2but1a.c  $(GER)   $(FILES)    $(VET)
+lb2cad1.obj    :  lb2cad1.c   $(GER)   $(BASES)    $(FILES)    $(MACES)   $(RUNTIME)
+lb2cad2.obj    :  lb2cad2.c   $(GER)   $(BASES)    $(FILES)    $(VET)   $(MTMENU)
+lb2cad3.obj    :  lb2cad3.c   $(GER)   $(BASES)    $(FILES)    $(VET)   $(MTMENU)
+lb2carel.obj   :  lb2carel.c  $(GER)   $(ENTRA)    $(FILES)    $(LOCS)  $(DEFBAS)
+lb2cadge.obj   :  lb2cadge.c  $(GER)   $(FILES)    $(MACES)
+lb2crit.obj    :  lb2crit.c   $(GER)   $(ENTRA)    $(MTTAB)
+lb2db00.obj    :  lb2db00.c   $(GER)   $(ENTRA)    $(FILES)    $(LOCS)     $(MACES)    $(MTMENU)   $(RUNTIME)    $(LITE)
+lb2db1.obj     :  lb2db01.c   $(GER)   $(FILES)    $(MACES)
+lb2dbac.obj    :  lb2dbac.c   $(GER)   $(BASES)    $(ENTRA)    $(FILES)    $(LOCS)     $(MACES)    $(VET)      $(DEFBAS)
+lb2dbcb.obj    :  lb2dbcb.c   $(GER)   $(FILES)    $(LOCS)     $(MACES)
+lb2dbib.obj    :  lb2dbib.c   $(GER)   $(ENTRA)    $(FILES)    $(LOCS)     $(MACES)    $(DEFBAS)
+lb2dbcp0.obj   :  lb2dbcp0.c  $(GER)   $(BASES)    $(ENTRA)    $(FILES)    $(LOCS)     $(MACES)    $(VET)      $(DEFBAS)   $(MTTAB)
+lb2dbcp1.obj   :  lb2dbcp1.c  $(GER)   $(BASES)    $(ENTRA)    $(DEFBAS)
+lb2dbrl0.obj   :  lb2dbrl0.c  $(GER)   $(BASES)    $(ENTRA)    $(FILES)    $(LOCS)     $(MACES)    $(VET)      $(DEFBAS)   $(MTTAB)    $(MTMENU)
+lb2dbrl1.obj   :  lb2dbrl1.c  $(GER)   $(BASES)    $(ENTRA)    $(FILES)    $(VET)      $(DEFBAS)   $(MTTAB)    $(VISTA)
+lb2dbrl2.obj   :  lb2dbrl2.c  $(GER)   $(ENTRA)    $(FILES)    $(LOCS)     $(VET)      $(DEFBAS)   $(VISTA)    $(MTTAB)    $(MTMENU)
+lb2dbvs0.obj   :  lb2dbvs0.c  $(GER)   $(BASES)    $(FILES)    $(LOCS)     $(MACES)    $(VET)      $(DEFBAS)   $(MTTAB)    $(VISTA)
+lb2dbvs1.obj   :  lb2dbvs1.c  $(GER)   $(BASES)    $(ENTRA)    $(FILES)    $(LOCS)     $(MACES)    $(VET)      $(DEFBAS)   $(VISTA)    $(MTTAB)
+lb2dbsw.obj    :  lb2dbsw.c   $(GER)   $(FILES)    $(LOCS)     $(MACES)
+lb2div1.obj    :  lb2div1.c   $(GER)
+lb2dummy.obj   :  lb2dummy.c  $(GER)
+lb2edind.obj   :  lb2edind.c  $(ENTRA)
+lb2ent1.obj    :  lb2ent1.c   $(GER)   $(BASES)    $(ENTRA)    $(FILES)    $(LOCS)
+lb2ent2.obj    :  lb2ent2.c   $(GER)   $(BASES)    $(ENTRA)    $(FILES)    $(LOCS)
+lb2ent3.obj    :  lb2ent3.c   $(GER)   $(BASES)    $(FILES)    $(MACES)    $(VISTA)   $(RUNTIME)
+lb2ent4.obj    :  lb2ent4.c   $(GER)   $(BASES)    $(ENTRA)    $(FILES)    $(LOCS)     $(MACES)    $(VISTA)
+lb2ent4a.obj   :  lb2ent4a.c  $(GER)   $(BASES)    $(ENTRA)    $(FILES)    $(LOCS)     $(MACES)    $(VISTA)
+lb2ent4b.obj   :  lb2ent4b.c  $(GER)   $(BASES)    $(ENTRA)    $(FILES)    $(LOCS)     $(MACES)    $(VISTA)
+lb2ent5.obj    :  lb2ent5.c   $(GER)   $(BASES)    $(ENTRA)    $(FILES)    $(LOCS)
+lb2expo.obj    :  lb2expo.c   $(GER)   $(BASES)    $(ENTRA)    $(FILES)    $(LOCS)     $(MACES)
+lb2fergn.obj   :  lb2fergn.c  $(GER)   $(ENTRA)    $(FILES)    $(LOCS)     $(MACES)    $(MTMENU)
+lb2ferrd.obj   :  lb2ferrd.c  $(GER)   $(BASES)    $(FILES)    $(MACES)    $(VET)      $(VISTA)
+lb2ferri.obj   :  lb2ferri.c  $(GER)   $(BASES)    $(ENTRA)    $(FILES)    $(MACES)    $(VET)
+lb2ferrm.obj   :  lb2ferrm.c  $(GER)   $(FILES)    $(MACES)
+lb2ger4.obj    :  lb2ger4.c   $(GER)   $(FILES)    $(MACES)
+lb2gntxt.obj   :  lb2gntxt.c  $(GER)   $(MACES)
+lb2gntx2.obj   :  lb2gntx2.c  $(GER)   $(MACES)
+lb2grp.obj     :  lb2grp.c    $(GER)   $(ENTRA)    $(LOCS)     $(MACES)
+lb2hmenu.obj   :  lb2hmenu.c  $(GER)   $(RUNTIME)
+lb2ind.obj     :  lb2ind.c    $(GER)   $(BASES)    $(MACES)    $(TRANS)
+lb2ind2.obj    :  lb2ind2.c   $(GER)   $(BASES)    $(MACES)    $(TRANS)
+lb2main.obj    :  lb2main.c   $(GER)   $(FILES)    $(HEAD)     $(LOCS)     $(MACES)    $(PERSO)   $(RUNTIME)     $(LITE)
+lb2main2.obj   :  lb2main2.c  $(GER)   $(FILES)    $(HEAD)     $(PROTEC)    $(LITE)    $(RUNTIME)
+lb2menu.obj    :  lb2menu.c   $(MTMENU)   $(RUNTIME)    $(LITE)
+lb2musgr.obj   :  lb2musgr.c  $(GER)   $(LOCS)     $(MTMENU)    $(LITE)
+lb2perso.obj   :  lb2perso.c  $(GER)   $(LOCS)     $(PERSO)    $(MTMENU)
+lb2pesq0.obj   :  lb2pesq0.c  $(GER)   $(BASES)    $(ENTRA)    $(LOCS)     $(MACES)    $(PERSO)    $(PESQ)  $(MTTAB)    $(RUNTIME)
+lb2pesqa.obj   :  lb2pesqa.c  $(GER)   $(BASES)    $(ENTRA)    $(LOCS)     $(MACES)    $(PERSO)    $(PESQ)  $(MTTAB)
+lb2pesq1.obj   :  lb2pesq1.c  $(GER)   $(BASES)    $(ENTRA)    $(PESQ)     $(MTTAB)    $(MTMENU)
+lb2pesq2.obj   :  lb2pesq2.c  $(GER)   $(BASES)    $(ENTRA)    $(PERSO)    $(PESQ)     $(MTTAB)
+lb2pesq3.obj   :  lb2pesq3.c  $(GER)   $(PESQ)     $(MTTAB)
+lb2pesq4.obj   :  lb2pesq4.c  $(GER)   $(BASES)    $(LOCS)     $(PESQ)     $(VISTA)    $(MTTAB)    $(RUNTIME)
+lb2pesq5.obj   :  lb2pesq5.c  $(GER)   $(PESQ)     $(MTTAB)    $(MTMENU)   $(RUNTIME)
+lb2pesq6.obj   :  lb2pesq6.c  $(GER)   $(PESQ)     $(BASES)    $(ENTRA)    $(LOCS)  $(VISTA)
+lb2prot1.obj   :  lb2prot1.c  $(GER)   $(restart)  $(SERIAL)   $(RUNTIME)  $(PROTEC)    $(LITE)
+lb2rdisp.obj   :  lb2rdisp.c  $(GER)   $(BASES)    $(VISTA)    $(MTTAB)    $(RUNTIME)
+lb2reind.obj   :  lb2reind.c  $(GER)   $(BASES)    $(FILES)    $(LOCS)     $(MACES)
+lb2rel0.obj    :  lb2rel0.c   $(GER)   $(ENTRA)    $(FILES)    $(REL)
+lb2rel1.obj    :  lb2rel1.c   $(GER)   $(BASES)    $(ENTRA)    $(REL)
+lb2rel2.obj    :  lb2rel2.c   $(GER)   $(BASES)    $(ENTRA)    $(FILES)    $(LOCS)     $(REL)
+lb2rel3.obj    :  lb2rel3.c   $(GER)   $(FILES)    $(REL)
+lb2rel4.obj    :  lb2rel4.c   $(GER)   $(ENTRA)    $(FILES)    $(LOCS)   $(REL)
+lb2rel5.obj    :  lb2rel5.c   $(GER)   $(ENTRA)    $(LOCS)     $(REL)
+lb2sbase.obj   :  lb2sbase.c  $(GER)   $(FILES)    $(LOCS)     $(MTMENU)    $(RUNTIME)
+lb2sound.obj   :  lb2sound.c  $(GER)   $(FILES)
+lb2tab.obj     :  lb2tab.c    $(GER)   $(FILES)
+lb2table.obj   :  lb2table.c  $(GER)   $(FILES)
+lb2tela.obj    :  lb2tela.c   $(GER)   $(BASES)    $(ENTRA)    $(FILES)    $(VET)   $(VISTA)
+lb2tr0.obj     :  lb2tr0.c    $(GER)   $(FILES)    $(TRANS)
+lb2tr1.obj     :  lb2tr1.c    $(GER)   $(FILES)    $(TRANS)
+lb2usu0.obj    :  lb2usu0.c   $(GER)   $(ENTRA)    $(LOCS)     $(LITE)
+lb2usu1.obj    :  lb2usu1.c   $(GER)   $(ENTRA)    $(FILES)    $(LOCS)     $(MACES)     $(LITE)
+lb2usu2.obj    :  lb2usu2.c   $(GER)   $(ENTRA)    $(LOCS)     $(MACES)     $(LITE)
+lb2vetdf.obj   :  lb2vetdf.c  $(GER)   $(VET)
+lb2vetut.obj   :  lb2vetut.c  $(GER)   $(VET)
+

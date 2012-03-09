@@ -1,0 +1,11 @@
+
+# Este SCRIPT e executado por system() a partir do Light Base.
+# E' sua intencao administrar a execucao do SHELL local
+
+echo "\r\n\n\nLight Base - SHELL\r\n\n"
+PS1="Light: "
+PS2="> "
+export PS1 PS2
+stty sane ixany tab3 echoe icanon  erase "^h"
+sh
+

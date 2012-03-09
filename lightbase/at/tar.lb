@@ -1,0 +1,14 @@
+p=/dev/fd1135ds18
+rp=/dev/rfd1135ds18
+
+	echo "Coloque Midia de 3 1/2 (alta densidade ed $p) para tap.Z e tct.Z ..."
+	echo "Quando Ok. tecle ENTER\c"; read lixo
+	tar cvf $p tap.Z tct.Z
+
+
+	echo "Coloque Midia de 3 1/2 (alta densidade ed $p) para tmt.Z, tpd.Z e outros..."
+	echo "Quando Ok. tecle ENTER\c"; read lixo
+	tar cvf $p tmt.Z tpd.Z faz_porte.lb prep_porte.lb
+
+
+

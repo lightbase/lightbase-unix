@@ -1,0 +1,66 @@
+# Para a rotina de backup serao passados os seguintes argumentos :
+# ----------------------------------------------------------------
+#
+#    $1 --> Nome da base de dados
+#    $2 --> Diretorio da base de dados (path completo)
+#    $3 --> Nome completo do arquivo que devera ser removido caso o backup
+#           seja executado OK
+#
+#    Para seu esclarecimento cada base e composta pelos sequintes arquivos:
+#           ????????.lb1  -  Controle da utilizacao dos registros
+#           ????????.lb2  -  Registros
+#           ????????.lb3  -  Indice dos registros
+#           ????????.lb4  -  Definicao da base
+#
+#    OBS. : Apenas os arquivos ????????.lb1 e ????????.lb2 e ????????.lb4
+#           necessitam ser salvos, pois os demais serao recriados apos a
+#           funcao de reprocessamento exigida apos o restore.
+#
+
+#main( )
+# -> comeca verificando a sintaxe da linha de comando
+#
+
+#main( )
+#
+#
+
+base=`echo $1 | dd conv=lcase 2> /dev/null`
+
+[ $# -eq 3 ] || exit 1;
+[ -d $2    ] || exit 2;
+
+cd $2
+
+echo "
+
+
+	Insira o disco para back-up na unidade 'default' do utilitario
+	'tar' do seu sistema. Lembre-se que o disco devera estar no
+	formato do seu UNIX/XENIX (comando format).
+
+	         Pressione a tecla <ENTER> para prosseguir...\c"
+read a
+
+echo "\n\n\n"
+
+#
+##### faz backup para unidade default do 'tar'
+#
+tar cv $2/*.lb* || (echo "
+
+	Falha no procedimento de back-up.
+	Chame o administrador do seu sistema.
+
+	E pressione a tecla <ENTER>...\c"; read a; exit 10)
+
+
+#
+###### mata arquivo para indicar backup OK
+#
+rm $3
+
+unset a
+
+exit 0;
+

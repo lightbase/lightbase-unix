@@ -1,0 +1,52 @@
+#
+# Para a rotina de restore serao passados os seguintes argumentos :
+# ----------------------------------------------------------------
+#
+#    $1 --> Nome da base de dados
+#    $2 --> Diretorio da base de dados (path completo)
+#
+#    Para seu esclarecimento cada base e composta pelos sequintes arquivos:
+#           ????????.lb1  -  Controle da utilizacao dos registros
+#           ????????.lb2  -  Registros
+#           ????????.lb3  -  Indice dos registros
+#           ????????.lb4  -  Definicao da base
+#
+#    OBS. : Apenas os arquivos ????????.LB1 e ????????.LB2 e ????????.LB4
+#           necessitam ser restaurados, pois os demais serao recriados
+#           apos a funcao de reprocessamento, exigida apos o restore.
+#
+#
+# restore de arquivo com nome da %1.BKP (sem compressao)
+#
+
+#main( )
+# -> verifica parametros
+
+[ $# -eq 2 ] || exit 1;
+[ -d $2    ] || exit 2;
+
+base=`echo $1 | dd conv=lcase 2> /dev/null`
+dirbase=`echo $2 | dd conv=lcase 2> /dev/null`
+
+
+echo "
+
+
+	Insira o disco para back-up na unidade 'default' do utilitario
+	'tar' no seu sistema e pressione a tecla <ENTER>...\c"
+
+read a resto
+
+echo "\n\n"
+
+tar xv ${dirbase}/*.lb*
+
+echo "
+
+
+	Procedimento de restauracao de restore encerrado.
+
+	         Pressione a tecla <ENTER>...\c"
+read a
+unset a
+

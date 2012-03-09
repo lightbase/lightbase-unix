@@ -1,0 +1,65 @@
+#     Make para DOS
+#     (c)1991 Light Software
+#     Todos Direitos Reservados
+#
+
+MODEL= l
+IPATH= -I.. -I.
+COMPILER=bcc $(IPATH) -m$(MODEL) -c -Y
+LIB     =ctl.lib
+#
+#### OBJETOS
+#
+CS=     cttrace.obj ctvrc2.obj ctdelk.obj ctaddk.obj ctupdt.obj \
+      ctsrch.obj ctdatf.obj ctkeyf.obj ctkrnl.obj ctcomp.obj \
+	   ctvrcu.obj ctinit.obj ctclb2.obj ctclib.obj ctclb3.obj
+
+#
+#### Header Files ####
+#
+H1 = ctcmpl.h ctport.h ctoptn.h ctstdr.h ctstrc.h ctgvar.h cterrc.h ctiproto.h cteproto.h
+
+#
+# Regras Gerais
+#
+
+.c.obj :
+	$(COMPILER) $<
+
+#### Dependencias ####
+
+library     : $(CS) $(LIB)
+
+ctaddk.obj     : ctaddk.c  $(H1)
+ctclb2.obj     : ctclb2.c  $(H1)
+ctclb3.obj     : ctclb3.c  $(H1)
+ctclib.obj     : ctclib.c  $(H1)
+ctcomp.obj     : ctcomp.c  $(H1)
+ctdelk.obj     : ctdelk.c  $(H1)
+ctinit.obj     : ctinit.c  $(H1)
+ctkeyf.obj     : ctkeyf.c  $(H1)
+ctkrnl.obj     : ctkrnl.c  $(H1)
+ctsrch.obj     : ctsrch.c  $(H1)
+ctdatf.obj     : ctdatf.c  $(H1)
+ctupdt.obj     : ctupdt.c  $(H1)
+ctvrc2.obj     : ctvrc2.c  $(H1)
+cttrace.obj    : cttrace.c $(H1)
+ctvrcu.obj     : ctvrcu.c  $(H1)
+
+$(LIB): $(CS)
+   tlib $(LIB) /C       -+cttrace -+ctvrc2  -+ctdelk  -+ctaddk  -+ctupdt  -+ctsrch
+   tlib $(LIB) /C       -+ctdatf  -+ctkeyf  -+ctkrnl  -+ctcomp  -+ctvrcu
+   tlib $(LIB) /C       -+ctinit  -+ctclb2  -+ctclib  -+ctclb3
+
+demo.exe: $(CS)
+   tlink @demo.lnk
+
+testemin: testemin.c
+   tcc testemin.c ctl.lib
+
+tools: tools_0.obj tools_1.obj
+   tlink @tools.lnk
+
+geratab: geratab.c
+   tcc geratab.c ctl.lib
+

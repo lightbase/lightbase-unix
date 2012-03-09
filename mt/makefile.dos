@@ -1,0 +1,163 @@
+#     Makefile for Turbo C Compatible libraries
+#     (c)1989 Sciencia Informatica
+#     Todos Direitos Reservados
+
+MODEL=l
+
+COMPILER=bcc -m$(MODEL) -c -Y -DMSDOS
+MASM=$(COMPILER)
+
+#### C SOURCES ####
+CS = \
+   VM.OBJ \
+   VM_GROUP.OBJ \
+   VM_PAGE.OBJ \
+   VM_SLOT.OBJ \
+   VM_SWAP.OBJ \
+   ETBLOCK1.OBJ \
+   ETBLOCK2.OBJ \
+   ETEDIT0.OBJ \
+   ETEDIT1.OBJ \
+   ETFIND.OBJ \
+   ETINTER1.OBJ \
+   ETINTER2.OBJ \
+   ETKBD1.OBJ \
+   ETKBD2.OBJ \
+   ETKBD3.OBJ \
+   ETMAIN.OBJ \
+   ETMEMO.OBJ \
+   ETMOVE0.OBJ \
+   ETMOVE1.OBJ \
+   ETMOVE2.OBJ \
+   ETSR.OBJ \
+   ETUNDO.OBJ \
+   ETWRAP.OBJ \
+   WBELL.OBJ \
+   WBLOCK0.OBJ \
+   WBLOCK1.OBJ \
+   WCALC1.OBJ \
+   WCALC2.OBJ \
+   WCURMOV.OBJ \
+   WCURSOR.OBJ \
+   WENTRY0.OBJ \
+   WENTRY1.OBJ \
+   WENTRY2.OBJ \
+   WENTRY3.OBJ \
+   WENTRY4.OBJ \
+   WGET0.OBJ \
+   WGET1.OBJ \
+   WHELP.OBJ \
+   WINIT1.OBJ \
+   WINIT2.OBJ \
+   WINIT3.OBJ \
+   WINTER1.OBJ \
+   WINTER2.OBJ \
+   WINTER3.OBJ \
+   WMACRO.OBJ \
+   WMAIN0.OBJ \
+   WMAIN1.OBJ \
+   WMAKE.OBJ \
+   WMEMTERM.OBJ \
+   WMENU0.OBJ \
+   WMENU1.OBJ \
+   WMOVE.OBJ \
+   WPRINT.OBJ \
+   WPROTEC.OBJ  \
+   WPRSCN.OBJ \
+   WPUT.OBJ \
+   WSCROLL.OBJ \
+   WSTR0.OBJ \
+   WSTR1.OBJ \
+   WTABELA.OBJ \
+   WUPDATE.OBJ \
+   wdemo.obj     wdemobcc.lnk     hold\holdev.obj
+
+#### Header Files ####
+H1 = window.h     winport.h
+H2 = menu.h
+H3 = entrada.h
+H4 = mensagem.h   wstring.h
+H5 = calcula.h
+H6 = ethead.h
+H7 = tabela.h
+H8 = vm.h
+H9 = wprotec.h
+H10 = wprotec1.h
+
+#### Generic Rules ####
+
+.c.obj :
+   $(COMPILER) $<
+
+#### Dependencies ####
+
+demo : $(CS)
+   tlink @wdemobcc.lnk
+
+VM.OBJ       : VM.C       $(H1)                                     $(H8)
+VM_GROUP     : VM_GROUP.C $(H1)                                     $(H8)
+VM_PAGE      : VM_PAGE.C  $(H1)                                     $(H8)
+VM_SLOT      : VM_SLOT.C  $(H1)                                     $(H8)
+VM_SWAP      : VM_SWAP.C  $(H1)                                     $(H8)
+ETBLOCK1.OBJ : ETBLOCK1.C $(H1)             $(H4)       $(H6)       $(H8)
+ETBLOCK2.OBJ : ETBLOCK2.C $(H1)             $(H4)       $(H6)       $(H8)
+ETEDIT0.OBJ  : ETEDIT0.C  $(H1)                         $(H6)       $(H8)
+ETEDIT1.OBJ  : ETEDIT1.C  $(H1)             $(H4)       $(H6)       $(H8)
+ETFIND.OBJ   : ETFIND.C   $(H1)       $(H3) $(H4)       $(H6)       $(H8)
+ETINTER1.OBJ : ETINTER1.C $(H1)             $(H4)       $(H6)       $(H8)
+ETINTER2.OBJ : ETINTER2.C $(H1)             $(H4)       $(H6)       $(H8)
+ETKBD1.OBJ   : ETKBD1.C   $(H1)                         $(H6)       $(H8)
+ETKBD2.OBJ   : ETKBD2.C   $(H1)                         $(H6)       $(H8)
+ETKBD3.OBJ   : ETKBD3.C   $(H1)                         $(H6)       $(H8)
+ETMAIN.OBJ   : ETMAIN.C   $(H1)             $(H4)       $(H6)       $(H8)
+ETMEMO.OBJ   : ETMEMO.C   $(H1)                         $(H6)       $(H8)
+ETMOVE0.OBJ  : ETMOVE0.C  $(H1)                         $(H6)       $(H8)
+ETMOVE1.OBJ  : ETMOVE1.C  $(H1)             $(H4)       $(H6)       $(H8)
+ETMOVE2.OBJ  : ETMOVE2.C  $(H1)             $(H4)       $(H6)       $(H8)
+ETSR.OBJ     : ETSR.C
+ETUNDO.OBJ   : ETUNDO.C   $(H1)             $(H4)       $(H6)       $(H8)
+ETWRAP.OBJ   : ETWRAP.C   $(H1)                         $(H6)       $(H8)
+WBELL.OBJ    : WBELL.C    $(H1)
+WBLOCK0.OBJ  : WBLOCK0.C  $(H1)
+WBLOCK1.OBJ  : WBLOCK1.C  $(H1)
+WCALC1.OBJ   : WCALC1.C   $(H1)       $(H3) $(H4) $(H5)
+WCALC2.OBJ   : WCALC2.C   $(H1)       $(H3) $(H4) $(H5)
+WCURMOV.OBJ  : WCURMOV.C  $(H1)
+WCURSOR.OBJ  : WCURSOR.C  $(H1)
+WENTRY0.OBJ  : WENTRY0.C  $(H1)       $(H3) $(H4)
+WENTRY1.OBJ  : WENTRY1.C  $(H1)       $(H3) $(H4)             $(H7)
+WENTRY2.OBJ  : WENTRY2.C  $(H1)       $(H3)
+WENTRY3.OBJ  : WENTRY3.C  $(H1)       $(H3)
+WENTRY4.OBJ  : WENTRY4.C  $(H1)       $(H3)
+WGET0.OBJ    : WGET0.C    $(H1)             $(H4)
+WGET1.OBJ    : WGET1.C    $(H1)
+WHELP.OBJ    : WHELP.C    $(H1) $(H2)       $(H4)       $(H6)
+WINIT1.OBJ   : WINIT1.C   $(H1)       $(H3) $(H4)                   $(H8)
+WINIT2.OBJ   : WINIT2.C   $(H1)             $(H4)
+WINIT3.OBJ   : WINIT3.C   $(H1)
+WINTER1.OBJ  : WINTER1.C  $(H1) $(H2)       $(H4)
+WINTER2.OBJ  : WINTER2.C  $(H1)       $(H3) $(H4)
+WINTER3.OBJ  : WINTER3.C  $(H1)       $(H3) $(H4)       $(H6)
+WMACRO.OBJ   : WMACRO.C   $(H1)             $(H4)
+WMAIN0.OBJ   : WMAIN0.C   $(H1)
+WMAIN1.OBJ   : WMAIN1.C   $(H1)
+WMAKE.OBJ    : WMAKE.C    $(H1)
+WMEMTERM.OBJ : WMEMTERM.C $(H1)
+WMENU0.OBJ   : WMENU0.C   $(H1) $(H2)
+WMENU1.OBJ   : WMENU1.C   $(H1) $(H2)
+WMOVE.OBJ    : WMOVE.C    $(H1)
+WPRINT.OBJ   : WPRINT.C   $(H1) $(H2)       $(H4)
+WPROTEC.OBJ  : WPROTEC.C                                                  $(H9) $(H10)
+WPRSCN.OBJ   : WPRSCN.C   $(H1)
+WPUT.OBJ     : WPUT.C     $(H1)
+WSCROLL.OBJ  : WSCROLL.C  $(H1)
+WSTR0.OBJ    : WSTR0.C    $(H1)             $(H4)
+WSTR1.OBJ    : WSTR1.C    $(H1)             $(H4)
+WTABELA.OBJ  : WTABELA.C  $(H1)             $(H4)             $(H7)
+WUPDATE.OBJ  : WUPDATE.C  $(H1)
+WDEMO.OBJ    : WDEMO.C    $(H1) $(H2) $(H3) $(H4)       $(H6) $(H7)
+
+lib : $(CS)
+   del  mt_obj.zip
+   pkzip mt_obj historia w*.obj et*.obj vm*.obj *.h strings *.lbt make?cc *.cfg *.lnk hold\holdev.obj
+

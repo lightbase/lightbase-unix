@@ -1,0 +1,1 @@
+/* Header vazio para ser incluido na ausencia de outros headers */

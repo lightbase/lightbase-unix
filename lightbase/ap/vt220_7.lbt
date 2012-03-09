@@ -1,0 +1,255 @@
+80|24|0|\E(B\E)0\E>||-brkint -ixon -isig -icanon -echo eof "^a" eol "^b" -inlcr -icrnl||
+\E[%%i%%d;%%dH|0|\E[%%dA|\E[%%dB|\E[%%dC|\E[%%dD
+\E[H|\E[A|\E[B|\E[C|\E[D|
+\E[K|\E[J||\b
+\E[1L|\E[1M||||
+|||Video
+%d14|1|1|Abre Tipo 1
+%d15|1|0|Fecha Tipo 1
+|2|1|Abre Tipo 2
+|2|0|Fecha Tipo 2
+%d120|129|1|Vert 1
+%d113|130|1|Horiz 1
+%d108|131|1|Sup Esq 1
+%d107|132|1|Sup Dir 1
+%d106|133|1|Inf Dir 1
+%d109|134|1|Inf Esq 1
+%d118|135|1|T Cima 1
+%d116|136|1|T Dir 1
+%d119|137|1|T Normal 1
+%d117|138|1|T Esq 1
+%d110|139|1|Cruza 1
+%d97|140|1|Hachura 1
+%d120|141|1|Vert 2
+%d113|142|1|Horiz 2
+%d108|143|1|Sup Esq 2
+%d107|144|1|Sup Dir 2
+%d106|145|1|Inf Dir 2
+%d109|146|1|Inf Esq 2
+%d118|147|1|T Cima 2
+%d116|148|1|T Dir 2
+%d119|149|1|T Normal 2
+%d117|150|1|T Esq 2
+%d110|151|1|Cruza 2
+%d96|152|1|Hachura 2
+ |153|0|Seta Dir
+ |154|0|Seta Esq
+ |155|0|Seta Cima
+ |156|0|Seta Baixo
+ |160|0|Falso Branco
+!|161|0|Excl Inv
+*|167|0|Paragrafo
+*|170|0|Ord Fem
+*|186|0|Ord Masc
+?|191|0|Inter Inv
+A|192|0|A`
+A|193|0|A'
+A|194|0|A^
+A|195|0|A~
+C|199|0|C'
+E|201|0|E'
+E|202|0|E^
+I|205|0|I'
+N|209|0|N~
+O|211|0|O'
+O|212|0|O^
+O|213|0|O~
+U|218|0|U'
+U|220|0|U"
+a|224|0|a`
+a|225|0|a'
+a|226|0|a^
+a|227|0|a~
+c|231|0|c'
+e|233|0|e'
+e|234|0|e^
+i|237|0|i'
+n|241|0|n~
+o|243|0|o'
+o|244|0|o^
+o|245|0|o~
+u|250|0|u'
+u|252|0|u"
+@|253|0|Macro
+ |254|0|Fim de Paragr
+ARYEND
+||||Atributos
+\E[m||0|0|0
+\E[;7m||0|0|0
+\E[;5m||0|0|0
+\E[;1m||0|0|0
+\E[m||0|0|0
+\E[;7m||0|0|0
+\E[;7m||0|0|0
+\E[;1m||0|0|0
+\E[m||0|0|0
+\E[;7m||0|0|0
+\E[;7m||0|0|0
+\E[;1m||0|0|0
+\E[m||0|0|0
+\E[m||0|0|0
+\E[;7m||0|0|0
+\E[;1m||0|0|0
+\E[m||0|0|0
+\E[m||0|0|0
+\E[;7m||0|0|0
+\E[;1m||0|0|0
+\E[m||0|0|0
+\E[m||0|0|0
+\E[;7m||0|0|0
+\E[;1m||0|0|0
+\E[m||0|0|0
+\E[m||0|0|0
+\E[;7m||0|0|0
+\E[;1m||0|0|0
+ARYEND
+||Teclado
+%d8|%d08|B.S.
+%d13|%d10|Enter
+''|%d39|Agudo
+%d94%d94|%d94|Circum
+``|%d96|Grave
+%d124%d124|%d124|Barra Trema
+~~|%d126|Til
+|%d128|Util
+\E\E|%d129|Esc,Esc
+|%d130|Ajuda
+\E[A|%d131|UP KEY
+\E[B|%d132|DN KEY
+\E[C|%d133|-->
+\E[D|%d134|<--
+\E[H|%d135|Home
+\E[0~|%d136|End
+\E[5~|%d137|PgUp
+\E[6~|%d138|PgDn
+\E[2~|%d139|Ins
+%d127|%d140|Del
+\E[21~|%d141|F10
+\EOP|%d142|F1
+\EOQ|%d143|F2
+\EOR|%d144|F3
+\EOS|%d145|F4
+\E[5f|%d146|F5
+\E[17~|%d147|F6
+\E[18~|%d148|F7
+\E[19~|%d149|F8
+\E[20~|%d150|F9
+\E]0|%d151|ALT-F10
+\E]1|%d152|ALT-F1
+\E]2|%d153|ALT-F2
+\E]3|%d154|ALT-F3
+\E]4|%d155|ALT-F4
+\E]5|%d156|ALT-F5
+\E]6|%d157|ALT-F6
+\E]7|%d158|ALT-F7
+\E]8|%d159|ALT-F8
+|%d160|Falso Branco
+%d124!|%d161|Excl Inv
+|%d162|Alt A
+|%d163|Alt B
+|%d164|Palavra <--
+|%d165|Palavra -->
+\E[9|%d166|ALT-F9
+%d124p|%d167|Pargrfo
+|%d168|Trema
+|%d169|Alt C
+%d124a|%d170|Ord_a
+|%d171|Alt D
+\Ec|%d172|Ctrl PgDn
+\Er|%d173|Ctrl PgUp
+|%d174|Alt E
+\E[Z|%d175|BTab
+|%d176|Alt F
+%d124+|%d177|Mais Menos
+|%d178|Alt G
+|%d179|Alt H
+|%d180|Alt I
+|%d181|Alt J
+|%d182|Alt K
+|%d183|Alt L
+|%d184|Alt M
+|%d185|Alt N
+%d124o|%d186|Ord_o
+|%d187|Alt O
+|%d188|Alt P
+|%d189|Alt Q
+|%d190|Alt R
+%d124?|%d191|Interr Inv
+`A|%d192|A`
+'A|%d193|A'
+%d94A|%d194|A^
+~A|%d195|A~
+%d124A|%d196|A"
+|%d197|A Bola
+|%d198|Alt S
+'C|%d199|C'
+`E|%d200|E`
+'E|%d201|E'
+%d94E|%d202|E^
+%d124E|%d203|E"
+`I|%d204|I`
+'I|%d205|I'
+%d94I|%d206|I^
+%d124I|%d207|I"
+|%d208|Alt T
+~N|%d209|N~
+`O|%d210|O`
+'O|%d211|O'
+%d94O|%d212|O^
+~O|%d213|O~
+%d124O|%d214|O"
+|%d215|Alt U
+|%d216|O Bola
+`U|%d217|U`
+'U|%d218|U'
+%d94U|%d219|U^
+%d124U|%d220|U"
+|%d221|Alt V
+|%d222|Alt W
+%d124B|%d223|Beta
+`a|%d224|a`
+'a|%d225|a'
+%d94a|%d226|a^
+~a|%d227|a~
+%d124a|%d228|a"
+|%d229|a Bola
+|%d230|Alt X
+'c|%d231|c'
+`e|%d232|e`
+'e|%d233|e'
+%d94e|%d234|e^
+%d124e|%d235|e"
+`i|%d236|i`
+'i|%d237|i'
+%d94i|%d238|i^
+%d124i|%d239|i"
+|%d240|Alt Y
+~n|%d241|n~
+`o|%d242|o`
+'o|%d243|o'
+%d94o|%d244|o^
+~o|%d245|o~
+%d124o|%d246|o"
+|%d247|Alt Z
+|%d248|o Bola
+`u|%d249|u`
+'u|%d250|u'
+%d94u|%d251|u^
+%d124u|%d252|u"
+%d124m|%d253|Com_Mac
+ARYEND
+Cursor
+\E[?25h
+\E[?25l
+\E[?25h
+\E[?25h
+ARYEND
+|||||Impressora
+Alarmes
+^G
+
+^G
+^G^A^G^A^G
+^G^A^G^A^G^A^G
+^G^A^G^A^G^A^G
+ARYEND

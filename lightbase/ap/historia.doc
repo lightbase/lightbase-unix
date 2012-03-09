@@ -1,0 +1,442 @@
+De   : Desenvolvimento
+Para : Suporte/Comercial
+Data : 05/05/94
+
+Assunto : Modificacoes e Implementacoes na versao 1.8 rel 4.0 (Beta da 2.0)
+          Com relacao a versao 1.8 rel 3.9
+
+===========================================================================
+ALTERACOES
+===========================================================================
+- Mensagens iniciais de carga do LB foram modificadas. Nao e' referenciado
+  o codigo do erro e sim o que o erro significa.
+- Quando um relatorio formatado ocupava somente uma unica linha, na impressao
+  do mesmo o LB saltava uma linha em branco entre cada registro.
+- Funcao de varrer registros na sua ordem seguencial foi otimizada.
+  Nas copias rede e unix esta otimizacao e sensivel.
+- Linha de Funcoes apresentada durante a edicao de linha na definicao de
+  Vistas/Relatorio.
+- Tecla de ESC abandona edicao mesmo quando primeiro campo e um campo
+  tabelado.
+- Durante uma pesquisa se o usuario decide fazer uma edicao, e mantido o
+  mesmo campo onde estava o cursor quando da selecao da edicao. O mesmo
+  ocorre apos concluida a edicao.
+- Navegacao na pesquisa. Tecla F8/F7 avanca/recua o registro mantendo a
+  mesma tela/campo onde estava o cursor. Tecla ENTER avanca o registro
+  posicionando no primeiro campo da primeira tela da vista.
+- Totalizacao em relatorios colunados fica limitada ao maior tamanho
+  entre a parte visivel do campo e o titulo da coluna.
+- Campos de preenchimento pelo LB (formulas e @ no rodape) nunca sao
+  considerados obrigatorios.
+- Reprocessamento nao altera campos que tenham preenchimento com a
+  diretiva @U. Preserva o usuario que estava.
+- Durante a edicao das caracteristicas especiais do relatorio, mantem
+  mensagem de rodape constante.
+- Diretiva LINES aceita ate 250 linhas. (caracteristicas especiais)
+- Importacao de linhas com ate 10K  (antes era 2K)
+- Config.lb alterado seu conteudo para distribuicao. Novos "defaults" sao
+  assumidos: -IO20000, -WR1, -SL500, -MT|10, -PI., -PD,,
+  Indexacao automatica, nao autosave.
+- Passa a tratar ate 20 impressoras.
+- Restore nao forca mais o reprocessamento.
+- mensagem de erro 205 passa a ser informada com mensagem auto explicativa
+- mensagem de erro quando se tentar ler um segmento de texto maior que
+  o definido na diretiva -IO
+- Invasao na pesquisa quando se mostrava o menu de conectores.
+  (Menu definido com um iten a menos)
+
+**** 1.8 rel 4.0a ********
+- Divisao de lb2ent4.c em duas partes. Criada lb2ent4a.c (muda lb2.lnk e
+  makefile)
+
+**** 1.8 rel 4.0b ********
+- Mensagem "Para personalizar contacte seu revendedor" foi alterada para
+  deixar claro que diretiva -UN nao pode ser mais usada sem everlock em
+  copia definitiva.
+- Passa a imprimir o caracter de fim de paragrafo nos relatorio.
+  solicitacao feita para possibilitar impressao direta para para edicao
+  em outros editores (ex.: Word).
+
+**** 1.8 rel 4.0d ********
+
+===========================================================================
+BUGS CORRIGIDOS
+===========================================================================
+- Avaliacao de sentencas de pesquisa em algumas situacoes (lista interme-
+  diaria vazia) gerava resultados inconsistentes.
+- Falta de tabelas em vistas estava travando o LB
+- F2 no meio da inclusao de um campo novo gerava um campo sem mascara e o
+  mesmo nao era incluido nas telas de entrada
+- Hora apresentada no F3-Status apresentava uma hora a menos (So no DOS)
+- F7 no primeiro registro volta para o ultimo e nao descompassa a numeracao
+  do rodape.
+- Nao tratava diversos conjuntos de fontes nas impressoras.
+- Impressao de BORDAS e LINHAS VERTICAIS desalinhavam a impressao dos
+  relatorios.
+- Nao Totalizava colunas de ordenacao com a diretiva DISPLAY (1 ou 2)
+- Quando era atribuido explicitamente um valor a um campo formula estava
+  sendo tentado formatar o conteudo do mesmo usando a mascara do campo, so
+  que na mascara de um campo formula nao tinha mascara e sim uma formula.
+  Este erro podia gerar compartamentos estranhos na importacao,
+  reprocessamento e "campos nao limpa na entrada".
+- Quando se tinha o LB instalado em um disco e as bases em outro disco
+  o backup dava mensagem de erro e nao executava.
+- Possivel invasao na carga de itens de vista/relatorio/campos para edicao
+- Quando uma base e um usuario tinha o mesmo radical. Podia carregar protecao
+  incompativel.
+- Invasao na definicao de relatorios. Quando aparecia no menu de opcoes (F10)
+  este estava definido com um iten a menos.
+- Invasao no tratamento da diretiva "@D" (nao era sempre).
+- configracao no utilitarios nao estava salvando opcoes de autosave e
+  indexacao automatica.
+
+**** 1.8 rel 4.0a ********
+- Invasao quando uma formula gerava um resultado maior que o tamanho do
+  campo. Invadia campo subseguente e podia aparecer mensagens do tipo :
+  "Atencao. Campo excluido e nao reprocessado."
+- Retirada uma invasao quando se usava a diretiva TOP e era usada mais
+  de uma diretiva @ no cabecalho.
+- Retirado um bug embutido na 1.8r4.0 no relatorio colunado. Sumia campo
+  logo apos inclui-lo.
+
+**** 1.8 rel 4.0b ********
+- Alterado tipo de variavel usada na gerencia de utilizacao de buffers na
+  pesquisa. Corrige problema em compiladores com default char signed.
+  (dava erro de acesso a lista -3);
+
+**** 1.8 rel 4.0c ********
+- Copia de bloco com ^KB ^KK ^KC estava com problemas. Foi concertado
+
+**** 1.8 rel 4.0d ********
+
+===========================================================================
+IMPLEMENTACOES
+===========================================================================
+- Relatorios  - Passa a tratar a diretiva @F. Sintaxe : @Fnomecampo,tamanho
+                Esta diretiva permite que seja impresso o conteudo de um
+                campo no cabecalho de um relatorio.
+- Utilitarios - Calculadora passa a tratar numeros em octal
+- Editor      - Inclusao de caracteres especiais (^Q#)
+- Editor      - Mostra caracter sob cursor em Hexadecimal e decimal (^Q?)
+- Editor      - Modificacao de formato de apresentacao dos caracteres. So
+                pode ser executado em edicao nao documento (^Ph)
+- Impressao   - Passa a ser possivel informar sequencias de desvio de dados
+                para impressora escrava e retorno ao video (permite
+                acompanhar quantidade de registros impressos no video).
+                Ex.: -LPEscrava@dos_ms@/dev/tty@@27 115@27 118
+                O quinto e sexto parametros informam a sequencia de
+                caracteres que sera mandada para desviar o fluxo de dados
+                para a impressora e  video respectivamente. Os caracteres
+                sao representados em decimal.
+- Matrizes    - Permite a utilizacao de matrizes numericas. Estas por sua
+                vez nao ficam residentes em memoria e sim sao indexadas
+                nos arquivos tables.dat e tables.idx. A grande vantagem
+                e a possibilidade de utilizacao de matrizes com grande
+                quantidade de elementos e sua busca e indexada. Como
+                desvantagem so pode ser consultada pela coluna 1, neste
+                caso o parametro que informa a coluna de pesquisa nao e
+                considerado.
+                Na versao Beta, acompanha um programa que cria os arquivos
+                tables.dat e tables.idx baseado em um arquivo tables.txt
+                na versao 2.0 teremos um utilitario para efetivar esta
+                funcao. (Pretendemos tambem implementar a utilizacao de
+                tabelas numericas). Nome do programa : GERATAB.EXE
+
+- Relatorio   - Diretiva DELIMITER nas caracteristicas especiais do
+                relatorio. Sintaxe : DELIMITER cccc. Indica quais
+                caracteres serao usados na indicacao de totalizacao.
+                O padrao e': DELIMITER -=*#
+
+- Relatorio   - Totalizacao passa a indicar overflow com ****
+
+- Relatorio   - Diretiva BOLD nas caracteristicas especiais do relatorio.
+                Sintaxe: BOLD nomecampo. Imprime o conteudo do campo de
+                nome "nomecampo" em negrito.
+
+- Relatorio   - Diretiva REQUIRE ou (REQUER) nas caracteristicas especiais
+                do relatorio.
+                Sintaxe: REQUIRE linha quantidade
+                Faz que um salto de pagina seja forcado caso nao seja
+                exista no minimo "quantidade" linhas disponivel ate o fim
+                da pagina sendo impressa.
+
+- Relatorio   - Diretiva MIN nas caracteristicas especiais do relatorio.
+                Sintaxe: MIN linha quantidade
+                Aplicavel quando se tem um (ou mais) campo(s) texto em uma
+                linha e se deseja que este(s) sejam impressos ocupando no
+                minimo "quantidade" linhas. E' util quando se tem um papel
+                pre impresso com uma area pre-definida para o campo texto.
+
+- Relatorio   - Diretiva MAX nas caracteristicas especiais do relatorio.
+                Sintaxe: MAX linha quantidade
+                Aplicavel quando se tem um (ou mais) campo(s) texto em uma
+                linha e se deseja que este(s) sejam impressos ocupando no
+                maximo "quantidade" linhas. E' util quando se tem um papel
+                pre impresso com uma area pre-definida para o campo texto.
+
+- Relatorio   - Diretiva NODISPLAY nas caracteristicas especiais do
+                relatorio. Sintaxe: NODISPLAY. Nao imprime campos de
+                ordenacao quando inicializa uma nova pagina.
+
+**** 1.8 rel 4.0a ********
+- Relatorio   - Diretiva BOLD passa a negritar tambem um display.
+                Por exemplo se na linha 4 tem um Display de 9 posicoes
+                "Empresa :" o comando BOLD 4 9 fara com que o display
+                fique em negrito.
+- Relatorio   - Passa a tratar diretivas @ tambem no rodape.
+- Arquivo LOG - No final de um arquivo de log, passa a colocar uma mensagem
+                de aviso no caso de ter sido impressa alguma coisa importante.
+- Hipermenu   - Implementada opcao EXCLUI no Hipermenu (Ver traducao
+                para espanhol)
+
+**** 1.8 rel 4.0b ********
+- Relatorio   - Implementada Diretiva BOT nas caracteristicas especiais do
+                relatorio. Sintaxe: BOT rodape. (temporariamente limitada
+                a uma unica linha)
+
+**** 1.8 rel 4.0c ********
+- AutoNumeracao - Foi implementada a possibilidade de fazer um campo auto-
+                numerado. Para isto e necessario :
+                  . Ativar critica AutoNum;
+                  . Definir mascara de formatacao do numero. Isto e feito
+                    utilizando a descricao do campo. Ou sera usada toda a
+                    descricao ou o que tiver depois de uma virgula.
+                    Ex.: Numero de protocolo.,%d/94
+                    ou   PRT-%6.6ld/94
+                - A base de numeracao sera o arquivo "base.aut" no proprio
+                  diretorio da base.
+                - Caso o campo seja obrigatorio na vista, o LB nao forcara
+                  a digitacao do mesmo, mas sera atribuido um valor para o
+                  mesmo quando da gravacao do registro.
+                - Podera ser obtido um valor digitando a tecla F8, quando
+                  da edicao do campo.
+                - A importacao nao gera numeros.
+
+**** 1.8 rel 4.0d ********
+
+===========================================================================
+CONV58 3.3   (com relacao a versao 3.0)
+===========================================================================
+- So tratava 19 vistas/relatorios. Passa a tratar o maximo possivel.
+- Corrige passagem de nome da base por parametro.
+- Nao forca o reprocessamento quando a base origem ja' esta na versao 1.8
+- Trata corretamente as caracteristicas especiais do relatorio. Antes perdia.
+- Passa a tratar ate 400 itens de Vista/Relatorio.
+**** 1.8 rel 4.0b ********
+
+
+
+
+**** 1.8 rel 4.0d ********
+
+- implementada funcao lin_texto para padronizar tratamento de linha de
+  campo texto
+- campo auto_incremental -> K_F8, ou quando mandar gravar
+- funcao ld_tables vira lb_matriz
+- tabelas numericas sao indexadas no arquivo tables.dat e idx
+- tabelas numericas nao sao tratadas como arquivo
+- tabelas numericas nao permite navegacao nos itens
+- rodape do numero de colunas na definicao de relatorios
+- definicao de acesso. Mudanca de acesso a vistas/relatorios.
+  Menu opcao sim entra na definicao.
+- opcao de compilacao DISCADOR habilita discagem para BRADESCO
+- impressao de registros por faixa, atravez das diretivas FIRST e LAST.
+- tenativas de lock mudou de 5 a 5 ate 20 para 200 a 200 ate 1000
+- campo tabelado obrigatorio nao abre mais automaticamente quando cai no
+  campo.
+  para abrir deve ser digitado uma ? ou alguma coisa invalida ?????????
+- messagem quando perde registro por completo no reprocessamento.
+  Antes so avisava no final que tinha perdido x registros
+- assume path que esta no cadastro de acessos, desconsidera o que esta no
+  arquivo .lb4.
+- indicador de execucao de pesquisa em execucao (ventilador)
+- verificacao de interrupcao por amostragem ( 1/8 de slot registros)
+- ALT_F2 e ALT_F4 pedem palavra para refazer/refinar pesquisa
+===> falta colocar mensagens de lb2rdisp.c (pede_hot) em portugue.lb.
+===> verificar se sequencia para ativar/desativar escrava esta funcionando.
+- PACK 2 e DISPLAY 2 funcionando em conjunto (+-)
+- concertado alinhamento de subtotais a primeira coluna de display.
+- concertado o tratamento correto a quebra de itens (QQ2 e QQ3 setados a 0)
+- nao exporta campo sem informacao em exportacao linear
+
+**** tools 2.1 ********
+- verifica existencia (das bases/usuarios) na criacao de acessos
+
+**** 1.8 rel 4.0e ********
+
+- Ao passar da fase dois para a fase tres do reprocessamento. a base e
+  fechada e aberta logo em seguida para permitir procedimento off_line
+  de reconstrucao so do indices.
+
+- Exclusao de bases mata acesso de todos os usuarios e grupos. (antes matava
+  so do primeiro)
+
+**** 1.8 rel 4.0f ********
+- Pega dono da base a partir do cadastro de acessos
+- Posicionamento de cursor durante a pesquisa respeita movimento do cursor
+- Hipermenu passa a respeitar permissao do usuario na hora de incluir/excluir
+- Tools. Passa a sinalizar o andamento na criacao de matrizes numericas
+- Tools. Lista indice passa a ser reconhecer diretiva -T[+-]n para
+  listar indice
+- Modificacoes na MT para diminuir overlay.
+- Calculadora passa a mostrar Token de base em sistemas AIX, ULTRIX, etc.
+- Inserido codigo em wget0.c (MT) para tratar Discador do Bradesco
+- Indexacao Parcial quando interrompida dava mensagem "Aguardando liberacao
+  para atua". Corrigido
+- Retirada mensagem quando terminava a indexacao Total/Parcial.
+- Passa a tratar corretamente a existencia de chave unica duplicada na
+  reindexacao e no reprocessamento. Quando uma chave unica esta duplicada
+  o registro e exportado para um arquivo de log.
+- No reprocessamento nao pede mais intervencao do operador quando chave
+  unica esta duplicada.
+- Passa a permitir definicao de acessos a base, mesmo quando a base esta em
+  uso.
+- Reindexacao passa a tratar conflito de chave unica. Agora o registro
+  e excluido e gerado um arquivo de log contendo o registro exportado
+  no formato linear
+- Reprocessamento passa a tratar conflito de chave unica. Agora o registro
+  e rejeitado e gerado um arquivo de log contendo o registro exportado
+  no formato linear
+- Importacao  passa a tratar conflito de chave unica. Agora o registro
+  e rejeitado e gerado um arquivo de log contendo o registro exportado
+  no formato linear
+- No reprocessamento, passa a propor nome do arquivo em minusculo.
+- No reprocessamento, passa a dar mensagem explicativa onde dava erro 901
+- Passa a reconhecer o dono da base apartir do cadastro de acessos.
+- Criada variavel global "auto_last" para conter o ultimo numero automatico
+  gerado na execucao do light (Comun a todas as bases)
+- No hipermenu passa a reconhecer as seguintes diretivas
+  - ALTERA - entra na funcao de alteracao de registro
+  - GL_ALTERA - Entra na funcao de edicao de registro mas editando o
+                registro que possui chave unica identica ao valor
+                contido na variavel global "autolast" e seja um campo
+                com critica de AUTONUM.
+  - CLEAN     - Limpa o conteudo da variavel global "autolast"
+- arquivos no hipermenu sao procurados da seguinte forma :
+   menu   ( no diretorio home das bases)
+   ./menu ( no diretorio corrente )
+   /xxx/menu ou c:/xxx/menu ( no diretorio corrente especificado )
+- No Hipermenu invadia (as vezes) quando o fim de linha tava colado no
+  ultimo argumento.
+- Incluido numero do registro quando no processo de indexacao mostrava
+  a mensagem "Aguarde..."
+- Funcao de salvamento de PERSONA. Retirada uma invasao.
+- Pesquisa passa a gerar um log. Basta setar a variavel ambiental LOGPESQ
+  contendo o nome do arquivo onde devera ser gravado o log;
+  Caso exista a variavel ambiental CROSSLOG setada com qualquer valor,
+  no log sera impresso o valor da variavel global "autolast"
+- Corrigido o desposicionamento do cursor quando mostrava um campo TEXTO
+  no unix e o mesmo tinha palavras a serem brilhadas. De quebra tivemos
+  uma otimizacao consideravel.
+- Retirada mensagem final da reindexacao quando a mesma nao apresentava
+  nenhum problema. (Causa um efeito esquisito quando a reindexacao parcial
+  nao tem nada para indexar, mas e melhor assim).
+- Refeita a parte de gerencia de lock sobre o arquivo de controle (.lck)
+  (passa a dar um tempo entre as tentativas de lock e trata alguns problemas
+  de sincronismo entre operacoes)
+- TOOLS - Chave de indexacao passa para 50 caracteres
+- TOOLS - Passa a tratar a diretiva -T... (quando vai listar indices)
+- TOOLS - Passa a imprimir numeracao de registros incluidos em tables.
+- TOOLS - Passa a imprimir mensagens quando chaves sao invalidas (tam e dup)
+
+**** 1.8 rel 4.0g ********
+
+- opcao para alterar um conjunto de registros atravez de pesquisa
+- Autonum gera no maximo o tamanho do campo para onde for o destino
+- Help de campo passa para um campo especifico atribuido via
+  F10 - Caracteristicas especiais do campo
+- Mascara de campo autonum passa para um campo especifico atribuido via
+  F10 - Caracteristicas especiais do campo
+- Campo autonum so pode ser atribuido a campos alfanumericos
+- Campo autonum com critica de chave unica limpa o conteudo do mesmo caso
+  ja exista chave com o mesmo valor
+- Campo autonum pode ser setado para acrescimo (Tipos em vistas) fazendo
+  com que caso o campo ja tenha um valor nao permite edicao do mesmo.
+
+
+**** 1.8 rel 4.0h ********
+- pesquisa por intervalo passa a dar mensagem para campos nao validos
+- implementado operador ++ para pesquisar compos que contenham informacoes
+  (deve ser indexado em branco)
+
+**** 2.0 rel 1.0 ********
+idem a anterior
+
+**** 2.0 rel 1.1 ********
+- Reprocessamento passa a recuperar informacoes sem ct_seguranca ( otimiza )
+- Copyright Fast
+- Informa erro quando numero de serie informado nao e compativel ( em -AI )
+- Nao le cadastro de acessos de outras copias (numero de serie diferente)
+- Passa a ler bases geradas por outros numeros de serie desde que no cadastro
+  de acessos desde que o cadastro de acessos defina esta relacao
+- tools passa a manter o numero de serie que gerou a base, para isto quando
+  ele acha um numero de serie que nao o mesmo do que esta sendo gerado o
+  cadatrso de acessos, e' pedida a chave de ativacao deste numero.
+- Nao grava registro em branco na inclusao ( para isto foi alterado a funcao
+  free_record.
+
+************************************** Bye **********************************
+************************* Daqui pra frente e com o Jarbas *******************
+
+**** Ainda nao foi desta vez.
+
+**** 2.0 rel 1.1 ********
+- Tratando indexacao c/ nove bytes significativos ( indexa mais que 2048
+  paragrafos)
+
+**** 2.0 rel 1.2 ********
+- Muda tamanho da janela de brilhar palavras
+- Nao pergunta mais se deseja interromper quando excede limite de palavras
+  a brilhar. Coloca uma linha na ultima linha da janela indicando tal
+  situacao (Como estava anteriormente impedia a gravacao de registros por
+  outros usuarios enquanto o usuario nao decidisse)
+- Nao existe mais tratamento para variavel LBLOCK. O mesmo efeito e' obtido
+  com a diretiva -DL<diretorio>
+- Passa a mostrar tentativas de obtencao de controle do arquivo de lock para
+  tentar ler/gravar registros
+- Mudanca do uso da macro TAM_TAM (dava problemas no HPUX)
+- Acentuacao de mensagens em portugue.lb
+
+**** 2.0 rel 1.3 ********
+- Bug de CTREE quando "radical" coincidia com ultimo ultima chave do bloco
+  (Camara dos deputados - Chaves em branco) - Achava menos do que devia
+- Na importacao, passa a aceitar tambem o caracter '!' para as diretivas
+  '@' (ex @C26 pode tamber ser !C26). Facilita a classificacao.
+- Funcao dup_texto, usava um COUNT ao invez de um UCOUNT o que dava problema
+  com texto maior que 35000 e -IO > 35000;
+
+**** 2.0 rel 1.4 ********
+- Passa a tratar a diretiva -AN em config.lb. Faz com que campos autonumerados
+  sejam automaticamente atribuidos quando o cursor cair sobre eles.
+- Para que uma tabela (nao numerica) abra automaticamente quando o usuario
+  estiver digitando dados, e so entrar na definicao da vista, ir para cima do
+  campo, selecionar TIPOS e ligar a diretiva ACRESCIMO.
+
+
+**** 2.0 rel 1.5 ********
+- corrige erro de nao aceitar algumas diretivas de cabecalho
+- muda impressao de caracteres nao definidos no driver de impressao (era
+  nulo agora e branco).
+
+**** 2.0 rel 1.6 ********
+- rotina de critica de cgc.
+
+**** 2.0 rel 1.7 ********
+- Sequencia de navegacao nos registros apos uma alteracao de todos na pesquisa.
+  Melava a ordem de navegacao.
+- Campo AUTONUM com diretiva -AN e com "acrescimo" empurrava um ENTER a mais
+- Campo AUTONUM com "acrescimo" nao propagava TAB, BACK_TAB.
+
+**** 2.1 rel 1.0 ********   22/02/95
+- Mostra nome da base sendo reprocessada
+- Acerto na navegacao em campos tabelados quando tinha um campo autonum
+- Adequacao da mensagem de chave duplicada no reprocessamento (numero do
+  registro mostrado e o que tinha na base)
+- Demorava para sair de F3 status.
+- Exportacao de dados nao exportava os registros que tivessem status
+  NO_INDEX (estado quando se abrevia um reprocessamento)
+- Apos um refinamento, caso se repetisse uma pesquisa interativa com
+  operador, diretamente com F2 no primeiro argumento, nao era considerado
+  o operador gerando um resultado imcompativel com a pesquisa.
+
+
