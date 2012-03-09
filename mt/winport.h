@@ -39,7 +39,7 @@ Se chegar ate' aqui esta' errado ...
 
 #ifdef    MSDOS
 
-#define   PROTO_ANSI  /* Habilita Prototipos de Funcoes */
+/* #define   PROTO_ANSI   Habilita Prototipos de Funcoes */
 #define   VMEM        /* Habilita Memoria Virtual */
 
 #define   MEMORY   <mem.h>
@@ -147,7 +147,7 @@ O nome de arquivo sempre devem possuir o "." separador.
 
 #ifdef SCOUNIX
 
-#define   PROTO_ANSI /* Habilita Prototipos de Funcoes */
+/* #define   PROTO_ANSI  Habilita Prototipos de Funcoes */
 
 #define   MEMORY   <memory.h>
 #define   PROTO    <stdlib.h>
